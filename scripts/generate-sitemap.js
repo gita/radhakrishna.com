@@ -41,7 +41,8 @@ const siteMetadata = require('../data/siteMetadata')
         </urlset>
     `
 
-  const formatted = prettier.format(sitemap, {
+  // prettier 3 returns a Promise from format()
+  const formatted = await prettier.format(sitemap, {
     ...prettierConfig,
     parser: 'html',
   })
