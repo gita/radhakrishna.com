@@ -2,9 +2,10 @@ const siteMetadata = {
   title: 'Radha Krishna | All About the Eternal Couple Radhe Krishna',
   author: 'Radha Krishna',
   headerTitle: 'Radha Krishna',
-  description: 'Dedicated to the eternal couple Shri Radha Krishna! Radha Krishna stories, bhajans, wallpapers, prayers, aarti, audio, video, photos.',
+  description:
+    'Dedicated to the eternal couple Shri Radha Krishna! Radha Krishna stories, bhajans, wallpapers, prayers, aarti, audio, video, photos.',
   language: 'en-us',
-  siteUrl: 'https://radhakrishna.net',
+  siteUrl: 'https://radhakrishna.com',
   siteRepo: 'https://github.com/gita/radhakrishna.net',
   siteLogo: '/static/images/krishna.png',
   image: '/static/images/radhakrishna.jpg',
@@ -17,7 +18,7 @@ const siteMetadata = {
   locale: 'en-US',
   analytics: {
     googleAnalyticsId: 'UA-110255634-1',
-    plausibleDataDomain: 'radhakrishna.net',
+    plausibleDataDomain: 'radhakrishna.com',
   },
   newsletter: {
     // supports mailchimp, buttondown, convertkit, klaviyo

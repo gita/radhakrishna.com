@@ -9,6 +9,7 @@ const CommonSEO = ({ title, description, ogType, ogImage, twImage }) => {
       <title>{title}</title>
       <meta name="robots" content="follow, index" />
       <meta name="description" content={description} />
+      <link rel="canonical" href={`${siteMetadata.siteUrl}${router.asPath}`} key="canonical" />
       <meta property="og:url" content={`${siteMetadata.siteUrl}${router.asPath}`} />
       <meta property="og:type" content={ogType} />
       <meta property="og:site_name" content={siteMetadata.title} />
@@ -137,7 +138,6 @@ export const BlogSEO = ({ authorDetails, title, summary, date, lastmod, url, ima
       <Head>
         {date && <meta property="article:published_time" content={publishedAt} />}
         {lastmod && <meta property="article:modified_time" content={modifiedAt} />}
-        <link rel="canonical" href={`${siteMetadata.siteUrl}${router.asPath}`} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

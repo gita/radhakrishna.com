@@ -1,18 +1,17 @@
 import Script from 'next/script'
 
-import siteMetadata from '@/data/siteMetadata'
-
+// Privacy-friendly analytics by Plausible
 const PlausibleScript = () => {
   return (
     <>
       <Script
-        strategy="lazyOnload"
-        data-domain={siteMetadata.analytics.plausibleDataDomain}
-        src="https://plausible.io/js/script.file-downloads.hash.outbound-links.pageview-props.tagged-events.js"
+        strategy="afterInteractive"
+        src="https://plausible.io/js/pa-OeZ-vCbBlFQURdSQrdo55.js"
       />
-      <Script strategy="lazyOnload" id="plausible-script">
+      <Script strategy="afterInteractive" id="plausible-init">
         {`
-            window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }
+            window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+            plausible.init()
         `}
       </Script>
     </>
