@@ -17,8 +17,7 @@ const siteMetadata = {
   linkedin: 'https://www.linkedin.com/company/bhagavadgita',
   locale: 'en-US',
   analytics: {
-    googleAnalyticsId: 'UA-110255634-1',
-    plausibleDataDomain: 'radhakrishna.com',
+    plausible: true,
   },
   newsletter: {
     // supports mailchimp, buttondown, convertkit, klaviyo
