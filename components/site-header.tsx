@@ -1,6 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
 import { nav, site } from "@/lib/site";
-import { Peacock } from "@/components/motifs";
 
 /**
  * Server-rendered header. Mobile menu is a native <details> disclosure, so the
@@ -15,7 +15,14 @@ export function SiteHeader() {
           className="flex items-center gap-2.5"
           aria-label={`${site.name} home`}
         >
-          <Peacock className="size-8 text-divine" />
+          <Image
+            src="/brand/logo.png"
+            alt=""
+            width={40}
+            height={40}
+            priority
+            className="size-9 rounded-full"
+          />
           <span className="font-serif text-lg font-semibold tracking-tight">
             Radhakrishna<span className="text-gold">.com</span>
           </span>

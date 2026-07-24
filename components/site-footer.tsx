@@ -1,6 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
 import { nav, network, social, site } from "@/lib/site";
-import { Peacock } from "@/components/motifs";
 
 /** Server-rendered footer. Carries the org entity graph (docs/03 §8). */
 export function SiteFooter() {
@@ -9,7 +9,13 @@ export function SiteFooter() {
       <div className="container grid gap-10 py-14 md:grid-cols-4">
         <div className="space-y-3">
           <div className="flex items-center gap-2.5">
-            <Peacock className="size-8 text-divine" />
+            <Image
+              src="/brand/logo.png"
+              alt=""
+              width={40}
+              height={40}
+              className="size-9 rounded-full"
+            />
             <span className="font-serif text-lg font-semibold">
               Radhakrishna<span className="text-gold">.com</span>
             </span>
