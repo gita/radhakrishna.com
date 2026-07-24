@@ -120,6 +120,35 @@ Each becomes: a hero/section art where relevant, a downloadable gallery + wallpa
 quote-card background. Keep a running "generated / to-generate" checklist here as we produce them, and add
 the winners to `brand-refs/` so the whole site inherits one delightful, bright look.
 
+## 5c. Art reference corpus (style conditioning)
+
+Great generated art starts from great reference art. We build a corpus of beautiful devotional paintings
+and pass them as **reference images** (`-i` to gpt-image-2 / reference inputs to Gemini) so our output
+inherits their beauty, then we generate **net-new original scenes in new settings/compositions**. Founder
+direction (2026-07-24): reference broadly, including BBT and JKYog art found on the web; create new images
+from them, do not clone. Principle: reference for **style + quality**, output is **original** (new
+composition, setting, framing), never a 1:1 copy and never presented as a specific artist's work.
+
+**Corpus sources (`design/references/art/`):**
+
+- **Raja Ravi Varma** — public domain (d. 1906). Classical Indian oil realism, divine warmth. _Saved:_ Birth
+  of Krishna, Introducing Radha to Krishna, Krishna Drishta, Radha Waiting for Krishna, Yasoda Adorning /
+  with Krishna, Radha Madhavam.
+- **Kangra / Pahari / Rajput / Kalighat / Deccan miniatures** — public domain (18th-19th c). Delicate line,
+  jewel color, Radha-Krishna lyricism. _Saved:_ Kalighat Radha-Krishna, Krishna & Arjuna chariot; add more
+  (Rasalila, Jhula, gopis, Govardhan) as rate limits allow — use Wikimedia thumbnail URLs to avoid 429s.
+- **BBT / ISKCON art** — modern, copyrighted; vivid, detailed, devotional (the classic Krishna-book look).
+  Gather from the web as **style references** per founder direction; generate original scenes.
+- **JKYog art** — the org's Radha-Krishna art (Radha Madhav Dham / Swami Mukundananda). Gather from the web
+  / JKYog sources as references; the founder's org, used for reference to make new originals.
+- **Nathdwara Pichwai, Tanjore (gold-leaf), Madhubani** — traditional forms to fold in for variety + festival
+  pieces (historical works are public domain).
+
+**How we use it:** pick 1-3 references that match the target scene's mood, pass as `-i` / reference inputs,
+prompt the new composition (the leela + setting from §5b) in our bright, light-first palette (docs/07), and
+curate. Save our best originals into `brand-refs/` so the whole site converges on one look. Keep this list
+updated as the corpus grows; note license/source per image.
+
 ## 6. Where images plug into the site
 
 - **Hero** (T1) per major hub, HTML title overlay, `priority` LCP image.
