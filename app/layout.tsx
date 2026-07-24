@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Inter, Crimson_Pro, Noto_Serif_Devanagari } from "next/font/google";
 import { site, network, social } from "@/lib/site";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { RevealInit } from "@/components/reveal-init";
 import "./globals.css";
 
 // Self-hosted via next/font (no runtime CDN). Subsetted, display:swap. docs/03 §4.
@@ -94,6 +96,14 @@ export default function RootLayout({
         <SiteHeader />
         <main id="main">{children}</main>
         <SiteFooter />
+        <RevealInit />
+        {/* Privacy-friendly analytics */}
+        <Script
+          defer
+          data-domain="radhakrishna.com"
+          src="https://plausible.io/js/script.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );

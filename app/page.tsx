@@ -74,7 +74,7 @@ export default function HomePage() {
           {/* Art — a rectangle that fills the column */}
           <div className="order-1 md:order-2">
             <div className="relative">
-              <div className="pointer-events-none absolute -inset-4 -z-10 rounded-[2rem] bg-gradient-to-tr from-gold/20 via-transparent to-divine/20 blur-2xl" />
+              <div className="ambient-glow pointer-events-none absolute -inset-4 -z-10 rounded-[2rem] bg-gradient-to-tr from-gold/25 via-lotus/10 to-divine/25 blur-2xl" />
               <div className="relative aspect-[3/2] w-full overflow-hidden rounded-[1.5rem] ring-1 ring-gold/25 shadow-[0_24px_60px_-28px_rgba(31,42,74,0.5)]">
                 <Image
                   src="/images/hero/radha-krishna-jhoola.webp"
@@ -120,7 +120,10 @@ export default function HomePage() {
           title="The world of Radha Krishna"
           sub="Stories, prayers, festivals, temples, and daily devotion, all in one place."
         />
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div
+          className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          data-reveal
+        >
           {explore.map((c) => (
             <Link
               key={c.href}
@@ -151,7 +154,10 @@ export default function HomePage() {
 
       {/* Today's devotion — the one rich, deep accent surface */}
       <section className="container py-8">
-        <div className="relative overflow-hidden rounded-[1.75rem] bg-indigo px-6 py-14 text-center text-indigo-foreground sm:px-12">
+        <div
+          className="relative overflow-hidden rounded-[1.75rem] bg-indigo px-6 py-16 text-center text-indigo-foreground sm:px-12"
+          data-reveal
+        >
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0 opacity-70"
@@ -170,7 +176,10 @@ export default function HomePage() {
           eyebrow="Popular questions"
           title="The questions people ask most"
         />
-        <div className="mx-auto mt-10 max-w-3xl divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
+        <div
+          className="mx-auto mt-10 max-w-3xl divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card shadow-sm"
+          data-reveal
+        >
           {popularQuestions.map(([q, href]) => (
             <Link
               key={href}
@@ -193,7 +202,10 @@ export default function HomePage() {
             eyebrow="Our network"
             title="Explore our other apps & sites"
           />
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div
+            className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+            data-reveal
+          >
             {network.map((n) => (
               <a
                 key={n.href}
@@ -236,7 +248,7 @@ function SectionHeading({
   sub?: string;
 }) {
   return (
-    <div className="text-center">
+    <div className="text-center" data-reveal>
       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">
         {eyebrow}
       </p>

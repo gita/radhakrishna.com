@@ -126,6 +126,15 @@
     border-color: hsl(var(--border));
   }
 
+  /* Interactive elements always show a pointer */
+  button:not(:disabled),
+  [role="button"],
+  a[href],
+  summary,
+  label[for] {
+    cursor: pointer;
+  }
+
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 5rem;
@@ -214,5 +223,49 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+/*
+ * Scroll reveal. SEO-safe: content is visible by default. Only once JS marks the
+ * document ready do elements start hidden and reveal as they enter the viewport.
+ */
+.reveal-ready [data-reveal] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-ready [data-reveal].revealed {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal-ready [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* Slow ambient glow drift behind the hero (calm, lamp-like) */
+@keyframes glow-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.75;
+  }
+  50% {
+    transform: translate3d(2%, -3%, 0) scale(1.08);
+    opacity: 1;
+  }
+}
+.ambient-glow {
+  animation: glow-drift 12s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ambient-glow {
+    animation: none;
   }
 }
