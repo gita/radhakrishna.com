@@ -16,7 +16,7 @@ export function SiteHeader() {
           aria-label={`${site.name} home`}
         >
           <Image
-            src="/brand/logo.png"
+            src="/brand/morpankh.png"
             alt=""
             width={40}
             height={40}

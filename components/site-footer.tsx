@@ -10,7 +10,7 @@ export function SiteFooter() {
         <div className="space-y-3">
           <div className="flex items-center gap-2.5">
             <Image
-              src="/brand/logo.png"
+              src="/brand/morpankh.png"
               alt=""
               width={40}
               height={40}
