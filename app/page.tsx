@@ -1,6 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { GoldFiligree, Lotus } from "@/components/motifs";
+import { GoldFiligree } from "@/components/motifs";
 
 const startHere = [
   {
@@ -49,35 +50,69 @@ const popularQuestions = [
 export default function HomePage() {
   return (
     <>
-      {/* Hero */}
-      <section className="hero-wash">
-        <div className="container flex flex-col items-center py-20 text-center md:py-28">
-          <Lotus className="mb-6 size-9 animate-fade-in text-gold" />
-          <p className="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-divine">
-            The digital home of Shri Radha Krishna
-          </p>
-          <h1 className="max-w-3xl text-balance font-serif text-4xl font-semibold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl">
-            Experience the Divine Love of Radha Krishna
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
-            Explore their stories, teachings, sacred prayers, bhajans, temples,
-            and timeless meaning across Hindu traditions.
-          </p>
-          <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
-            <Button asChild variant="divine" size="lg">
-              <Link href="/radha-krishna">Explore Radha Krishna</Link>
-            </Button>
-            <Button asChild variant="outline" size="lg">
-              <Link href="/daily-darshan">Begin Daily Darshan</Link>
-            </Button>
-            <Button asChild variant="ghost" size="lg">
-              <a href="https://bhagavadgita.com/gitagpt">Ask Krishna AI</a>
-            </Button>
+      {/* Hero — immersive full-bleed leela art */}
+      <section className="relative -mt-16 flex min-h-[92svh] items-end overflow-hidden">
+        {/* Art-directed: portrait on phones, landscape on larger screens */}
+        <Image
+          src="/images/hero/radha-krishna-jhoola-portrait.webp"
+          alt="Radha and Krishna together on a flower swing in a luminous Vrindavan garden at golden morning, painterly devotional art"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center sm:hidden"
+        />
+        <Image
+          src="/images/hero/radha-krishna-jhoola.webp"
+          alt=""
+          fill
+          sizes="100vw"
+          className="hidden object-cover object-center sm:block"
+        />
+        {/* Scrims: soft top for the header, warm bottom for legibility */}
+        <div
+          aria-hidden
+          className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/20 to-transparent"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-x-0 bottom-0 h-[72%] bg-gradient-to-t from-black/75 via-black/35 to-transparent sm:h-[60%]"
+        />
+        <div className="container relative z-10 pb-16 pt-28 md:pb-24">
+          <div className="max-w-2xl [text-shadow:0_2px_18px_rgba(0,0,0,0.35)]">
+            <p className="mb-4 text-sm font-medium uppercase tracking-[0.22em] text-gold">
+              The digital home of Shri Radha Krishna
+            </p>
+            <h1 className="text-balance font-serif text-4xl font-semibold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl">
+              Experience the Divine Love of Radha Krishna
+            </h1>
+            <p className="mt-5 max-w-xl text-lg text-white/85">
+              Explore their stories, teachings, sacred prayers, bhajans,
+              temples, and timeless meaning across Hindu traditions.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <Button asChild variant="gold" size="lg">
+                <Link href="/radha-krishna">Explore Radha Krishna</Link>
+              </Button>
+              <Button
+                asChild
+                size="lg"
+                className="border border-white/40 bg-white/10 text-white backdrop-blur-md hover:bg-white/20"
+              >
+                <Link href="/daily-darshan">Begin Daily Darshan</Link>
+              </Button>
+              <Button
+                asChild
+                size="lg"
+                className="bg-transparent text-white hover:bg-white/10"
+              >
+                <a href="https://bhagavadgita.com/gitagpt">Ask Krishna AI</a>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
 
-      <GoldFiligree className="container my-4" />
+      <GoldFiligree className="container my-10" />
 
       {/* Start here */}
       <section className="container py-16">
