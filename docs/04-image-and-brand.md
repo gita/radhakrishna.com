@@ -79,6 +79,47 @@ gpt-image-2 greeting) · T7 section header band (gpt-image-2) · T8 deity portra
 - **Draft at low/medium, finalise at high.** Generate `-n 3-4` and curate; devotional art has low
   tolerance for "almost right."
 
+## 5b. The Leela art shot list (the delightful scenes to generate)
+
+Radha Krishna imagery should be **bright, joyful, delightful, and full of color and life** (docs/07: light
+first). We generate original painterly art of the beloved leelas and place it throughout: heroes, story
+pages, festival pages, galleries, wallpapers, quote-card backgrounds. Engine = Gemini Nano Banana Pro
+(painterly, luminous, correct iconography); style = classical Indian miniature / Raja Ravi Varma-inspired /
+soft romantic realism, warm daylight, vivid color, gold divine glow. Verify iconography every time
+(docs/04 §5).
+
+**Founder-requested (build first):**
+
+- **Ras Leela** — Krishna multiplied among the gopis in a moonlit-but-luminous circular dance, Sharad
+  Purnima, radiant, joyful.
+- **Radha & Krishna on a Jhoola (swing)** in a flowering garden — the Jhulan / Hariyali Teej scene, lush
+  green Vrindavan, monsoon bloom, gopis swinging them, marigolds and vines.
+- **Kaliya Nag (Kaliya Daman) Leela** — young Krishna dancing gracefully on the many-hooded serpent in the
+  Yamuna, calm and triumphant, wives of Kaliya praying, bright water.
+- **Phoolon ki Holi** — Radha & Krishna amid clouds of flower petals (not just gulal), Barsana/Vrindavan
+  flower-Holi, joyful, saffron + rose + marigold, laughter and color.
+
+**More delightful leelas + scenes (the fuller backlog):**
+
+- Krishna playing the **bansuri (flute)** under a kadamba tree, peacocks and cows gathered, dawn light.
+- **Makhan Chori** — baby Krishna stealing butter, mischievous and adorable.
+- **Govardhan Leela** — Krishna lifting Govardhan hill on one finger, villagers sheltering, dramatic + warm.
+- **Nauka Vihar** — Radha & Krishna in a boat on the Yamuna, gopis rowing, serene golden water.
+- **Radha Krishna in a Nikunj (grove)** — intimate garden bower, flowers, peacocks, soft glow.
+- **Jhulan Utsav / monsoon swing** — decorated flower swing, rain clouds, greenery.
+- **Gopashtami** — Krishna with the cows, cowherd joy, morning pasture.
+- **Maha Raas at Vrindavan** — the grand circular dance, luminous.
+- **Damodar Leela** — Krishna tied to the mortar by Yashoda, tender and sweet.
+- **Radha Krishna garland / mala exchange** — devotional, tender, gold + rose.
+- **Barsana Lathmar Holi** — playful festival energy, color, Braj.
+- **Krishna with peacocks** dancing in the rain — vivid blues, greens, gold.
+- **Vrindavan at dawn / dusk over the Yamuna** — atmospheric landscape for section bands + backgrounds.
+- **Radha in Barsana** — Radha Rani, lotus, soft rose-and-gold, for the Radha hub.
+
+Each becomes: a hero/section art where relevant, a downloadable gallery + wallpaper set, and (cropped) a
+quote-card background. Keep a running "generated / to-generate" checklist here as we produce them, and add
+the winners to `brand-refs/` so the whole site inherits one delightful, bright look.
+
 ## 6. Where images plug into the site
 
 - **Hero** (T1) per major hub, HTML title overlay, `priority` LCP image.
