@@ -11,7 +11,7 @@ time. If a blocker (e.g. the parallel.ai key) is missing, say so and stop, do no
 
 ### The pipeline every content page runs through
 
-1. **Discover demand.** Mine the real questions for the topic: People Also Ask (Serper/Ahrefs) + Reddit +
+1. **Discover demand.** Mine the real questions for the topic: People Also Ask (**SerpApi**, see below) + Reddit +
    Quora. These become the H2s and the FAQ. (docs/06 §4)
 2. **Research + verify.** Corroborate every specific or contested claim across multiple authoritative
    sources with **parallel.ai** (Search + Deep Research) plus web research. Cite scripture by chapter/verse
@@ -56,6 +56,11 @@ a field and hope it works. Confirmed so far: Parallel Search = `POST https://api
 (header `x-api-key`, body `{objective, search_queries, mode}`); Reddit OAuth needs a
 `script:app:vN (by /u/user)` user agent.
 
+**Use SerpApi for People Also Ask, not Serper.** Serper returns no `peopleAlsoAsk` block on our plan.
+SerpApi does: `GET https://serpapi.com/search.json?engine=google&q=...&gl=in&hl=en&api_key=$SERP_API_KEY`
+-> `related_questions` (the PAA) and `related_searches`. Keep Serper only as a fallback for organic
+titles/autocomplete.
+
 ## Design + engineering rules
 
 - **Light-first, bright, joyful.** Radha Krishna are light and knowledge. Never auto dark mode. Deep tones
@@ -63,6 +68,12 @@ a field and hope it works. Confirmed so far: Parallel Search = `POST https://api
 - **Never overlay text on the deities' faces.** Art is framed and unobstructed.
 - **Reuse before adding** components; custom-branded, semantic design tokens; performance is the #1 gate.
 - **No em dashes anywhere** (copy, docs, commits, chat). Straight quotes.
+- **Never leak the machinery into the page.** The reader must never see our process or QA notes. Banned in
+  content: "I could not verify", "could not be confirmed", "I looked for", "I would label this as", "so we
+  label it", "unverified", "for transparency", or any first-person narration of research. Say the same
+  thing as a fact about the evidence instead: "No classical text narrates her passing", "No verse assigns
+  the feather to Radha", "It is not handed down with a numbered chapter and verse." Honest, not clinical.
+  A page must read like a devotee-scholar wrote it, never like a pipeline produced it.
 - **Canonical domain is radhakrishna.com.** Never emit .net URLs.
 - Commit + push in small steps on the working branch; the preview link auto-updates.
 
