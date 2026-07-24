@@ -24,31 +24,45 @@ as we find them; put each new reference here so the whole team designs against t
 
 ## 1. The aesthetic
 
-**Luminous devotion.** Deep, calm grounds that glow from within, with gold as the precious light and real
-Radha Krishna art as the hero. It should feel like stepping into a temple at the hour the lamps are lit:
-dark, warm, quiet, radiant. Calm's serenity + Moonly's mystical glow + Function's cinematic restraint +
-Apple's precision.
+**Radiant devotion (light-first).** Radha Krishna are light, knowledge, color, and joy: Vrindavan gardens,
+dawn over the Yamuna, Holi color, marigold and lotus, gold and peacock hues. The site's default mood is
+**bright, luminous, colorful, and happy**, glowing with life. It should feel like a bright morning in Braj,
+not a temple at midnight. Gold is the precious light; real Radha Krishna art is the hero. Calm's daytime
+serenity + Function's cinematic restraint + Duolingo's joyful confidence + Apple's precision.
 
-**Two surface moods, one system:**
+**Founder guardrail (important):** do NOT let it go dull, dark, or gloomy. Bright and colorful is the
+signature. Deep tones are a **seasoning for vibrance and contrast**, used sparingly on select surfaces, not
+the ground the whole site sits on.
 
-- **Luminous-dark** (hero, daily darshan, mantras, quote/shloka cards): deep midnight indigo grounds,
-  soft radial glows, gold hairlines and haloes, art that emits light. The signature.
-- **Warm-light** (reading: stories, questions, temples): warm cream, generous line-height, elegant serif,
-  quiet gold accents. Calm, legible, unhurried.
+**Surface moods (bright-led):**
+
+- **Radiant-light (default, ~80%):** warm cream and soft luminous color-washes (peacock, lotus, gold,
+  dawn), generous light, elegant serif, real art. Bright, alive, joyful. Stories, questions, temples,
+  hubs, most of the homepage.
+- **Rich-accent (sparing, for vibrance):** a deeper, saturated surface (indigo/peacock with a warm glow)
+  used deliberately for a hero moment, a shloka card, or the daily-darshan focus — for drama and contrast,
+  never gloom, and never the whole page. Think a vivid festival night, lamps and color, not emptiness.
 
 **What we are moving away from (the basic first pass):** flat cream everywhere, text-on-color heroes, a
-thin geometric icon, hard-edged bordered cards, uniform spacing, no depth, no imagery.
+thin geometric icon, hard-edged bordered cards, uniform spacing, no depth, no imagery. And equally, away
+from anything dark, muted, or somber.
 
 ## 2. Theme (confirmed)
 
-Blue-led, intentional, and validated by the references (Calm, Moonly).
+Blue-led but bright, intentional, validated by the references (Calm's daytime palette).
 
-- **Peacock blue** + **deep midnight indigo** — the divine core and the dark grounds (Krishna's color).
-- **Brass gold** — the precious accent: light, haloes, fine rules, active states, small ornament. Never a
+- **Warm cream / ink** — the dominant ground. Bright, warm, alive. Reading + most surfaces.
+- **Peacock blue** + **jade/peacock green** — the divine core accents (Krishna's color), used bright and
+  saturated, not muted.
+- **Brass gold** — the precious light: haloes, fine rules, active states, small ornament, glow. Never a
   flat fill.
-- **Warm cream / ink** — reading surfaces.
+- **Lotus pink** + **marigold/saffron warmth** — joyful color accents (flowers, Holi, festival).
+- **Deep midnight indigo** — a **sparing rich-accent ground** for select hero/shloka/darshan surfaces only,
+  for vibrance and contrast. Not the site's default ground.
 - **Terracotta** — a minor warm accent, the quiet tie to the bhagavadgita.com / vedvyas.com family.
-- **Lotus pink**, **jade/peacock green** — gentle secondary accents.
+
+Net: a bright, colorful, joyful devotional palette led by cream + peacock + gold, with indigo as an
+occasional deep accent for drama, never the base.
 
 ## 3. Typography
 
