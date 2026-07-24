@@ -17,6 +17,12 @@ export async function generateMetadata({
   const { slug } = await params;
   const doc = findByUrl("/" + slug.join("/"));
   if (!doc) return {};
+  const eyebrow = doc.cluster ? doc.cluster.replace(/-/g, " ") : undefined;
+  const ogImage =
+    doc.image ??
+    `/og?title=${encodeURIComponent(doc.title)}${
+      eyebrow ? `&eyebrow=${encodeURIComponent(eyebrow)}` : ""
+    }`;
   return {
     title: doc.title,
     description: doc.description,
@@ -26,7 +32,13 @@ export async function generateMetadata({
       description: doc.description,
       url: doc.url,
       type: doc.type === "hub" ? "website" : "article",
-      images: doc.image ? [doc.image] : undefined,
+      images: [{ url: ogImage, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: doc.title,
+      description: doc.description,
+      images: [ogImage],
     },
   };
 }

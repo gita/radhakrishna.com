@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { MDXBody } from "@/components/mdx";
 import { inCluster, related, type Doc } from "@/lib/content";
+import { articleGraph } from "@/lib/schema";
 
 const CLUSTER_LABEL: Record<string, string> = {
   "radha-krishna": "Radha Krishna",
@@ -60,6 +61,10 @@ export function ArticlePage({ doc }: { doc: Doc }) {
   const updated = fmtDate(doc.updated ?? doc.date);
   return (
     <article className="container max-w-3xl py-12 md:py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleGraph(doc)) }}
+      />
       <Breadcrumb doc={doc} />
       <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-gold">
         {clusterLabel(doc.cluster)}

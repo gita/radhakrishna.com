@@ -41,6 +41,10 @@ const content = defineCollection({
       updated: s.isodate().optional(),
       tags: s.array(s.string()).default([]),
       related: s.array(s.string()).default([]),
+      // Genuine Q&A, mirrored in-body; feeds FAQPage schema where present (docs/02 §5).
+      faq: s
+        .array(s.object({ question: s.string(), answer: s.string() }))
+        .default([]),
       sources: s
         .array(s.object({ text: s.string(), url: s.string().optional() }))
         .default([]),
