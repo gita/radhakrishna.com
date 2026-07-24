@@ -7,8 +7,8 @@
     "node": ">=20"
   },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "velite && next dev",
+    "build": "velite && next build",
     "start": "next start",
     "lint": "next lint"
   },

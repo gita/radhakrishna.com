@@ -39,3 +39,6 @@ yarn-error.log*
 
 # velite content build output
 /.velite
+_legacy/
+
+tsconfig.tsbuildinfo

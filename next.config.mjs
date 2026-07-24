@@ -1,3 +1,15 @@
+import { readFileSync } from "node:fs";
+
+// Legacy /blog/* URLs -> new cluster URLs (preserve SEO). Generated at migration.
+let legacyRedirects = [];
+try {
+  legacyRedirects = JSON.parse(
+    readFileSync(new URL("./content/_redirects.json", import.meta.url), "utf8"),
+  );
+} catch {
+  legacyRedirects = [];
+}
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -7,10 +19,15 @@ const nextConfig = {
   },
   images: {
     // Serve modern formats; masters are high-res, downscaled per breakpoint.
-    formats: ['image/avif', 'image/webp'],
+    formats: ["image/avif", "image/webp"],
   },
-  // Velite (content pipeline) is wired here in the content phase:
-  // it builds .velite/ from content/ before/alongside the Next build.
-}
+  async redirects() {
+    return legacyRedirects.map(([source, destination]) => ({
+      source,
+      destination,
+      permanent: true,
+    }));
+  },
+};
 
-export default nextConfig
+export default nextConfig;
