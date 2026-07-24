@@ -10,7 +10,7 @@ const explore = [
     title: "Their Stories",
     blurb: "Raas Lila, Vrindavan, the flute, the leelas.",
     href: "/stories",
-    image: "/images/sections/krishna-flute.webp",
+    image: "/images/sections/raas-lila.webp",
   },
   {
     title: "Festivals",
@@ -34,7 +34,7 @@ const explore = [
     title: "Images & Wallpapers",
     blurb: "Original art, quote cards, HD wallpapers to share.",
     href: "/images",
-    image: "/images/sections/gallery.webp",
+    image: "/images/sections/nauka-vihar.webp",
   },
   {
     title: "Daily Darshan",
