@@ -4,6 +4,22 @@ Newest entries on top. Each entry: date, what was done, what's next. This is the
 
 ---
 
+## 2026-07-25 — Content pipeline unblocked + enforcement
+
+- **Keys received + saved to `.env`** (gitignored): `PARALLEL_API_KEY` (verified, HTTP 200),
+  `REDDIT_CLIENT_ID`/`SECRET`/`USER_AGENT` (verified OAuth), plus copied `OPENAI_API_KEY`,
+  `GEMINI_API_KEY`, `SERPER_API_KEY`, `SERP_API_KEY`, `AHREFS_API_KEY`, `KE_API_KEY`,
+  `SPYFU_API_KEY`, `PAGESPEED_API_KEY`, `PLAUSIBLE_API_KEY` from the marketing repo. No more fetching.
+  Parallel Search API = `POST https://api.parallel.ai/v1/search` (header `x-api-key`). Reddit needs the
+  `script:app:vN (by /u/user)` UA format. **D15 verification pipeline is now live.** Codex CLI available.
+- **Created `CLAUDE.md`** (repo root, auto-loaded): the mandatory content-quality gate + pipeline +
+  definition of done, so the standard is enforced every session without the founder re-explaining.
+- **Next:** perfect the content template (answer-first, TLDR, FAQ + FAQPage schema, ScriptureTable,
+  PrayerPage, connected JSON-LD, dynamic OG, fix duplicate hero image), build the reusable
+  content-production workflow (mine PAA/Reddit -> Codex draft in house voice -> parallel.ai verify ->
+  structure -> expert-council adversarial review + iterate -> MDX -> mobile QA), then run it on the
+  7 migrated pages + hubs to the standard and report when fully polished.
+
 ## 2026-07-24 — Council review + 3 founder decisions + 2 additions
 
 **Council review done.** Ran the six-expert SEO/GEO council over `01`-`05` + `DECISIONS.md`. Verdict:
