@@ -1,75 +1,38 @@
 {
   "name": "radhakrishna",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "private": true,
+  "description": "Radhakrishna.com — the digital home of Shri Radha Krishna",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
-    "start": "cross-env SOCKET=true node ./scripts/next-remote-watch.js ./data",
     "dev": "next dev",
-    "build": "next build && node ./scripts/generate-sitemap",
-    "serve": "next start",
-    "analyze": "cross-env ANALYZE=true next build",
-    "lint": "next lint --fix --dir pages --dir components --dir lib --dir layouts --dir scripts",
-    "prepare": "husky"
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
-    "@mailchimp/mailchimp_marketing": "^3.0.58",
-    "@tailwindcss/forms": "^0.5.9",
-    "@tailwindcss/typography": "^0.5.15",
-    "autoprefixer": "^10.2.5",
-    "esbuild": "^0.25.12",
-    "github-slugger": "^1.3.0",
-    "gray-matter": "^4.0.2",
-    "image-size": "1.0.0",
-    "mdx-bundler": "^10.1.1",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.26.0",
     "next": "^16.2.11",
-    "next-themes": "^0.4.6",
-    "postcss": "^8.5.22",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "reading-time": "1.3.0",
-    "rehype-autolink-headings": "^6.1.0",
-    "rehype-citation": "^0.1.1",
-    "rehype-katex": "^6.0.2",
-    "rehype-prism-plus": "^1.1.3",
-    "rehype-slug": "^5.0.0",
-    "remark-footnotes": "^4.0.1",
-    "remark-gfm": "^3.0.1",
-    "remark-math": "^5.1.1",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
     "sharp": "^0.35.3",
-    "smoothscroll-polyfill": "^0.4.4",
-    "tailwindcss": "^3.4.17",
-    "unist-util-visit": "^4.0.0"
+    "tailwind-merge": "^3.6.0"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^16.2.11",
-    "@svgr/webpack": "^8.1.0",
-    "cross-env": "^7.0.3",
-    "dedent": "^0.7.0",
-    "eslint": "^9.39.0",
-    "eslint-config-next": "^16.2.11",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.5.6",
-    "file-loader": "^6.0.0",
-    "globby": "11.0.3",
-    "husky": "^9.1.7",
-    "inquirer": "^8.1.1",
-    "lint-staged": "^15.5.2",
-    "next-remote-watch": "^1.0.0",
-    "prettier": "^3.9.6",
-    "socket.io": "^4.1.3",
-    "socket.io-client": "^4.1.3"
-  },
-  "lint-staged": {
-    "*.+(js|jsx|ts|tsx)": [
-      "eslint --fix"
-    ],
-    "*.+(js|jsx|ts|tsx|json|css|md|mdx)": [
-      "prettier --write"
-    ]
-  },
-  "overrides": {
-    "sharp": "^0.35.3",
-    "postcss": "^8.5.22",
-    "uuid": "^11.1.1"
+    "@tailwindcss/postcss": "^4.3.3",
+    "@tailwindcss/typography": "^0.5.16",
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "rehype-autolink-headings": "^7.1.0",
+    "rehype-slug": "^6.0.0",
+    "remark-gfm": "^4.0.1",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.7.2",
+    "velite": "^0.4.0"
   }
 }
