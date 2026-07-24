@@ -4,6 +4,60 @@ Newest entries on top. Each entry: date, what was done, what's next. This is the
 
 ---
 
+## 2026-07-25 — RESUME HERE (content-quality build, handoff)
+
+**Context rolled over here. Pick up exactly from this list. The bar is `CLAUDE.md` + `docs/01-07`.**
+Branch `revamp/foundation`. Dev server: `PORT=3001 npm run dev`. Preview:
+`radhakrishna-git-revamp-foundation-ved-vyas.vercel.app`. Commit + push in small steps.
+
+**Verified tooling (all keys in gitignored `.env`; load via python, NOT `source` unless values quoted):**
+
+- **Parallel** (verify claims): `POST https://api.parallel.ai/v1/search`, header `x-api-key`, body
+  `{"objective","search_queries":[...],"mode":"turbo"}` -> `{results:[{title,url,excerpt}], usage}`. WORKS.
+- **Reddit** (real FAQ questions): token = `POST https://www.reddit.com/api/v1/access_token`
+  (`-u id:secret -d grant_type=client_credentials`, UA `script:app:vN (by /u/user)`), then
+  `GET https://oauth.reddit.com/search?q=...&limit=8&sort=relevance` with `Authorization: bearer TOK`. WORKS.
+- **Serper** PAA: `POST https://google.serper.dev/search`, header `X-API-KEY`, body `{"q","gl":"in"}` ->
+  `peopleAlsoAsk`, `relatedSearches` (some queries return none; use Reddit + Ahrefs to supplement).
+- **Codex** house-voice drafting: `python3 /Users/radhakrishna/Documents/writesonic-marketing/tools/codex-draft/draft.py -f prompt.md -o out.md` (model gpt-5.6-sol, xhigh). CLI installed.
+- **Images**: gpt-image-2 via OpenAI Images API (`background` unsupported; format webp). Gemini key INVALID.
+- Style guide: `writesonic-marketing/knowledge/writing/samanyou-house-style.md`. Experts:
+  `writesonic-marketing/seo-geo/experts/*.md`.
+
+**THE BUILD (in order):**
+
+1. **Perfect the content template/system** (renders every page to standard):
+   - Add `faq: [{question, answer}]` + `author` + `verified{date,method,sources}` to `velite.config.ts`.
+   - Article template: answer-first block (have), TLDR (have), **FAQ block**, a **Sources** block (have),
+     **connected JSON-LD** in a new `lib/schema.ts` (BreadcrumbList + Article + Person + Organization ref +
+     ImageObject + **FAQPage** where genuine), a "verified [date]" line. Fix the **duplicate hero image**
+     (body repeats the frontmatter image; strip it in migration or don't render hero if body leads with it).
+   - MDX components (`components/mdx.tsx` map): `ScriptureTable`, `ComparisonTable`, `Callout`, `Figure`.
+   - **PrayerPage** treatment for `type: prayer` (Radha Sahasranama is trapped in one giant blockquote —
+     format as intro text + the 1008 names as a clean numbered/columned list + transliteration).
+   - **Dynamic OG** per content page: `app/[...slug]/opengraph-image.tsx` (next/og, brand template).
+   - Rebuild velite (`npx velite`) + `npm run build` green.
+
+2. **Build the reusable content workflow** (a Workflow script, saved): per page ->
+   mine Reddit + Serper PAA (+ Ahrefs) for real questions -> Parallel-verify every claim + collect sources
+   with chapter/verse + sampradaya labels -> Codex draft in house voice (answer-first, TLDR, FAQ, tables,
+   sources, internal links) -> structure to MDX frontmatter+body -> **expert-council adversarial review**
+   (Lily Ray/Mike King/Ryan Law/Aleyda/Soulo/Indig + a doctrinal/factual check), iterate until it survives
+   -> generate bespoke on-brand images -> write `.mdx` -> mobile+desktop QA (browse). This is the "no
+   reminders" pipeline the founder asked for.
+
+3. **Run it** on: the 7 migrated pages (upgrade, do NOT keep thin) + the 6 hubs (enrich) + the P0 new pages
+   (why they did not marry, how Radha passed, who is Radha, who is Krishna, what their love symbolizes, is
+   Radha Lakshmi, Radhashtami, Janmashtami, Banke Bihari). Aim ~10-15 pages for v1.
+
+4. **Report to founder only when fully polished** (per their instruction). Then merge `revamp/foundation`
+   to `main` + point live radhakrishna.com at it to go live.
+
+**Definition of done per page = CLAUDE.md checklist.** No thin content, no unverified scripture, no
+half-baked migration. Multiple adversarial iterations. Fix duplicate images. Mobile-perfect. Full schema.
+
+---
+
 ## 2026-07-25 — Content pipeline unblocked + enforcement
 
 - **Keys received + saved to `.env`** (gitignored): `PARALLEL_API_KEY` (verified, HTTP 200),
