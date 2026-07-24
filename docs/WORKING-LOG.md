@@ -4,6 +4,47 @@ Newest entries on top. Each entry: date, what was done, what's next. This is the
 
 ---
 
+## 2026-07-25 — Content v1 SHIPPED to the branch (18 pages at standard)
+
+The content pipeline ran end to end. Branch `revamp/foundation`, build green, 19 sitemap URLs.
+
+**18 pages now at the CLAUDE.md standard** (11 articles 1.8k-2.4k words + 6 hubs 1.9k-2.6k + the
+Sahasranama). Every one: answer-first block, Key Takeaways, question-led H2s, comparison/scripture
+table, real FAQ mined from Reddit + Serper, sources cited by chapter/verse, internal links, original
+art. Zero em dashes, zero curly quotes across all content.
+
+**Doctrinal integrity held.** Where a claim could not be pinned to a verse the agents flagged it and
+labelled it (tradition / folk retelling / later literature) instead of inventing a citation. Notable:
+the "Radha dies as Krishna plays the flute" scene has no classical verse and is labelled a later
+devotional retelling; hladini shakti is attributed to Gaudiya doctrine, not a fake reference; the
+"poison turned Krishna blue" myth is debunked on chronology; the Sahasranama page states 1,007 sung
+lines and explains the 1000/1008 difference rather than overclaiming.
+
+**System built:** `faq` frontmatter field; `lib/schema.ts` connected JSON-LD @graph (BreadcrumbList +
+Article + WebPage + FAQPage + ImageObject) wired to the site #organization/#website nodes; `app/og/route.tsx`
+branded dynamic OG (a route handler, NOT a metadata file, because Next 16 forbids `opengraph-image`
+inside the `[...slug]` catch-all); twitter cards.
+
+**Art:** 11 bespoke gpt-image-2 images, one distinct scene each (no repeated flute pose), faces visible
+and never cropped, no text on art, WebP ~300KB.
+
+**Gotchas worth remembering:**
+
+- `source .env` breaks unless values with parentheses are quoted (the Reddit UA). Now quoted.
+- Serper returns NO `peopleAlsoAsk` on this plan. Use Serper **autocomplete** + Reddit OAuth search
+  for demand mining instead.
+- `npm start` silently keeps serving a STALE build if an old server still holds the port (EADDRINUSE
+  in the log). Always confirm the port is free after killing, or you will QA the wrong build.
+- Browser screenshots can capture before the Next image optimizer paints; scroll to force a repaint
+  before concluding an image is broken.
+
+**Still open (next session):** more pages toward the weekly cadence (Janmashtami, Radhashtami, Banke
+Bihari, Vrindavan/Barsana temples, Daily Darshan, Images); the `/images` and `/daily-darshan` routes
+have nav links but no content yet; merge `revamp/foundation` to main and point live radhakrishna.com
+at it when the founder approves.
+
+---
+
 ## 2026-07-25 — RESUME HERE (content-quality build, handoff)
 
 **Context rolled over here. Pick up exactly from this list. The bar is `CLAUDE.md` + `docs/01-07`.**
