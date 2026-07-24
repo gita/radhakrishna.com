@@ -3,29 +3,6 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { GoldFiligree } from "@/components/motifs";
 
-const startHere = [
-  {
-    title: "Who are Radha & Krishna?",
-    href: "/radha-krishna",
-    blurb: "The divine couple at the heart of bhakti.",
-  },
-  {
-    title: "Their love story",
-    href: "/stories",
-    blurb: "From Vrindavan to the Raas Lila and beyond.",
-  },
-  {
-    title: "The meaning of their love",
-    href: "/teachings/what-radha-krishna-love-symbolizes",
-    blurb: "Why their love is the soul's love for God.",
-  },
-  {
-    title: "Why worshipped together",
-    href: "/radha-krishna/why-worshipped-together",
-    blurb: "Radha before Krishna, always.",
-  },
-];
-
 const explore = [
   {
     title: "Their Stories",
@@ -131,7 +108,7 @@ export default function HomePage() {
           </div>
           {/* Words */}
           <div className="order-2 text-center md:order-1 md:text-left">
-            <p className="mb-4 text-sm font-medium uppercase tracking-[0.22em] text-divine">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-[hsl(196_74%_26%)]">
               The digital home of Shri Radha Krishna
             </p>
             <h1 className="text-balance font-serif text-4xl font-semibold leading-[1.06] tracking-tight sm:text-5xl md:text-6xl">
@@ -153,29 +130,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <GoldFiligree className="container my-6" />
-
-      {/* Start here */}
-      <section className="container py-14">
-        <SectionHeading eyebrow="Start here" title="Four ways in" />
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {startHere.map((card) => (
-            <Link
-              key={card.href}
-              href={card.href}
-              className="group rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:border-gold/50 hover:shadow-[0_18px_40px_-24px_rgba(31,42,74,0.4)]"
-            >
-              <h3 className="font-serif text-lg font-semibold text-card-foreground group-hover:text-divine">
-                {card.title}
-              </h3>
-              <p className="mt-2 text-sm text-muted-foreground">{card.blurb}</p>
-              <span className="mt-4 inline-block text-sm text-gold opacity-0 transition-opacity group-hover:opacity-100">
-                Explore &rarr;
-              </span>
-            </Link>
-          ))}
-        </div>
-      </section>
+      <GoldFiligree className="container my-8" />
 
       {/* Explore the world */}
       <section className="container py-14">
@@ -191,14 +146,14 @@ export default function HomePage() {
               href={c.href}
               className="group overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all hover:-translate-y-0.5 hover:border-gold/50 hover:shadow-[0_22px_50px_-28px_rgba(31,42,74,0.45)]"
             >
-              <div className="relative aspect-[16/10] overflow-hidden">
+              <div className="relative aspect-[4/3] overflow-hidden">
                 {c.image ? (
                   <Image
                     src={c.image}
                     alt={c.title}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                    className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
                   />
                 ) : (
                   <div

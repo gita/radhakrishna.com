@@ -6,6 +6,8 @@ import type { SVGProps } from "react";
  */
 
 export function Peacock({ className, ...props }: SVGProps<SVGSVGElement>) {
+  // A clean morpankh (peacock feather) — Krishna's emblem. Layered teardrop
+  // eye in peacock-blue / green / gold on a slender gold stem.
   return (
     <svg
       viewBox="0 0 40 40"
@@ -14,33 +16,35 @@ export function Peacock({ className, ...props }: SVGProps<SVGSVGElement>) {
       className={className}
       {...props}
     >
-      {/* Peacock feather eye — a calm brand mark */}
+      {/* stem */}
       <path
-        d="M20 3C13 9 13 24 20 34C27 24 27 9 20 3Z"
-        stroke="currentColor"
-        strokeWidth="1.4"
+        d="M20 22.5 C 20.8 28, 19.4 32.5, 20 38"
+        stroke="hsl(var(--gold))"
+        strokeWidth="1.5"
+        strokeLinecap="round"
       />
-      <ellipse
-        cx="20"
-        cy="16"
-        rx="4.6"
-        ry="6.2"
-        stroke="currentColor"
-        strokeWidth="1.2"
-        className="text-jade"
+      {/* outer eye — peacock blue */}
+      <path
+        d="M20 3 C 12.5 6.2, 10.8 15.5, 20 24 C 29.2 15.5, 27.5 6.2, 20 3 Z"
+        fill="hsl(var(--divine))"
       />
+      {/* mid — jade green */}
+      <path
+        d="M20 6.6 C 15.3 8.8, 14.2 15, 20 20.6 C 25.8 15, 24.7 8.8, 20 6.6 Z"
+        fill="hsl(var(--jade))"
+      />
+      {/* inner — gold */}
+      <path
+        d="M20 10 C 17.2 11.6, 16.7 15.2, 20 18.4 C 23.3 15.2, 22.8 11.6, 20 10 Z"
+        fill="hsl(var(--gold))"
+      />
+      {/* highlight */}
       <circle
         cx="20"
-        cy="16"
-        r="2.4"
-        fill="currentColor"
-        className="text-gold"
-      />
-      <path
-        d="M20 34v3"
-        stroke="currentColor"
-        strokeWidth="1.4"
-        strokeLinecap="round"
+        cy="14"
+        r="1.5"
+        fill="hsl(var(--background))"
+        opacity="0.85"
       />
     </svg>
   );
