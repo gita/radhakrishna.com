@@ -8,7 +8,8 @@ export const site = {
   name: "Radhakrishna",
   domain: "radhakrishna.com",
   url: "https://radhakrishna.com",
-  title: "Radhakrishna.com — The Divine Love of Radha Krishna",
+  title: "Radhakrishna.com · The Divine Love of Radha Krishna",
+  foundation: { label: "Ved Vyas Foundation", href: "https://vedvyas.com" },
   tagline: "The digital home of Shri Radha Krishna",
   description:
     "Explore the stories, teachings, sacred prayers, bhajans, festivals, and temples of Radha Krishna, explained with real scripture and shown with beautiful, original art.",
@@ -32,18 +33,38 @@ export const nav = [
  * Hanuman Chalisa URL pending founder confirmation.
  */
 export const network = [
-  { label: "Bhagavad Gita", href: "https://bhagavadgita.com" },
-  { label: "Ved Vyas", href: "https://vedvyas.com" },
-  { label: "Gita GPT", href: "https://bhagavadgita.com/gitagpt" },
   {
-    label: "Bhagavad Gita App (iOS)",
-    href: "https://apps.apple.com/us/app/bhagavad-gita-hindi-english/id1602895635",
+    label: "Bhagavad Gita",
+    note: "Read the Gita, verse by verse",
+    href: "https://bhagavadgita.com",
+    image: "/shots/bhagavad-gita.webp",
   },
   {
-    label: "Bhagavad Gita App (Android)",
-    href: "https://play.google.com/store/apps/details?id=com.gitainitiative.bhagavadgita",
+    label: "Gita GPT",
+    note: "Ask the Gita, powered by AI",
+    href: "https://bhagavadgita.com/gitagpt",
+    image: "/shots/gitagpt.webp",
+  },
+  {
+    label: "Bhagavad Gita App",
+    note: "Read and listen, on iOS and Android",
+    href: "https://bhagavadgita.com/bhagavad-gita-app",
+    image: "/shots/gita-app.webp",
+  },
+  {
+    label: "Hanuman Chalisa",
+    note: "Chant along, with meaning",
+    href: "https://vedvyas.com",
+    image: "/shots/hanuman-chalisa.webp",
   },
 ] as const;
+
+/** App store links (used on the app pages / footer). */
+export const appLinks = {
+  ios: "https://apps.apple.com/us/app/bhagavad-gita-hindi-english/id1602895635",
+  android:
+    "https://play.google.com/store/apps/details?id=com.gitainitiative.bhagavadgita",
+} as const;
 
 export const social = [
   { label: "Pinterest", href: "https://www.pinterest.com/" },

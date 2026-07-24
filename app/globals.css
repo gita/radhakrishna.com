@@ -51,6 +51,7 @@
 }
 
 :root {
+  color-scheme: light;
   /* Prakash (light) */
   --background: 48 33.33% 97.06%;
   --foreground: 48 19.61% 20%;
@@ -81,38 +82,12 @@
   --lotus-foreground: 347 40% 22%;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Nisha (dark) */
-    --background: 60 2.7% 14.51%;
-    --foreground: 46 24% 92%;
-    --card: 60 2.7% 17.5%;
-    --card-foreground: 46 24% 92%;
-    --primary: 14.77 63.11% 59.61%;
-    --primary-foreground: 60 2.7% 10%;
-    --secondary: 60 2.5% 22%;
-    --secondary-foreground: 46 20% 88%;
-    --muted: 60 2.5% 22%;
-    --muted-foreground: 48 6% 65%;
-    --accent: 60 2.5% 24%;
-    --accent-foreground: 46 24% 92%;
-    --border: 60 2.5% 26%;
-    --ring: 14.77 63.11% 59.61%;
+/*
+ * Light-first, always. Radha Krishna are light, color, and joy — the site does
+ * NOT auto-switch to dark on OS preference (founder decision, 2026-07-24). The
+ * dark token set below stays only for an optional future manual [data-theme] toggle.
+ */
 
-    --divine: 196 55% 56%;
-    --divine-foreground: 60 2.7% 10%;
-    --jade: 171 45% 50%;
-    --jade-foreground: 60 2.7% 10%;
-    --gold: 46 72% 60%;
-    --gold-foreground: 48 40% 10%;
-    --indigo: 221 40% 16%;
-    --indigo-foreground: 46 24% 92%;
-    --lotus: 347 52% 72%;
-    --lotus-foreground: 347 40% 14%;
-  }
-}
-
-/* Explicit toggle wins over the media query in both directions */
 :root[data-theme="light"] {
   color-scheme: light;
 }

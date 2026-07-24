@@ -2,6 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { GoldFiligree } from "@/components/motifs";
+import { DailyVerse } from "@/components/daily-verse";
+import { network } from "@/lib/site";
 
 const explore = [
   {
@@ -26,23 +28,23 @@ const explore = [
     title: "Prayers & Mantras",
     blurb: "Aartis, bhajans, stotras, with meaning and audio.",
     href: "/mantras",
-    tint: "from-divine/15 to-jade/10",
+    image: "/images/sections/prayers.webp",
   },
   {
     title: "Images & Wallpapers",
     blurb: "Original art, quote cards, HD wallpapers to share.",
     href: "/images",
-    tint: "from-lotus/20 to-gold/10",
+    image: "/images/sections/gallery.webp",
   },
   {
     title: "Daily Darshan",
     blurb: "A verse, a reflection, and a darshan each day.",
     href: "/daily-darshan",
-    tint: "from-gold/15 to-primary/10",
+    image: "/images/sections/daily-darshan.webp",
   },
 ];
 
-const popularQuestions = [
+const popularQuestions: [string, string][] = [
   [
     "Were Radha and Krishna married?",
     "/questions/why-did-krishna-not-marry-radha",
@@ -63,47 +65,26 @@ const popularQuestions = [
   ],
 ];
 
-const network = [
-  {
-    label: "Bhagavad Gita",
-    note: "Read the Gita, verse by verse",
-    href: "https://bhagavadgita.com",
-  },
-  {
-    label: "Ved Vyas",
-    note: "The scriptures & the foundation",
-    href: "https://vedvyas.com",
-  },
-  {
-    label: "Gita GPT",
-    note: "Ask the Gita, powered by AI",
-    href: "https://bhagavadgita.com/gitagpt",
-  },
-  {
-    label: "Bhagavad Gita App",
-    note: "iOS & Android",
-    href: "https://bhagavadgita.com/bhagavad-gita-app",
-  },
-];
-
 export default function HomePage() {
   return (
     <>
       {/* Hero — art framed and unobstructed; text in its own clean zone */}
       <section className="hero-wash">
-        <div className="container grid items-center gap-10 py-14 md:min-h-[86svh] md:grid-cols-2 md:gap-14 md:py-16">
-          {/* Art */}
-          <div className="relative order-1 md:order-2">
-            <div className="pointer-events-none absolute -inset-6 -z-10 rounded-[2rem] bg-gradient-to-tr from-gold/20 via-transparent to-divine/20 blur-2xl" />
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] ring-1 ring-gold/25 shadow-[0_30px_80px_-30px_rgba(31,42,74,0.45)] sm:aspect-[3/4]">
-              <Image
-                src="/images/hero/radha-krishna-jhoola-portrait.webp"
-                alt="Radha and Krishna together on a flower swing in a luminous Vrindavan garden at golden morning, painterly devotional art"
-                fill
-                priority
-                sizes="(max-width: 768px) 100vw, 45vw"
-                className="object-cover object-top"
-              />
+        <div className="container grid items-center gap-8 py-12 md:grid-cols-2 md:gap-10 md:py-16">
+          {/* Art — a rectangle that fills the column */}
+          <div className="order-1 md:order-2">
+            <div className="relative">
+              <div className="pointer-events-none absolute -inset-4 -z-10 rounded-[2rem] bg-gradient-to-tr from-gold/20 via-transparent to-divine/20 blur-2xl" />
+              <div className="relative aspect-[3/2] w-full overflow-hidden rounded-[1.5rem] ring-1 ring-gold/25 shadow-[0_24px_60px_-28px_rgba(31,42,74,0.5)]">
+                <Image
+                  src="/images/hero/radha-krishna-jhoola.webp"
+                  alt="Radha and Krishna together on a flower swing in a luminous Vrindavan garden at golden morning, painterly devotional art"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover object-center"
+                />
+              </div>
             </div>
           </div>
           {/* Words */}
@@ -130,7 +111,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <GoldFiligree className="container my-8" />
+      <GoldFiligree className="container my-6" />
 
       {/* Explore the world */}
       <section className="container py-14">
@@ -147,21 +128,13 @@ export default function HomePage() {
               className="group overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all hover:-translate-y-0.5 hover:border-gold/50 hover:shadow-[0_22px_50px_-28px_rgba(31,42,74,0.45)]"
             >
               <div className="relative aspect-[4/3] overflow-hidden">
-                {c.image ? (
-                  <Image
-                    src={c.image}
-                    alt={c.title}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
-                  />
-                ) : (
-                  <div
-                    className={`flex h-full items-center justify-center bg-gradient-to-br ${c.tint}`}
-                  >
-                    <span className="font-dev text-5xl text-gold/70">ॐ</span>
-                  </div>
-                )}
+                <Image
+                  src={c.image}
+                  alt={c.title}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
+                />
               </div>
               <div className="p-5">
                 <h3 className="font-serif text-xl font-semibold group-hover:text-divine">
@@ -187,39 +160,22 @@ export default function HomePage() {
                 "radial-gradient(ellipse 60% 50% at 50% 0%, hsl(var(--gold) / 0.18), transparent 70%)",
             }}
           />
-          <div className="relative mx-auto max-w-2xl">
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-gold">
-              Today&apos;s Devotion
-            </p>
-            <p className="font-dev text-2xl leading-relaxed text-gold sm:text-3xl">
-              श्री राधे कृष्ण
-            </p>
-            <p className="mt-5 font-serif text-xl italic leading-relaxed text-indigo-foreground/90 sm:text-2xl">
-              &ldquo;Wherever there is Krishna, the master of all mystics, and
-              wherever there is Radha, there will be beauty, victory, and
-              devotion.&rdquo;
-            </p>
-            <div className="mt-8">
-              <Button asChild variant="gold" size="lg">
-                <Link href="/daily-darshan">Begin Daily Darshan</Link>
-              </Button>
-            </div>
-          </div>
+          <DailyVerse />
         </div>
       </section>
 
-      {/* Popular questions */}
+      {/* Popular questions — in a proper boxed list */}
       <section className="container py-14">
         <SectionHeading
           eyebrow="Popular questions"
           title="The questions people ask most"
         />
-        <div className="mx-auto mt-10 grid max-w-3xl gap-2">
+        <div className="mx-auto mt-10 max-w-3xl divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
           {popularQuestions.map(([q, href]) => (
             <Link
               key={href}
               href={href}
-              className="flex items-center justify-between gap-4 rounded-xl border border-transparent px-4 py-4 text-left transition-colors hover:border-border hover:bg-secondary/60"
+              className="flex items-center justify-between gap-4 px-5 py-4 text-left transition-colors hover:bg-secondary/50"
             >
               <span className="font-medium">{q}</span>
               <span aria-hidden className="text-gold">
@@ -237,19 +193,30 @@ export default function HomePage() {
             eyebrow="Our network"
             title="Explore our other apps & sites"
           />
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {network.map((n) => (
               <a
                 key={n.href}
                 href={n.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group rounded-2xl border border-border bg-card p-6 transition-all hover:-translate-y-0.5 hover:border-gold/50"
+                className="group overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all hover:-translate-y-0.5 hover:border-gold/50 hover:shadow-[0_18px_40px_-24px_rgba(31,42,74,0.4)]"
               >
-                <h3 className="font-serif text-lg font-semibold group-hover:text-divine">
-                  {n.label}
-                </h3>
-                <p className="mt-1.5 text-sm text-muted-foreground">{n.note}</p>
+                <div className="relative aspect-[16/10] overflow-hidden bg-secondary/50">
+                  <Image
+                    src={n.image}
+                    alt={n.label}
+                    fill
+                    sizes="(max-width: 640px) 100vw, 25vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                  />
+                </div>
+                <div className="p-4">
+                  <h3 className="font-serif text-base font-semibold group-hover:text-divine">
+                    {n.label}
+                  </h3>
+                  <p className="mt-1 text-sm text-muted-foreground">{n.note}</p>
+                </div>
               </a>
             ))}
           </div>

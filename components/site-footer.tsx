@@ -5,7 +5,7 @@ import { nav, network, social, site } from "@/lib/site";
 /** Server-rendered footer. Carries the org entity graph (docs/03 §8). */
 export function SiteFooter() {
   return (
-    <footer className="mt-24 border-t border-border bg-secondary/40">
+    <footer className="border-t border-border bg-secondary/40">
       <div className="container grid gap-10 py-14 md:grid-cols-4">
         <div className="space-y-3">
           <div className="flex items-center gap-2.5">
@@ -53,7 +53,15 @@ export function SiteFooter() {
       <div className="border-t border-border/70">
         <div className="container flex flex-col items-center justify-between gap-2 py-5 text-xs text-muted-foreground sm:flex-row">
           <p>
-            &copy; {new Date().getFullYear()} {site.name}. Radhey Radhey.
+            &copy; 2026{" "}
+            <a
+              href={site.foundation.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground/80 underline-offset-2 hover:text-divine hover:underline"
+            >
+              {site.foundation.label}
+            </a>
           </p>
           <div className="flex gap-4">
             <Link href="/about" className="hover:text-foreground">
