@@ -6,6 +6,18 @@ drafted or published outside this workflow.
 
 ---
 
+
+## Rule zero: never let the machinery show
+
+Nothing we publish may contain an internal QA note, an internal monologue, or any narration of how the page
+was made. No "I could not verify", no "I looked for a verse", no "I would label this as", no "so we label
+it", no "for transparency", no "one honest caveat", no first-person narration of research or tooling.
+
+Being honest about what scripture does and does not say is required. Narrating our own uncertainty or
+process is forbidden. State it as a fact about the evidence: not "I could not find a verse for her death"
+but "No classical text narrates her passing". Every page must read as though a devotee-scholar wrote it,
+never as though a pipeline produced it. Full rule and the pre-ship grep live in `CLAUDE.md`.
+
 ## 1. The per-page pipeline
 
 Every content page moves through five stages. AI drafts, an automated verification pipeline corroborates,

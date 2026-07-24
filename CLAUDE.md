@@ -3,6 +3,41 @@
 This is the digital home of Shri Radha Krishna, a project of the Ved Vyas Foundation. The full strategy
 lives in `docs/` (read `docs/README.md` first). These are the non-negotiable rules for any work here.
 
+## Rule zero: never let the machinery show (absolute, no exceptions)
+
+**Nothing we publish may ever contain an internal QA note, an internal monologue, or any narration of how
+the page was made.** A reader who sees that instantly reads the site as AI-generated, and we lose the trust
+this project exists to earn. This outranks every other consideration below.
+
+Never write, in any page, any of these or anything like them:
+
+- "I could not verify / could not be confirmed / remains unverified / no reliable source found"
+- "I looked for a verse and could not find one", "in any scan", "I checked and"
+- "I would label this as", "so we label it", "we flag this", "for transparency", "one honest caveat"
+- "I am reporting this as", "treat this as", "note to reader", "editor's note", "disclaimer"
+- Any first-person narration of research, sourcing, verification, or tooling. Any hedge that describes
+  **our process** rather than **the evidence**.
+
+State the same truth as a fact about the evidence instead. This is not a softening, it is better writing:
+
+| Never                                        | Always                                                    |
+| -------------------------------------------- | --------------------------------------------------------- |
+| "I could not find a verse for her death"     | "No classical text narrates her passing"                  |
+| "I could not verify a chapter and verse"     | "It is not handed down with a numbered chapter and verse" |
+| "I would label this as devotional tradition" | "This is devotional tradition"                            |
+| "so we label which school is speaking"       | "Each page tells you which school is speaking"            |
+| "I looked for a verse and there isn't one"   | "There is no verse anywhere that says it"                 |
+
+Being honest about what scripture does and does not say is **required** (see the gate below). Narrating our
+own uncertainty, effort, or pipeline is **forbidden**. Every page must read as though a devotee-scholar
+wrote it, never as though a pipeline produced it. Sweep for this before any page ships:
+
+```
+grep -rniE "I could not|I looked for|could not (be )?(verif|confirm)|I would label|so we label|we flag|unverified|for transparency|honest caveat|I am reporting|editor'?s note|as an AI" content/
+```
+
+The same applies to the site's own copy (components, metadata, OG text), not just MDX.
+
 ## The content-quality gate (mandatory, no exceptions)
 
 **No content page ships, and no page is "migrated as-is", unless it has passed the full pipeline below.**
@@ -41,6 +76,7 @@ time. If a blocker (e.g. the parallel.ai key) is missing, say so and stop, do no
 - [ ] Answer-first block + TLDR/Key Takeaways present
 - [ ] Every claim verified (parallel.ai + 2+ sources); scripture cited with chapter/verse + sampradaya label
 - [ ] House voice, no em dashes, no AI tells, not thin
+- [ ] **Zero internal QA notes / internal monologue / process narration** (rule zero; run the grep)
 - [ ] FAQ sourced from real questions (PAA/Reddit/Quora), comparison/definition tables where useful
 - [ ] Full JSON-LD graph + dynamic OG + meta tags
 - [ ] Original on-brand imagery, no duplicates, faces intact, alt text
@@ -68,12 +104,7 @@ titles/autocomplete.
 - **Never overlay text on the deities' faces.** Art is framed and unobstructed.
 - **Reuse before adding** components; custom-branded, semantic design tokens; performance is the #1 gate.
 - **No em dashes anywhere** (copy, docs, commits, chat). Straight quotes.
-- **Never leak the machinery into the page.** The reader must never see our process or QA notes. Banned in
-  content: "I could not verify", "could not be confirmed", "I looked for", "I would label this as", "so we
-  label it", "unverified", "for transparency", or any first-person narration of research. Say the same
-  thing as a fact about the evidence instead: "No classical text narrates her passing", "No verse assigns
-  the feather to Radha", "It is not handed down with a numbered chapter and verse." Honest, not clinical.
-  A page must read like a devotee-scholar wrote it, never like a pipeline produced it.
+- **Never leak the machinery into the page.** See **Rule zero** at the top of this file.
 - **Canonical domain is radhakrishna.com.** Never emit .net URLs.
 - Commit + push in small steps on the working branch; the preview link auto-updates.
 

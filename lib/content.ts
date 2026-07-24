@@ -25,7 +25,18 @@ export function inCluster(cluster: string, excludeUrl?: string): Doc[] {
 
 export function related(doc: Doc): Doc[] {
   if (!doc.related?.length) return [];
-  return doc.related
-    .map((slug) => docs.find((d) => d.slug === slug || d.url === slug))
-    .filter((d): d is Doc => Boolean(d));
+  const resolved = doc.related.map((slug) => ({
+    slug,
+    doc: docs.find((d) => d.slug === slug || d.url === slug),
+  }));
+  // A related slug that matches nothing renders as no card at all, which silently
+  // strips a page out of the internal link web. Fail loudly at build instead.
+  const dangling = resolved.filter((r) => !r.doc).map((r) => r.slug);
+  if (dangling.length) {
+    throw new Error(
+      `${doc.url}: related[] points at slugs that do not exist: ${dangling.join(", ")}. ` +
+        `Fix the frontmatter or create the page.`,
+    );
+  }
+  return resolved.map((r) => r.doc!);
 }
