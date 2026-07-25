@@ -71,6 +71,25 @@ for (const route of routes) {
   if (visible.length < 400) note(`page ${route} has very little text`);
 }
 
+// Legacy redirects are not linked from any page, so they must be checked
+// explicitly: a redirect that lands on a 404 silently throws away the old
+// page's traffic and link equity.
+try {
+  const map = JSON.parse(
+    await (await import("node:fs/promises")).readFile("content/_redirects.json", "utf8"),
+  );
+  for (const [from, to] of map) {
+    const r = await fetch(BASE + from, { redirect: "manual" });
+    if (r.status !== 301 && r.status !== 308)
+      note(`redirect ${from} -> status ${r.status} (expected 301)`);
+    const dest = await fetch(BASE + to);
+    if (!dest.ok) note(`redirect ${from} lands on ${to} -> ${dest.status}`);
+  }
+  console.log(`Checked ${map.length} legacy redirects`);
+} catch (e) {
+  note(`could not read content/_redirects.json: ${e.message}`);
+}
+
 for (const link of internal) {
   const r = await fetch(BASE + link);
   if (!r.ok) note(`internal link ${link} -> ${r.status}`);

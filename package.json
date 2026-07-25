@@ -12,7 +12,9 @@
     "start": "next start",
     "lint": "next lint",
     "check:links": "node scripts/check-links.mjs",
-    "check:links:all": "node scripts/check-links.mjs --external"
+    "check:links:all": "node scripts/check-links.mjs --external",
+    "indexnow": "node scripts/submit-indexnow.mjs",
+    "indexnow:dry": "node scripts/submit-indexnow.mjs --dry-run"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",

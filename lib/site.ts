@@ -14,6 +14,8 @@ export const site = {
   description:
     "Explore the stories, teachings, sacred prayers, bhajans, festivals, and temples of Radha Krishna, explained with real scripture and shown with beautiful, original art.",
   locale: "en",
+  /** IndexNow key. The matching file must stay at /<key>.txt (docs/03). */
+  indexNowKey: "5f07609ffcaeeadc5efdfedb676572d9",
 } as const;
 
 /** Primary navigation (docs/02 §8). */

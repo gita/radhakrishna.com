@@ -28,10 +28,13 @@ const nextConfig = {
     formats: ["image/avif", "image/webp"],
   },
   async redirects() {
+    // 301 rather than Next's default 308. Google treats both as permanent and
+    // passes signals identically, but 301 is understood by every old crawler,
+    // proxy and tool, and these are GET-only content URLs.
     return legacyRedirects.map(([source, destination]) => ({
       source,
       destination,
-      permanent: true,
+      statusCode: 301,
     }));
   },
 };
