@@ -194,18 +194,16 @@ export function FestivalDates({
               Next: {fmt(next.smarta ?? next.date)}
             </p>
           )}
-          {next.note ? (
-            <p className="mt-1 text-sm text-muted-foreground">{next.note}</p>
-          ) : null}
+
         </div>
       ) : null}
 
-      <p className="mt-4 border-t border-gold/20 pt-3 text-sm text-muted-foreground">
-        The date moves each year with the lunar calendar. Where two days are
-        shown, the tithi spans midnight: most households keep the earlier day,
-        and the Vaishnava sampradayas, including ISKCON and the temples of Braj,
-        keep the later one. Both are correct within their own tradition.
-      </p>
+      {split(next!) ? (
+        <p className="mt-4 border-t border-gold/20 pt-3 text-sm text-muted-foreground">
+          The tithi spans midnight this year, so the two traditions keep
+          consecutive days. Both are correct within their own.
+        </p>
+      ) : null}
     </section>
   );
 }
