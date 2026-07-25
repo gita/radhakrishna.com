@@ -44,7 +44,7 @@ export function LightboxImage({
         type="button"
         onClick={() => setOpen(true)}
         aria-label={`View larger: ${alt}`}
-        className="group relative block w-full cursor-zoom-in overflow-hidden rounded-2xl ring-1 ring-gold/20"
+        className="group relative block w-full cursor-zoom-in overflow-hidden rounded-2xl bg-secondary/50 ring-1 ring-gold/20"
       >
         <span className="relative block aspect-[16/10]">
           <Image

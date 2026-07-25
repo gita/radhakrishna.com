@@ -13,6 +13,9 @@ try {
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  // Dev only: allow the loopback IP as well as localhost, otherwise Next treats
+  // http://127.0.0.1 as a cross origin dev request and the client never hydrates.
+  allowedDevOrigins: ["127.0.0.1", "localhost", "192.168.1.5"],
   // Cap build workers when BUILD_LOW_MEM is set. Vercel has plenty of memory, so
   // this only helps constrained local machines avoid an OOM during static export.
   ...(process.env.BUILD_LOW_MEM ? { experimental: { cpus: 2 } } : {}),
