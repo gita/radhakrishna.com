@@ -16,5 +16,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "weekly" as const,
     priority: d.type === "hub" ? 0.8 : 0.7,
   }));
-  return [home, ...pages];
+  // Static routes live outside the content collection, so list them explicitly.
+  const staticRoutes: MetadataRoute.Sitemap = ["/images", "/daily-darshan", "/app"].map((p) => ({
+    url: site.url + p,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: 0.6,
+  }));
+  return [home, ...pages, ...staticRoutes];
 }
