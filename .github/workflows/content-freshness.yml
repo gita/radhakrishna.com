@@ -1,0 +1,70 @@
+name: Content freshness
+
+# Festival dates move every year, so a page that was right last September is
+# wrong this September. This is the standing reminder: it runs monthly, verifies
+# every published date against the tithi, and opens an issue when a page is
+# running out of future dates or has gone stale. Nobody has to remember.
+
+on:
+  schedule:
+    # 07:00 UTC on the 1st of each month.
+    - cron: "0 7 1 * *"
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyswisseph
+
+      - name: Verify festival dates
+        id: check
+        run: |
+          set +e
+          python3 scripts/check-festival-dates.py > out.txt 2>&1
+          echo "exit=$?" >> $GITHUB_OUTPUT
+          cat out.txt
+          {
+            echo 'report<<EOF'
+            cat out.txt
+            echo EOF
+          } >> $GITHUB_OUTPUT
+
+      - name: Open an issue if anything needs attention
+        if: steps.check.outputs.exit != '0' || contains(steps.check.outputs.report, '!')
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const report = `${{ steps.check.outputs.report }}`;
+            const title = "Festival dates need updating";
+            const { data: open } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo,
+              state: "open", labels: "content-freshness",
+            });
+            const body = [
+              "The monthly festival date check flagged something.",
+              "",
+              "```",
+              report.trim(),
+              "```",
+              "",
+              "Dates come from the Indian panchang (Drik Panchang for the general day, the",
+              "ISKCON Vaishnava calendar for the Vaishnava day). Add the next year to the",
+              "page's `occurrences`, record where it came from in `source`, then run",
+              "`npm run check:festivals` to confirm it lands on the right tithi.",
+            ].join("\n");
+            if (open.length) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: open[0].number, body,
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner, repo: context.repo.repo,
+                title, body, labels: ["content-freshness"],
+              });
+            }

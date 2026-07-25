@@ -172,6 +172,28 @@ def main():
                 f"Expected tithi {rule['tithi']} in {rule['amanta_month']}."
             )
 
+    # Freshness. A festival page is only useful if it knows about the next
+    # occurrence, and the date moves every year, so the page needs revisiting
+    # annually. Warn while there is still time to act rather than after the
+    # page has gone stale in front of readers.
+    from collections import defaultdict
+    by_page = defaultdict(list)
+    for slug, year, iso, path in published:
+        by_page[(slug, str(path))].append(iso)
+
+    today_iso = date.today().isoformat()
+    for (slug, path), dates in sorted(by_page.items()):
+        future = sorted(d for d in dates if d >= today_iso)
+        if not future:
+            problems.append(f"{path}: every listed date for {slug} is in the past. Add the next one.")
+            continue
+        days = (date.fromisoformat(future[0]) - date.today()).days
+        if len(future) < 2:
+            print(f"  !  {slug}: only one future date left ({future[0]}, in {days} days). "
+                  f"Add the following year from the panchang.")
+        if days > 400:
+            print(f"  !  {slug}: next date is {days} days away. Confirm the current year is listed.")
+
     print()
     if problems:
         print(f"{len(problems)} problem(s):")
