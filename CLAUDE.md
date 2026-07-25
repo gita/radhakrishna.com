@@ -131,6 +131,34 @@ side by side, calmly, inside a page whose purpose is understanding.
 **A question already on the site that fails this test gets retired**, with a 301 to the nearest page
 that serves the reader. A page was already removed on these grounds once.
 
+### Keep the negative out of the pages entirely
+
+Founder direction, 2026-07-26. This goes further than choosing topics: **no grim detail anywhere**,
+even inside a page that is otherwise useful, and even when it is true and well sourced. Removed on this
+rule already: a fatal crush and the litigation that followed it on the Banke Bihari page, the widows of
+Vrindavan, criticism of visitors' behaviour at Braj Holi, and a scholarly note that a revered saint's
+initiation cannot be evidenced.
+
+A reader comes to this site to be closer to Radha and Krishna. Deaths, court cases, scandals, poverty,
+crime, and the debunking of saints all belong somewhere, and it is not here.
+
+**Practical safety guidance stays, written as care rather than as news.** A pilgrim genuinely needs to
+know that a festival day is very full and that the days on either side are easier. Give them the
+guidance and the reason, and leave out the casualty:
+
+| Never                                                       | Always                                                                                      |
+| ----------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| "A fatal crush in 2022 led the Supreme Court to..."         | "It is the fullest day of the year, so go early and give yourself time"                     |
+| "Many widows, abandoned by their families, live in ashrams" | leave it out                                                                                |
+| "the behaviour of some visitors has drawn real criticism"   | "keep to the temple side, where the samaj gayan and the traditional lila are at their best" |
+| "scholars find no evidence he was initiated into any sect"  | "his lineage is remembered in more than one way"                                            |
+
+Sweep for it before shipping:
+
+```
+grep -rniE "stampede|crush|died|death|fatal|abandoned|scam|touts?|harass|beggar|encroach|court case|litigation|controversy|riot|theft|danger" content/
+```
+
 ### Attributing a teaching to Maharaj Ji or Swami Ji
 
 Exactly the same rule as scripture: **never from memory.** A teaching attributed to either of them must
