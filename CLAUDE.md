@@ -91,9 +91,9 @@ visible caption AND feeds `ImageObject`), and a place in the `/images` gallery. 
 from any doc with an `image`, so wiring the frontmatter is enough, but check it actually appears there and
 that clicking it opens the lightbox. Never ship art that only lives on one page.
 
-**Festival dates.** Never publish a lunar festival date from a single web source. Take the date from
-the **Vaishnava (ISKCON/Gaudiya) calendar**, which is the tradition this site follows and what Mathura
-and Vrindavan keep, then run `npm run check:festivals`. That script recomputes the tithi with the Swiss
+**Festival dates.** Never publish a lunar festival date from a single web source. Take dates from **Indian panchang authorities**: Drik Panchang for the general
+(smarta) day and the **ISKCON Vaishnava calendar**, which is the tradition this site follows and what Mathura
+and Vrindavan keep, and record which in the `source` field, then run `npm run check:festivals`. That script recomputes the tithi with the Swiss
 Ephemeris and reports whether the date holds under the sunrise (vaishnava) or midnight (smarta)
 reckoning. It cannot arbitrate between traditions and must not be treated as the authority; a date
 matching neither reckoning is simply wrong. Show BOTH sampradaya dates when they differ, labelled by sampradaya, not by

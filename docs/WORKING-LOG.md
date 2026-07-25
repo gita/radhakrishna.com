@@ -4,6 +4,32 @@ Newest entries on top. Each entry: date, what was done, what's next. This is the
 
 ---
 
+## 2026-07-25 (later) — Phase 3 festival cluster: text done, art pending
+
+Five pages written and validated, NOT yet illustrated:
+/festivals/janmashtami, /festivals/radhashtami, /temples/banke-bihari,
+/temples/vrindavan, /temples/barsana. 28 routes, 27 internal links, zero broken.
+Rule-zero sweep clean, no em dashes, no curly quotes.
+
+**RESUME HERE, in order:**
+1. Art is missing on all five (`grep -L "^image:" content/festivals/*.mdx content/temples/*.mdx`).
+   Generate per CLAUDE.md standing conventions: gpt-image-2, 1536x1024, distinct scene each, faces
+   intact, no text, then sharp to public/images/content/<slug>.webp at 1600w q80, add image +
+   imageAlt, and confirm they appear in /images.
+2. `npm run check:festivals` (must stay green), `npm run check:links`, production build.
+3. Visual QA the five pages, mobile and desktop.
+4. Commit, merge to main, then re-verify against production and `npm run indexnow`.
+
+**Festival dates are solved.** Dates come from Indian panchang authorities (Drik Panchang for the
+general/smarta day, ISKCON Vaishnava calendar for the Vaishnava day) and are recorded with a `source`
+field. `scripts/check-festival-dates.py` cross-checks each against the tithi and amanta month using the
+Lahiri ayanamsa and Mathura sunrise; it reports which reckoning a date satisfies and fails only when it
+satisfies neither. All 6 published dates pass. It caught invented dates during testing, and resolved a
+2027 disagreement in the panchang's favour.
+
+Presentation: the general (smarta) day leads, the Vaishnava day sits beneath it, per Drik Panchang and
+timeanddate convention. Never framed as householder vs sannyasi; the split is tradition, not ashrama.
+
 ## 2026-07-25 — LIVE. Rebuild merged to main and deployed
 
 PR #22 squashed into main; radhakrishna.com now serves the rebuild (23 routes).

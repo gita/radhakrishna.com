@@ -21,8 +21,15 @@ this site follows, and use this script to check that the date at least lands on
 the right tithi under one of the two reckonings. It reports which. A date that
 matches neither is simply wrong and should never ship.
 
-Uses the Swiss Ephemeris (pyswisseph), the same engine the drik panchanga
-implementations use.
+This is a CROSS-CHECK, not a date source. Published dates come from Indian
+panchang authorities: Drik Panchang for the general (smarta) day and the ISKCON
+Vaishnava calendar for the Vaishnava day. Record which in `source`.
+
+The computation applies the Indian system throughout: the Lahiri ayanamsa, which
+is the Government of India / Rashtriya Panchang standard, sunrise at Mathura, and
+tithi / paksha / amanta reckoning. The Swiss Ephemeris underneath is only a
+database of planetary positions, the same raw data the open-source drik-panchanga
+implementations use; it carries no calendar of its own.
 
     pip install pyswisseph
     python3 scripts/check-festival-dates.py

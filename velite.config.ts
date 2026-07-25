@@ -61,6 +61,10 @@ const content = defineCollection({
             date: s.isodate(),
             smarta: s.isodate().optional(),
             vaishnava: s.isodate().optional(),
+            // Where the date came from. Dates are taken from Indian panchang
+            // authorities (Drik Panchang, the ISKCON Vaishnava calendar), never
+            // from our own computation; the ephemeris check only cross-verifies.
+            source: s.string().optional(),
             note: s.string().optional(),
           }),
         )
