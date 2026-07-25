@@ -156,7 +156,12 @@ guidance and the reason, and leave out the casualty:
 Sweep for it before shipping:
 
 ```
-grep -rniE "stampede|crush|died|death|fatal|abandoned|scam|touts?|harass|beggar|encroach|court case|litigation|controversy|riot|theft|danger" content/
+grep -rniE "stampede|crush|died|death|fatal|widow|abandoned|scam|touts?|harass|beggar|encroach|court case|litigation|controversy|riot|theft|danger" content/
+
+# Sources outlive the passage they were added for. Both times a grim passage was cut,
+# its citation stayed behind and kept rendering in the Sources block, once with
+# "2022 stampede" in the visible title and once with the word only in the URL.
+# Read the whole line, link included, not just the prose.
 ```
 
 ### Attributing a teaching to Maharaj Ji or Swami Ji
