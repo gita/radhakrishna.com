@@ -1,11 +1,20 @@
 import type { Metadata } from "next";
+import { ogMeta } from "@/lib/og";
 import { site } from "@/lib/site";
+
+const description =
+  "What Radhakrishna.com collects and what it does not. No advertising, no tracking cookies, and no selling of anyone's data.";
 
 export const metadata: Metadata = {
   title: "Privacy",
-  description:
-    "What Radhakrishna.com collects and what it does not. No advertising, no tracking cookies, and no selling of anyone's data.",
+  description,
   alternates: { canonical: "/privacy" },
+  ...ogMeta({
+    title: "Privacy",
+    description,
+    url: "/privacy",
+    eyebrow: "privacy",
+  }),
 };
 
 export default function PrivacyPage() {

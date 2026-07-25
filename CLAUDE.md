@@ -150,6 +150,14 @@ double spaces, which are invisible and get eaten by formatters. Inside a quote, 
 a verse line", so a translation never carries emphasis. The citation goes in `<cite>`, never as a bare
 last line. Four different conventions had grown up across the content before this was written down.
 
+**Social cards.** Every page's `og:image` is the drawn card from `/og`, never the page's own
+content image. The art is WebP at roughly 3:2, and a card has to be PNG or JPEG at 1.91:1: X and
+WhatsApp render **nothing at all** for a WebP card, and every network crops 3:2 to its own ratio.
+This failed silently for sixteen pages, because nothing on the page looks wrong when its card is
+broken. `npm run check:og` fetches every page in the sitemap, decodes the escaped URL, reads the real
+format and pixel size from the image header, and fails on WebP, a 404, or an undersized card. Run it
+after any metadata change. The card carries the morpankh, not a placeholder shape.
+
 **FAQ answers.** Answers over about 50 words are broken into paragraphs with a YAML folded scalar
 (`answer: >` with a blank line at the pivot), never left as one block. Break where the thought turns,
 usually after the direct answer and before the supporting detail or citation. `npm run check:faq`

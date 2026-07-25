@@ -44,3 +44,6 @@ _legacy/
 tsconfig.tsbuildinfo
 .qa/
 .faq-snapshot.json
+
+# Card art, regenerated at build by scripts/build-og-art.mjs
+public/images/og/

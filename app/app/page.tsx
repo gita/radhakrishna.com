@@ -1,12 +1,21 @@
 import type { Metadata } from "next";
+import { ogMeta } from "@/lib/og";
 import Image from "next/image";
 import { appLinks, site } from "@/lib/site";
 
+const description =
+  "Read and listen to the Bhagavad Gita, verse by verse, in Hindi and English. Free on iOS and Android.";
+
 export const metadata: Metadata = {
   title: "Get the Bhagavad Gita app",
-  description:
-    "Read and listen to the Bhagavad Gita, verse by verse, in Hindi and English. Free on iOS and Android.",
+  description,
   alternates: { canonical: "/app" },
+  ...ogMeta({
+    title: "Get the Bhagavad Gita app",
+    description,
+    url: "/app",
+    eyebrow: "app",
+  }),
 };
 
 /**

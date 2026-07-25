@@ -1,14 +1,23 @@
 import type { Metadata } from "next";
+import { ogMeta } from "@/lib/og";
 import Link from "next/link";
 import { docs } from "@/lib/content";
 import { site } from "@/lib/site";
 import { LightboxImage } from "@/components/lightbox-image";
 
+const description =
+  "Original Radha Krishna art made for this site: Vrindavan leelas, Srimati Radharani, and the festivals of Braj. Free to view, in high resolution.";
+
 export const metadata: Metadata = {
   title: "Radha Krishna images",
-  description:
-    "Original Radha Krishna art made for this site: Vrindavan leelas, Srimati Radharani, and the festivals of Braj. Free to view, in high resolution.",
+  description,
   alternates: { canonical: "/images" },
+  ...ogMeta({
+    title: "Radha Krishna images",
+    description,
+    url: "/images",
+    eyebrow: "gallery",
+  }),
 };
 
 /**

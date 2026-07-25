@@ -1,12 +1,21 @@
 import type { Metadata } from "next";
+import { ogMeta } from "@/lib/og";
 import Link from "next/link";
 import { site, network } from "@/lib/site";
 
+const description =
+  "Radhakrishna.com is a project of the Ved Vyas Foundation, a non-profit devoted to making the wisdom of the Bhagavad Gita and the bhakti tradition freely available.";
+
 export const metadata: Metadata = {
   title: "About",
-  description:
-    "Radhakrishna.com is a project of the Ved Vyas Foundation, a non-profit devoted to making the wisdom of the Bhagavad Gita and the bhakti tradition freely available.",
+  description,
   alternates: { canonical: "/about" },
+  ...ogMeta({
+    title: "About",
+    description,
+    url: "/about",
+    eyebrow: "about",
+  }),
 };
 
 export default function AboutPage() {

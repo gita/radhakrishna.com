@@ -1,15 +1,24 @@
 import type { Metadata } from "next";
+import { ogMeta } from "@/lib/og";
 import Link from "next/link";
 import { docs } from "@/lib/content";
 import { site, appLinks } from "@/lib/site";
 import { LightboxImage } from "@/components/lightbox-image";
 import { DailyVerse } from "@/components/daily-verse";
 
+const description =
+  "A moment of darshan for today: an image of Shri Radha Krishna and a verse to sit with. A quiet minute, every day.";
+
 export const metadata: Metadata = {
   title: "Daily Darshan",
-  description:
-    "A moment of darshan for today: an image of Shri Radha Krishna and a verse to sit with. A quiet minute, every day.",
+  description,
   alternates: { canonical: "/daily-darshan" },
+  ...ogMeta({
+    title: "Daily Darshan",
+    description,
+    url: "/daily-darshan",
+    eyebrow: "daily darshan",
+  }),
 };
 
 /** Same day-of-year rotation the verse uses, so image and verse change together. */

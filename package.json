@@ -8,7 +8,9 @@
   },
   "scripts": {
     "dev": "velite && next dev",
-    "build": "velite && next build",
+    "build": "node scripts/build-og-art.mjs && velite && next build",
+    "build:og": "node scripts/build-og-art.mjs",
+    "check:og": "node scripts/check-og.mjs",
     "start": "next start",
     "lint": "next lint",
     "check:links": "node scripts/check-links.mjs",

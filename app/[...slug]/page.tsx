@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { docs, findByUrl } from "@/lib/content";
+import { ogCard } from "@/lib/og";
 import {
   ArticlePage,
   HubPage,
@@ -22,11 +23,11 @@ export async function generateMetadata({
   const doc = findByUrl("/" + slug.join("/"));
   if (!doc) return {};
   const eyebrow = doc.cluster ? doc.cluster.replace(/-/g, " ") : undefined;
-  const ogImage =
-    doc.image ??
-    `/og?title=${encodeURIComponent(doc.title)}${
-      eyebrow ? `&eyebrow=${encodeURIComponent(eyebrow)}` : ""
-    }`;
+  // Always the drawn card, never the bare content image. The art is WebP at
+  // roughly 3:2, and a social card has to be PNG or JPEG at 1.91:1: X and
+  // WhatsApp render nothing at all for a WebP card, and every network crops
+  // 3:2 to its own ratio.
+  const ogImage = ogCard({ title: doc.title, eyebrow });
   return {
     title: doc.title,
     description: doc.description,
