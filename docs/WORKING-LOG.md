@@ -4,7 +4,36 @@ Newest entries on top. Each entry: date, what was done, what's next. This is the
 
 ---
 
-## 2026-07-26 (latest) — The site's own voice, and what it declines to write
+## 2026-07-26 (latest) — Keep the negative out of the pages
+
+Founder: delete the crowd safety incident and the Vrindavan widows passage, and avoid negative content
+generally. This goes further than choosing topics. **No grim detail anywhere**, even inside a page that
+is otherwise useful, and even when it is true and well sourced.
+
+Removed: the fatal crush and the litigation on Banke Bihari, the widows of Vrindavan and the line
+written only to answer it. The sweep then found three more of the same kind that would otherwise have
+stayed: criticism of visitors' behaviour at Braj Holi, and a note on the Swami Haridas section saying
+scholars find no evidence he was initiated into any sect and that the Tansen tradition is unlikely on
+the dates. That last one was **debunking a revered saint on his own temple's page**. It now says his
+lineage is remembered in more than one way and keeps what every account agrees on.
+
+**Sources outlive the passage they were added for.** This bit twice in one pass. The Banke Bihari
+citation carried "2022 stampede" in its visible title; the Vrindavan one hid the word in the URL, so the
+content grep read clean while production still rendered the link. **The only sweep that counts is the
+one against rendered output.** The standing grep now reads the whole line, link included.
+
+**Practical safety guidance stays, written as care rather than as news.** A pilgrim does need to know a
+festival day is very full, so the page gives the guidance and the reason and leaves out the casualty.
+CLAUDE.md carries the rule, the never/always table and the grep.
+
+Verified on production: zero hits across all temple and festival pages, 29 routes, zero broken links.
+
+**Next:** name Kripalu Ji Maharaj properly on Prem Mandir and Kirti Mandir, where he is genuinely the
+subject rather than a table row, and build a lineage page.
+
+---
+
+## 2026-07-26 — The site's own voice, and what it declines to write
 
 Three founder directions in one pass, and the second showed a systemic problem rather than a page-level
 one.
