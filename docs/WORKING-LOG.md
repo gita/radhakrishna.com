@@ -4,7 +4,50 @@ Newest entries on top. Each entry: date, what was done, what's next. This is the
 
 ---
 
-## 2026-07-26 (latest) — Keep the negative out of the pages
+## 2026-07-26 (latest) — The lineage page
+
+Built `/lineage`, quote-led rather than a biography, and only from material that came back sourced. A
+fabricated guru quote would be a worse failure here than a fabricated verse, so the research brief said
+so explicitly and the researcher reported twenty items it could not confirm.
+
+**Carried, each with its source:** the three statements JKP records him giving everyone he met, opening
+"Shri Radha is the ultimate goal of every living being"; his reading of her name holding two opposite
+meanings at once, she who worships Krishna and she whom Krishna worships, both correct; Prem Ras Madira
+3.102; Radha Govind Geet 6597; his last discourse; and the couplet Prem Mandir takes its name from.
+
+**Carried on purpose because it cuts against the easy version:** his warning against ranking them.
+Whoever forms the idea that Radha is greater than Krishna, or Krishna than Radha, has misunderstood
+both.
+
+**Left out:** JKP's founding year (1970 and 1972 both attested), Prem Mandir's cost (aggregators only),
+"only Jagadguru in seven hundred years" (single source), JKYog's follower counts (three different
+figures on their own site), and a Bhakti Shatak line that circulates everywhere and ties to no verse
+number. **No directly quotable line from Swami Mukundananda about Radha could be sourced**; everything
+is JKYog Team paraphrase, so the page quotes him on divine love and on his guru and puts nothing in his
+mouth. Worth revisiting with a book or a dated discourse.
+
+**The landmine.** Radha Madhav Dham in Austin carries the JKP name but was founded as Barsana Dham by a
+man convicted in 2011 on twenty counts of indecency with a child, who then fled; the organisation
+removed him from its own materials and neither official site names a founder. It is not Swami
+Mukundananda's. Nothing had shipped, but **docs/04 instructed a future run to source our art from there
+as our own org's**. That is now an explicit do-not-source with the reason. The lineage page omits it.
+
+Prem Mandir has its own section on the Vrindavan page now rather than a table row, being our lineage's
+temple and that page's hero photograph. Kirti Mandir's entry on Barsana says what makes it singular.
+
+Also: warmed the framing on `/radha-in-scripture`, which opened by saying what other pages get wrong
+instead of opening with Radha, and fixed a real bug where the label legend still listed the old long
+names while the table pills carried the new short ones. And the negative-content grep was matching
+"studied"; word boundaries added.
+
+Verified on production: 30 routes, zero broken links, 30/30 social cards, lineage in the sitemap.
+
+**Next:** the newsletter is still built and wired to nothing, and the sitemap still needs submitting in
+Search Console by hand.
+
+---
+
+## 2026-07-26 — Keep the negative out of the pages
 
 Founder: delete the crowd safety incident and the Vrindavan widows passage, and avoid negative content
 generally. This goes further than choosing topics. **No grim detail anywhere**, even inside a page that
