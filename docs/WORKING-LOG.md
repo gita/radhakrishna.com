@@ -32,6 +32,18 @@ all five pages and both hubs. Awaiting founder review of the preview, then merge
 
 ---
 
+## 2026-07-25 — NEXT UP (agreed with founder)
+
+1. **Real photos on place/temple pages.** Banke Bihari, Vrindavan, Barsana lead with a small gallery of
+   real Wikimedia Commons photos (CC BY-SA, verified available and high-res), each with photographer +
+   licence + source link rendered visibly. Generated art stays for festivals and for scenes no camera
+   can show. Needs an `photos[]` frontmatter field and a gallery component with attribution.
+2. **Quote formatting.** Some scripture sits inline in a paragraph rather than as a quote block, e.g.
+   hare-krishna-maha-mantra.mdx:59 (the Prabhupada translation) and :74. Set them as blockquotes with
+   attribution, across all pages.
+3. **FAQ answers read as blobs.** Break each into two or three short paragraphs. Helps readers scan and
+   helps answer engines extract. Across all pages.
+
 ## 2026-07-25 — NOTE: repo `.env` vanished mid-session
 
 The gitignored `.env` disappeared partway through and the content agents hit missing keys. Restored

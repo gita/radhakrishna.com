@@ -91,6 +91,21 @@ visible caption AND feeds `ImageObject`), and a place in the `/images` gallery. 
 from any doc with an `image`, so wiring the frontmatter is enough, but check it actually appears there and
 that clicking it opens the lightbox. Never ship art that only lives on one page.
 
+**Photos of real places.** Temple and place pages lead with **real photographs**, not generated art.
+A reader researching Banke Bihari wants the actual building. Generated art is kept only for scenes no
+camera can show (the midnight birth, Radharani's appearance) and for festival pages.
+
+A photograph of a temple is **copyrighted by the photographer** even though the building is public, and
+Google Images is an index of copyrighted work, not a source. Use only:
+- **Wikimedia Commons** (plenty for Braj: Banke Bihari, Barsana, Vrindavan, Prem Mandir all have 50+
+  images, typically CC BY-SA 3.0/4.0 at 2000px and up). Attribution is mandatory: photographer name,
+  the licence, and a link back to the file page. Store those in the image record, do not drop them.
+- **Unsplash / Pexels** where coverage exists.
+- **Foundation-owned photos**, which are best of all and unique to us.
+
+Place pages should carry a small gallery of several angles, not one hero. Never ship a photo whose
+licence and photographer you cannot name.
+
 **Festival dates.** Never publish a lunar festival date from a single web source. Take dates from **Indian panchang authorities**: Drik Panchang for the general
 (smarta) day and the **ISKCON Vaishnava calendar**, which is the tradition this site follows and what Mathura
 and Vrindavan keep, and record which in the `source` field, then run `npm run check:festivals`. That script recomputes the tithi with the Swiss
