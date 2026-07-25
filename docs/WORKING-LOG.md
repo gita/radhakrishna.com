@@ -4,6 +4,28 @@ Newest entries on top. Each entry: date, what was done, what's next. This is the
 
 ---
 
+## 2026-07-25 — LIVE. Rebuild merged to main and deployed
+
+PR #22 squashed into main; radhakrishna.com now serves the rebuild (23 routes).
+
+**Verified against production, not just locally:**
+- check-links against https://radhakrishna.com: 23 routes, 22 internal links, 24 images,
+  7 legacy redirects, zero broken.
+- OG images resolve 200 on the live domain (they 404'd before the metadataBase fix, because
+  absolute URLs pointed at a production that did not yet serve this branch).
+- /blog/* legacy URLs 301 correctly, including the one that had been landing on a 404.
+- robots.txt exposes the sitemap; sitemap has 23 entries; IndexNow key file live.
+- Submitted all 23 URLs to IndexNow, accepted HTTP 200. That reaches Bing, Yandex, Seznam
+  and Naver, and through Bing it reaches Copilot, ChatGPT search and Perplexity.
+
+**Still to do by hand (no legitimate automation exists):**
+1. Search Console: add the radhakrishna.com property, submit /sitemap.xml once.
+2. Request indexing manually on 5-6 priority pages (no API; scripting the UI is against
+   Google's automated-access terms, see CLAUDE.md).
+3. Pick a newsletter provider and set NEWSLETTER_PROVIDER + its key, or the form stays hidden.
+4. Once Google has crawled (give it a week or two), build the URL Inspection API monitor so we
+   can see which pages are actually indexed and spend manual requests where they matter.
+
 ## 2026-07-25 — Content v1 SHIPPED to the branch (18 pages at standard)
 
 The content pipeline ran end to end. Branch `revamp/foundation`, build green, 19 sitemap URLs.
