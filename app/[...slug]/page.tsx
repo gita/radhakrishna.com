@@ -1,7 +1,11 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { docs, findByUrl } from "@/lib/content";
-import { ArticlePage, HubPage } from "@/components/content-templates";
+import {
+  ArticlePage,
+  HubPage,
+  PrayerPage,
+} from "@/components/content-templates";
 
 type Params = { slug: string[] };
 
@@ -47,5 +51,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
   const doc = findByUrl("/" + slug.join("/"));
   if (!doc) notFound();
-  return doc.type === "hub" ? <HubPage doc={doc} /> : <ArticlePage doc={doc} />;
+  if (doc.type === "hub") return <HubPage doc={doc} />;
+  if (doc.type === "prayer") return <PrayerPage doc={doc} />;
+  return <ArticlePage doc={doc} />;
 }

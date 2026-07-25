@@ -3,6 +3,13 @@ import Image from "next/image";
 import { MDXBody } from "@/components/mdx";
 import { inCluster, related, type Doc } from "@/lib/content";
 import { articleGraph } from "@/lib/schema";
+import { LightboxImage } from "@/components/lightbox-image";
+import {
+  ShortAnswer,
+  KeyTakeaways,
+  FaqBlock,
+  RelatedCards,
+} from "@/components/content-blocks";
 
 const CLUSTER_LABEL: Record<string, string> = {
   "radha-krishna": "Radha Krishna",
@@ -79,42 +86,23 @@ export function ArticlePage({ doc }: { doc: Doc }) {
       ) : null}
 
       {doc.image ? (
-        <div className="relative mt-8 aspect-[16/10] overflow-hidden rounded-2xl ring-1 ring-gold/20">
-          <Image
-            src={doc.image}
-            alt={doc.imageAlt ?? doc.title}
-            fill
-            priority
-            sizes="(max-width: 768px) 100vw, 768px"
-            className="object-cover"
-          />
-        </div>
+        <LightboxImage
+          className="mt-8"
+          src={doc.image}
+          alt={doc.imageAlt ?? doc.title}
+          caption={doc.imageAlt}
+          priority
+        />
       ) : null}
 
-      {doc.answer ? (
-        <div className="mt-8 rounded-2xl border border-gold/30 bg-gold/5 p-6">
-          <p className="text-lg leading-relaxed text-foreground">
-            {doc.answer}
-          </p>
-        </div>
-      ) : null}
+      {doc.answer ? <ShortAnswer>{doc.answer}</ShortAnswer> : null}
+      <KeyTakeaways items={doc.tldr ?? []} />
 
-      {doc.tldr?.length ? (
-        <div className="mt-8 rounded-2xl border border-border bg-secondary/40 p-6">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-divine">
-            Key takeaways
-          </p>
-          <ul className="list-disc space-y-1.5 pl-5 text-foreground/90">
-            {doc.tldr.map((t) => (
-              <li key={t}>{t}</li>
-            ))}
-          </ul>
-        </div>
-      ) : null}
-
-      <div className="prose prose-lg mt-8 max-w-none prose-headings:font-serif prose-headings:font-semibold prose-headings:tracking-tight prose-a:text-divine prose-a:no-underline hover:prose-a:underline prose-strong:text-foreground prose-img:rounded-xl prose-blockquote:border-gold">
+      <div className="article-prose prose prose-lg mt-8 max-w-none prose-headings:font-serif prose-headings:font-semibold prose-headings:tracking-tight prose-strong:text-foreground prose-img:rounded-xl prose-blockquote:border-gold">
         <MDXBody code={doc.body} />
       </div>
+
+      <FaqBlock faq={doc.faq ?? []} />
 
       {doc.sources?.length ? (
         <section className="mt-12 border-t border-border pt-6">
@@ -140,22 +128,7 @@ export function ArticlePage({ doc }: { doc: Doc }) {
         </section>
       ) : null}
 
-      {rel.length ? (
-        <section className="mt-12 border-t border-border pt-8">
-          <h2 className="font-serif text-xl font-semibold">Continue reading</h2>
-          <div className="mt-5 grid gap-4 sm:grid-cols-2">
-            {rel.map((r) => (
-              <Link
-                key={r.url}
-                href={r.url}
-                className="rounded-xl border border-border bg-card p-4 transition-colors hover:border-gold/50"
-              >
-                <span className="font-medium hover:text-divine">{r.title}</span>
-              </Link>
-            ))}
-          </div>
-        </section>
-      ) : null}
+      <RelatedCards items={rel} />
     </article>
   );
 }
@@ -164,6 +137,10 @@ export function HubPage({ doc }: { doc: Doc }) {
   const items = inCluster(doc.cluster ?? doc.slug, doc.url);
   return (
     <div className="container py-14 md:py-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleGraph(doc)) }}
+      />
       <div className="mx-auto max-w-2xl text-center">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">
           {clusterLabel(doc.cluster ?? doc.slug)}
@@ -171,18 +148,13 @@ export function HubPage({ doc }: { doc: Doc }) {
         <h1 className="mt-2 text-balance font-serif text-4xl font-semibold tracking-tight sm:text-5xl">
           {doc.title}
         </h1>
-        {doc.description ? (
-          <p className="mt-4 text-lg text-muted-foreground">
-            {doc.description}
-          </p>
-        ) : null}
+        {/* A hub orients, so it leads with the answer and then the shelf. The
+            longer prose sits below the grid as supporting reading, not as the
+            first thing between a visitor and the pages they came for. */}
+        <p className="mt-4 text-lg text-muted-foreground">
+          {doc.answer ?? doc.description}
+        </p>
       </div>
-
-      {doc.body ? (
-        <div className="prose prose-lg mx-auto mt-8 max-w-2xl prose-headings:font-serif prose-a:text-divine">
-          <MDXBody code={doc.body} />
-        </div>
-      ) : null}
 
       {items.length ? (
         <div className="mx-auto mt-12 grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -190,21 +162,21 @@ export function HubPage({ doc }: { doc: Doc }) {
             <Link
               key={it.url}
               href={it.url}
-              className="group overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all hover:-translate-y-0.5 hover:border-gold/50"
+              className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all hover:-translate-y-0.5 hover:border-gold/50 hover:shadow-md"
             >
-              {it.image ? (
-                <div className="relative aspect-[16/10] overflow-hidden">
+              <div className="relative aspect-[16/10] shrink-0 overflow-hidden bg-secondary">
+                {it.image ? (
                   <Image
                     src={it.image}
                     alt={it.imageAlt ?? it.title}
                     fill
-                    sizes="(max-width: 640px) 100vw, 33vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
                   />
-                </div>
-              ) : null}
-              <div className="p-5">
-                <h3 className="font-serif text-lg font-semibold group-hover:text-divine">
+                ) : null}
+              </div>
+              <div className="flex flex-1 flex-col p-5">
+                <h3 className="font-serif text-lg font-semibold leading-snug group-hover:text-divine">
                   {it.title}
                 </h3>
                 {it.description ? (
@@ -221,6 +193,96 @@ export function HubPage({ doc }: { doc: Doc }) {
           New pages are being added here every week.
         </p>
       )}
+
+      {doc.body ? (
+        <div className="mx-auto mt-16 max-w-3xl border-t border-border pt-12">
+          <div className="article-prose prose prose-lg max-w-none prose-headings:font-serif prose-headings:font-semibold prose-headings:tracking-tight prose-strong:text-foreground">
+            <MDXBody code={doc.body} />
+          </div>
+          <div className="mx-auto max-w-3xl">
+            <FaqBlock faq={doc.faq ?? []} />
+          </div>
+        </div>
+      ) : null}
     </div>
+  );
+}
+
+/**
+ * A prayer or lyrics page. The sacred text is the reason someone is here, so the
+ * page gives it the stage: a short orientation, then the prayer itself. Takeaways,
+ * FAQ and sources sit underneath rather than between the reader and the words.
+ */
+export function PrayerPage({ doc }: { doc: Doc }) {
+  const rel = related(doc);
+  const updated = fmtDate(doc.updated ?? doc.date);
+  return (
+    <article className="container max-w-3xl py-12 md:py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleGraph(doc)) }}
+      />
+      <Breadcrumb doc={doc} />
+      <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-gold">
+        {clusterLabel(doc.cluster)}
+      </p>
+      <h1 className="text-balance font-serif text-3xl font-semibold leading-tight tracking-tight sm:text-4xl md:text-5xl">
+        {doc.title}
+      </h1>
+      {updated ? (
+        <p className="mt-4 text-sm text-muted-foreground">
+          Last updated {updated}
+        </p>
+      ) : null}
+
+      {doc.image ? (
+        <LightboxImage
+          className="mt-8"
+          src={doc.image}
+          alt={doc.imageAlt ?? doc.title}
+          caption={doc.imageAlt}
+          priority
+        />
+      ) : null}
+
+      {doc.answer ? (
+        <p className="mt-8 text-lg leading-relaxed text-foreground/90">
+          {doc.answer}
+        </p>
+      ) : null}
+
+      <div className="article-prose prayer-prose prose prose-lg mt-8 max-w-none prose-headings:font-serif prose-headings:font-semibold prose-headings:tracking-tight prose-strong:text-foreground">
+        <MDXBody code={doc.body} />
+      </div>
+
+      <KeyTakeaways items={doc.tldr ?? []} />
+      <FaqBlock faq={doc.faq ?? []} />
+
+      {doc.sources?.length ? (
+        <section className="mt-12 border-t border-border pt-6">
+          <h2 className="font-serif text-lg font-semibold">Sources</h2>
+          <ul className="mt-3 space-y-1.5 text-sm text-muted-foreground">
+            {doc.sources.map((s, i) => (
+              <li key={i}>
+                {s.url ? (
+                  <a
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-divine"
+                  >
+                    {s.text}
+                  </a>
+                ) : (
+                  s.text
+                )}
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
+
+      <RelatedCards items={rel} />
+    </article>
   );
 }

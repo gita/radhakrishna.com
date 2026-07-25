@@ -269,3 +269,113 @@
     animation: none;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Article prose: headings, tables, figures.
+   rehype-autolink-headings wraps each heading in an <a href="#slug"> so the
+   section is deep-linkable. That anchor must NOT read as a link: it inherits the
+   heading colour and carries no underline. A faint "#" appears on hover of that
+   heading only, which is the affordance without the noise.
+   --------------------------------------------------------------------------- */
+@layer components {
+  .article-prose :where(h2, h3, h4) > a {
+    color: inherit;
+    text-decoration: none;
+    position: relative;
+  }
+  .article-prose :where(h2, h3, h4) > a:hover {
+    text-decoration: none;
+  }
+  .article-prose :where(h2, h3) > a:hover::after {
+    content: "#";
+    position: absolute;
+    margin-left: 0.35em;
+    color: hsl(var(--gold));
+    font-weight: 400;
+    opacity: 0.55;
+  }
+  /* Body links: underline only the link actually hovered, never all of them. */
+  .article-prose :where(p, li, td) > a {
+    color: hsl(var(--divine));
+    text-decoration: none;
+  }
+  .article-prose :where(p, li, td) > a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* Tables: a real bordered card, not four floating underlines. */
+  .article-prose table {
+    display: table;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 2rem 0;
+    font-size: 0.95rem;
+    border: 1px solid hsl(var(--border));
+    border-radius: 0.85rem;
+    overflow: hidden;
+  }
+  .article-prose thead {
+    background: hsl(var(--secondary) / 0.65);
+  }
+  .article-prose th {
+    text-align: left;
+    font-weight: 600;
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid hsl(var(--border));
+    color: hsl(var(--foreground));
+  }
+  .article-prose td {
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid hsl(var(--border) / 0.6);
+    vertical-align: top;
+  }
+  .article-prose tbody tr:last-child td {
+    border-bottom: 0;
+  }
+  .article-prose tbody tr:nth-child(even) {
+    background: hsl(var(--secondary) / 0.28);
+  }
+  /* Wide tables scroll inside their own container, never the page body. */
+  .table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* The 1008 names read as a chanted list, so they get tighter, calmer rows and
+   a two-column layout on wide screens instead of one very long ribbon. */
+@layer components {
+  .prayer-prose ol {
+    counter-reset: name;
+    list-style: none;
+    padding-left: 0;
+    margin: 1.5rem 0;
+  }
+  .prayer-prose ol > li {
+    counter-increment: name;
+    position: relative;
+    padding: 0.3rem 0 0.3rem 3.4rem;
+    margin: 0;
+    border-bottom: 1px solid hsl(var(--border) / 0.45);
+    break-inside: avoid;
+  }
+  .prayer-prose ol > li::before {
+    content: counter(name);
+    position: absolute;
+    left: 0;
+    width: 2.7rem;
+    text-align: right;
+    color: hsl(var(--muted-foreground));
+    font-variant-numeric: tabular-nums;
+    font-size: 0.85em;
+    padding-top: 0.15em;
+  }
+  @media (min-width: 768px) {
+    .prayer-prose ol {
+      column-count: 2;
+      column-gap: 2.5rem;
+    }
+  }
+}

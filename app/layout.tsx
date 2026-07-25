@@ -4,6 +4,7 @@ import { Inter, Crimson_Pro, Noto_Serif_Devanagari } from "next/font/google";
 import { site, network, social } from "@/lib/site";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { AppCta } from "@/components/app-cta";
 import { RevealInit } from "@/components/reveal-init";
 import "./globals.css";
 
@@ -27,7 +28,14 @@ const devanagari = Noto_Serif_Devanagari({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(site.url),
+  // Absolute OG/canonical URLs. On Vercel previews the production domain does not
+  // yet serve this branch's images, so previews resolve against their own host.
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ??
+      (process.env.VERCEL_ENV && process.env.VERCEL_ENV !== "production"
+        ? `https://${process.env.VERCEL_URL}`
+        : site.url),
+  ),
   title: {
     default: site.title,
     template: `%s · ${site.name}`,
@@ -57,11 +65,12 @@ function OrgJsonLd() {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Organization",
-        "@id": `${site.url}/#organization`,
-        name: site.name,
-        url: site.url,
-        description: site.description,
+        // The publisher is the foundation, not the website. Radhakrishna.com is
+        // one of its projects, so the Organization entity points at vedvyas.com.
+        "@type": ["Organization", "NGO"],
+        "@id": `${site.foundation.href}/#organization`,
+        name: site.foundation.label,
+        url: site.foundation.href,
         sameAs: [...network.map((n) => n.href), ...social.map((s) => s.href)],
       },
       {
@@ -69,7 +78,8 @@ function OrgJsonLd() {
         "@id": `${site.url}/#website`,
         url: site.url,
         name: site.name,
-        publisher: { "@id": `${site.url}/#organization` },
+        description: site.description,
+        publisher: { "@id": `${site.foundation.href}/#organization` },
         inLanguage: "en",
       },
     ],
@@ -104,6 +114,7 @@ export default function RootLayout({
           src="https://plausible.io/js/script.js"
           strategy="afterInteractive"
         />
+        <AppCta />
       </body>
     </html>
   );

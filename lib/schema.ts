@@ -33,7 +33,7 @@ function clusterLabel(c?: string) {
 /** Build the page's JSON-LD @graph. Returns a plain object ready to JSON.stringify. */
 export function articleGraph(doc: Doc) {
   const pageUrl = `${site.url}${doc.url}`;
-  const org = { "@id": `${site.url}/#organization` };
+  const org = { "@id": `${site.foundation.href}/#organization` };
   const website = { "@id": `${site.url}/#website` };
   const published = doc.date ?? doc.updated;
   const modified = doc.updated ?? doc.date;

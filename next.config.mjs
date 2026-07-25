@@ -13,6 +13,9 @@ try {
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  // Cap build workers when BUILD_LOW_MEM is set. Vercel has plenty of memory, so
+  // this only helps constrained local machines avoid an OOM during static export.
+  ...(process.env.BUILD_LOW_MEM ? { experimental: { cpus: 2 } } : {}),
   // Pin the workspace root so stray parent lockfiles don't confuse Turbopack.
   turbopack: {
     root: import.meta.dirname,
