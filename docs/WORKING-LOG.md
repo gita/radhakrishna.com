@@ -4,7 +4,52 @@ Newest entries on top. Each entry: date, what was done, what's next. This is the
 
 ---
 
-## 2026-07-25 (latest) — Real photographs on the place pages, and two mobile bugs
+## 2026-07-25 (latest) — The Scripture Concordance is built
+
+Founder picked the concordance cluster as the next build. `docs/01` §5 asks for it as **one named,
+versioned dataset**, with the per-page tables its surface rather than the thing itself. The pages were
+doing the opposite, each hand-typing its own comparison table, and two had already drifted into error.
+
+**Live at `/scripture-concordance`.** 41 claims across four questions, each an extractable node with a
+stable id. `content/concordance/*.yaml` validated by velite, `<ScriptureTable topic>` renders slices in
+MDX, the page carries `schema.org/Dataset` with a version, a claim count and a last-verified date.
+
+**The label is enforced, not advised.** A claim labelled outside the five values fails the build with the
+valid ones named. Tested by trying to add one.
+
+**D16 settles the taxonomy.** The label says what kind of text, `approxDate` says how old. A Mahapurana
+stays scripture even when its recension is late. The alternative would collapse the Brahma Vaivarta
+Purana and a sixteenth century sampradaya handbook into one label and destroy the best finding here:
+**Rayana is in a Purana and Abhimanyu is not**. A researcher pushed back on the original scheme and was
+right.
+
+**Errors this caught on already-published pages.** `why-did-krishna-not-marry-radha` said a shadow Radha
+was married to _Ayan_; the Brahma Vaivarta Purana says _Rayana_, and the page was treating Rayana,
+Abhimanyu and Ayan as one man when they come from three literatures centuries apart. The same page
+called the Garga Samhita and the Brahma Vaivarta "later devotional literature" while calling the
+Bhagavata scripture. And the Lakshmi page's Bhagavata 10.47.60 fragment is now the full verse: two hosts
+other than vedabase carry it, one was checked directly, and the page now says that the Sanskrit names
+Sri alone with the queens entering only through the translator's phrase.
+
+**Where the researchers disagreed.** Two agents split on Brahma Vaivarta Prakriti Khanda 49, one
+corroborating the shadow-Radha passage and one able to reach only weak sources. It is load-bearing, so
+the full translation was downloaded and read at the passage rather than taking a side. It is there
+verbatim. Resolution and quotes in `docs/research/concordance-open-threads.md`.
+
+**Still open, could change a page:** a 1948 journal cites Mahabhagavata Purana 49.16-22 for the name
+_Ayana_. If it holds, Ayan moves out of vernacular poetry into a Sanskrit Purana. Single-sourced, text
+not readable online, logged and not published.
+
+**Next in this cluster:** "Who is Radha's husband" as its own page (the data is already there), and "Why
+Krishna left Vrindavan". Both are P0 gaps.
+
+Verified on production: page 200, in the sitemap, Dataset schema at version 1.0, 41 claim anchors, 27
+rows rendering on the marriage question page, the old Ayan error gone, 29 routes with zero broken links,
+IndexNow fired.
+
+---
+
+## 2026-07-25 — Real photographs on the place pages, and two mobile bugs
 
 Founder: the temple pages were still leading with AI art after being asked for real photographs.
 Correct, and it had been deferred twice.
