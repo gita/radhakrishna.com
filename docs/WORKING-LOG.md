@@ -4,7 +4,55 @@ Newest entries on top. Each entry: date, what was done, what's next. This is the
 
 ---
 
-## 2026-07-25 (latest) — The Scripture Concordance is built
+## 2026-07-26 (latest) — The site's own voice, and what it declines to write
+
+Three founder directions in one pass, and the second showed a systemic problem rather than a page-level
+one.
+
+**Whose site this is.** Pro Radha Krishna, not a neutral encyclopedia. The lineage is Jagadguru Shri
+Kripalu Ji Maharaj and Swami Mukundananda. CLAUDE.md carries the verified facts (Jagadguru 14 January
+1957, Jagadguruttam, JKP founded 1972, Prem Mandir, Kirti Mandir, Bhakti Mandir) and three rings in
+which nothing is ever disparaged: our lineage, the Vaishnava family as close kin, and the wider Sanatan
+tradition including the Advaita line and the Ramakrishna Mission. **The data stays even-handed, because
+that evenness is what makes the scripture tables worth citing. The prose is where we stand somewhere.**
+
+**Never write about Radha in a debunking register.** Nineteen passages across ten files all led with an
+absence. The worst framed the whole questions cluster as a case against her: "Almost every hard question
+here traces back to one fact: the Bhagavata Purana never names Radha." All reframed. The facts survive;
+what leads changed. The acharyas read that silence as concealment, not absence, her name held inside the
+word aradhita.
+
+**What we decline to write.** No pages on contested, gossip-adjacent questions however high the demand.
+The husband topic is gone: fifteen sourced claims removed from content, archived unpublished at
+`docs/research/retired/`, and the concordance `topic` enum no longer accepts them so a claim of that
+shape fails the build. DECISIONS Q13 generalises it. **The test that replaces search volume: does a
+reader finish with more love, or only with more argument?**
+
+**The docs were still commissioning the retired pages.** `docs/02` listed "how did Radha die" and "who
+is Radha's husband" as the cluster's example pages, and `research/07` still had the husband page as build
+item 5. This is exactly what CLAUDE.md's deletion rule warns about: leaving a dropped topic in the
+strategy docs is how a future run quietly rebuilds it. Struck at the source.
+
+Also caught: the questions hub still advertised "how Radha died" among its most-asked, pointing at a page
+deleted days earlier, and carried a paragraph about her passing. Both gone.
+
+**Design and naming.** The concordance page is now `/radha-in-scripture` with a 301, because nobody
+searches "concordance" and the word came from an internal doc rather than from readers. Labels are short
+single-line pills (Scripture, Devotional text, Tradition, Braj legend, Modern retelling) in a two-column
+table, instead of a phrase wrapping inside a mostly empty third column.
+
+**The rule-zero grep was too narrow** to catch "when I go back to the older scriptures" on the Lakshmi
+page. Broadened.
+
+Verified on production: old URL 301s to the new one, zero husband hits on any page, 29 routes with zero
+broken links, and content clean of the debunking register, first person, em dashes and rule zero.
+
+**Next:** name the lineage properly on Prem Mandir and Kirti Mandir, where it is genuinely the subject,
+and build a lineage page.
+
+---
+
+## 2026-07-25 — The Scripture Concordance is built
 
 Founder picked the concordance cluster as the next build. `docs/01` §5 asks for it as **one named,
 versioned dataset**, with the per-page tables its surface rather than the thing itself. The pages were
