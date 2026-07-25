@@ -26,10 +26,17 @@ the site, so the `/images` gallery picks them up automatically.
 Note for anyone repeating this: OpenAI had an "elevated error rates" incident that day and every
 authenticated request 500'd for about half an hour. It was not the key.
 
-**RESUME HERE:** steps 2-4 of the entry below (`check:festivals`, `check:links`, production build,
-visual QA on mobile and desktop including the `/images` lightbox, then commit and IndexNow).
+**DONE, shipped in PR #23.** All of it: art on all five, `check:festivals` (6/6), `check:links`
+(28 routes, zero broken), production build green, and Playwright visual QA at iPhone 14 + 1440px on
+all five pages and both hubs. Awaiting founder review of the preview, then merge and IndexNow.
 
 ---
+
+## 2026-07-25 — NOTE: repo `.env` vanished mid-session
+
+The gitignored `.env` disappeared partway through and the content agents hit missing keys. Restored
+with all 14 keys and verified working. Cause unknown, so if keys go missing again, rebuild from
+`writesonic-marketing/.env` plus the project-specific ones (Parallel, Reddit, IndexNow) recorded there.
 
 ## 2026-07-25 (later) — Phase 3 festival cluster: text done, art pending
 
@@ -38,15 +45,15 @@ Five pages written and validated, NOT yet illustrated:
 /temples/vrindavan, /temples/barsana. 28 routes, 27 internal links, zero broken.
 Rule-zero sweep clean, no em dashes, no curly quotes.
 
-**RESUME HERE, in order:**
+**DONE, in PR #23.** Art generated and reviewed at full size, festival and link checks green,
+production build passing, and visual QA at iPhone 14 and 1440px on all five pages plus both hubs.
 
-1. Art is missing on all five (`grep -L "^image:" content/festivals/*.mdx content/temples/*.mdx`).
-   Generate per CLAUDE.md standing conventions: gpt-image-2, 1536x1024, distinct scene each, faces
-   intact, no text, then sharp to public/images/content/<slug>.webp at 1600w q80, add image +
-   imageAlt, and confirm they appear in /images.
-2. `npm run check:festivals` (must stay green), `npm run check:links`, production build.
-3. Visual QA the five pages, mobile and desktop.
-4. Commit, merge to main, then re-verify against production and `npm run indexnow`.
+Two bugs the visual QA caught that code review had missed: the dates block rendered "Next: Invalid
+Date" (velite's isodate() returns a full ISO datetime and the formatter appended T00:00:00Z on top),
+and the fixed mobile app bar sat over the last of the footer. Both fixed.
+
+Also corrected a factual clash the pipeline surfaced: the temples hub said Banke Bihari dates from
+1864 while the temple's own site says 1862.
 
 **Festival dates are solved.** Dates come from Indian panchang authorities (Drik Panchang for the
 general/smarta day, ISKCON Vaishnava calendar for the Vaishnava day) and are recorded with a `source`
