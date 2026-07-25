@@ -4,6 +4,52 @@ Newest entries on top. Each entry: date, what was done, what's next. This is the
 
 ---
 
+## 2026-07-25 (latest) — Phase 3 art shipped: all five pages illustrated
+
+The five Phase 3 pages now have original art. gpt-image-2, 1536x1024, quality high, one distinct
+scene each, converted with sharp to `public/images/content/<slug>.webp` at 1600w q80. Every image was
+inspected at full size (and the risky corners crop-zoomed) before shipping: faces complete and
+uncropped, no text or lettering anywhere, bright and light-first, correct subject.
+
+| Page                     | Scene                                                                               |
+| ------------------------ | ----------------------------------------------------------------------------------- |
+| `/festivals/janmashtami` | Vasudeva crossing the flooded Yamuna at midnight, Sheshnaga's hoods over the basket |
+| `/festivals/radhashtami` | Barsana courtyard at golden dawn, the infant Radharani, sakhis dancing              |
+| `/temples/banke-bihari`  | The deity in tribhanga in a lamp-lit sanctum, devotees' folded hands in front       |
+| `/temples/vrindavan`     | Place portrait, golden hour across the Yamuna, ghats and spires, no deity           |
+| `/temples/barsana`       | The Shriji temple on Bhanugarh hill at sunrise, the long stone stairway             |
+
+`image` + `imageAlt` sit immediately after `description:` in each frontmatter, matching the rest of
+the content tree. Velite build green, all five carry an image, no image path used twice anywhere on
+the site, so the `/images` gallery picks them up automatically.
+
+Note for anyone repeating this: OpenAI had an "elevated error rates" incident that day and every
+authenticated request 500'd for about half an hour. It was not the key.
+
+**DONE, shipped in PR #23.** All of it: art on all five, `check:festivals` (6/6), `check:links`
+(28 routes, zero broken), production build green, and Playwright visual QA at iPhone 14 + 1440px on
+all five pages and both hubs. Awaiting founder review of the preview, then merge and IndexNow.
+
+---
+
+## 2026-07-25 — NEXT UP (agreed with founder)
+
+1. **Real photos on place/temple pages.** Banke Bihari, Vrindavan, Barsana lead with a small gallery of
+   real Wikimedia Commons photos (CC BY-SA, verified available and high-res), each with photographer +
+   licence + source link rendered visibly. Generated art stays for festivals and for scenes no camera
+   can show. Needs an `photos[]` frontmatter field and a gallery component with attribution.
+2. **Quote formatting.** Some scripture sits inline in a paragraph rather than as a quote block, e.g.
+   hare-krishna-maha-mantra.mdx:59 (the Prabhupada translation) and :74. Set them as blockquotes with
+   attribution, across all pages.
+3. **FAQ answers read as blobs.** Break each into two or three short paragraphs. Helps readers scan and
+   helps answer engines extract. Across all pages.
+
+## 2026-07-25 — NOTE: repo `.env` vanished mid-session
+
+The gitignored `.env` disappeared partway through and the content agents hit missing keys. Restored
+with all 14 keys and verified working. Cause unknown, so if keys go missing again, rebuild from
+`writesonic-marketing/.env` plus the project-specific ones (Parallel, Reddit, IndexNow) recorded there.
+
 ## 2026-07-25 (later) — Phase 3 festival cluster: text done, art pending
 
 Five pages written and validated, NOT yet illustrated:
@@ -11,14 +57,15 @@ Five pages written and validated, NOT yet illustrated:
 /temples/vrindavan, /temples/barsana. 28 routes, 27 internal links, zero broken.
 Rule-zero sweep clean, no em dashes, no curly quotes.
 
-**RESUME HERE, in order:**
-1. Art is missing on all five (`grep -L "^image:" content/festivals/*.mdx content/temples/*.mdx`).
-   Generate per CLAUDE.md standing conventions: gpt-image-2, 1536x1024, distinct scene each, faces
-   intact, no text, then sharp to public/images/content/<slug>.webp at 1600w q80, add image +
-   imageAlt, and confirm they appear in /images.
-2. `npm run check:festivals` (must stay green), `npm run check:links`, production build.
-3. Visual QA the five pages, mobile and desktop.
-4. Commit, merge to main, then re-verify against production and `npm run indexnow`.
+**DONE, in PR #23.** Art generated and reviewed at full size, festival and link checks green,
+production build passing, and visual QA at iPhone 14 and 1440px on all five pages plus both hubs.
+
+Two bugs the visual QA caught that code review had missed: the dates block rendered "Next: Invalid
+Date" (velite's isodate() returns a full ISO datetime and the formatter appended T00:00:00Z on top),
+and the fixed mobile app bar sat over the last of the footer. Both fixed.
+
+Also corrected a factual clash the pipeline surfaced: the temples hub said Banke Bihari dates from
+1864 while the temple's own site says 1862.
 
 **Festival dates are solved.** Dates come from Indian panchang authorities (Drik Panchang for the
 general/smarta day, ISKCON Vaishnava calendar for the Vaishnava day) and are recorded with a `source`
@@ -35,6 +82,7 @@ timeanddate convention. Never framed as householder vs sannyasi; the split is tr
 PR #22 squashed into main; radhakrishna.com now serves the rebuild (23 routes).
 
 **Verified against production, not just locally:**
+
 - check-links against https://radhakrishna.com: 23 routes, 22 internal links, 24 images,
   7 legacy redirects, zero broken.
 - OG images resolve 200 on the live domain (they 404'd before the metadataBase fix, because
@@ -45,6 +93,7 @@ PR #22 squashed into main; radhakrishna.com now serves the rebuild (23 routes).
   and Naver, and through Bing it reaches Copilot, ChatGPT search and Perplexity.
 
 **Still to do by hand (no legitimate automation exists):**
+
 1. Search Console: add the radhakrishna.com property, submit /sitemap.xml once.
 2. Request indexing manually on 5-6 priority pages (no API; scripting the UI is against
    Google's automated-access terms, see CLAUDE.md).

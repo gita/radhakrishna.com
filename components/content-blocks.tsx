@@ -136,13 +136,23 @@ export function FestivalDates({
   }[];
 }) {
   if (!occurrences?.length) return null;
-  const sorted = [...occurrences].sort((a, b) => a.year - b.year);
   const today = new Date().toISOString().slice(0, 10);
-  const next = sorted.find((o) => (o.vaishnava ?? o.date) >= today);
+  // Only years still ahead of us. A festival page is read to find out when the
+  // next one falls, so a date that has already passed is noise, and leaving one
+  // on the page makes the whole thing look stale. This filters at render, so the
+  // block stays right even if nobody prunes the frontmatter.
+  const sorted = [...occurrences]
+    .filter((o) => (o.vaishnava ?? o.date).slice(0, 10) >= today)
+    .sort((a, b) => a.year - b.year);
+  if (!sorted.length) return null;
+  const next = sorted.find((o) => (o.vaishnava ?? o.date).slice(0, 10) >= today);
   // The general (smarta) day leads, since that is what most visitors keep.
 
+  // velite's isodate() yields a full ISO datetime ("2026-09-04T00:00:00.000Z"),
+  // but hand-written frontmatter may be a bare "2026-09-04". Normalise to the
+  // date part and read it as UTC so the day never shifts by timezone.
   const fmt = (iso: string) =>
-    new Date(iso + "T00:00:00Z").toLocaleDateString("en-IN", {
+    new Date(`${iso.slice(0, 10)}T00:00:00Z`).toLocaleDateString("en-IN", {
       weekday: "long",
       day: "numeric",
       month: "long",
@@ -190,26 +200,11 @@ export function FestivalDates({
         </div>
       ) : null}
 
-      <ul className="space-y-1 text-sm text-foreground/85">
-        {sorted.map((o) => (
-          <li
-            key={o.year}
-            className={(o.vaishnava ?? o.date) < today ? "text-muted-foreground" : ""}
-          >
-            <span className="font-medium tabular-nums">{o.year}</span>
-            {" \u00b7 "}
-            {split(o)
-              ? `${fmt(o.smarta!)} (most households), ${fmt(o.vaishnava!)} (Vaishnava)`
-              : fmt(o.smarta ?? o.date)}
-          </li>
-        ))}
-      </ul>
-
       <p className="mt-4 border-t border-gold/20 pt-3 text-sm text-muted-foreground">
-        Where two days are listed, the tithi spans midnight. Most households keep
-        the earlier day; the Vaishnava sampradayas, including ISKCON and the
-        temples of Braj, keep the later one. Both are correct, and the difference
-        is one of tradition rather than of calculation.
+        The date moves each year with the lunar calendar. Where two days are
+        shown, the tithi spans midnight: most households keep the earlier day,
+        and the Vaishnava sampradayas, including ISKCON and the temples of Braj,
+        keep the later one. Both are correct within their own tradition.
       </p>
     </section>
   );

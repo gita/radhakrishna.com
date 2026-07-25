@@ -5,7 +5,11 @@ import { nav, network, social, site } from "@/lib/site";
 /** Server-rendered footer. Carries the org entity graph (docs/03 §8). */
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border bg-secondary/40">
+    <footer
+      // pb on mobile reserves room for the fixed app bar, so the last line of
+      // the footer is never parked underneath it.
+      className="border-t border-border bg-secondary/40 pb-20 md:pb-0"
+    >
       <div className="container grid gap-10 py-14 md:grid-cols-4">
         <div className="space-y-3">
           <div className="flex items-center gap-2.5">

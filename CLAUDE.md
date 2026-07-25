@@ -91,6 +91,21 @@ visible caption AND feeds `ImageObject`), and a place in the `/images` gallery. 
 from any doc with an `image`, so wiring the frontmatter is enough, but check it actually appears there and
 that clicking it opens the lightbox. Never ship art that only lives on one page.
 
+**Photos of real places.** Temple and place pages lead with **real photographs**, not generated art.
+A reader researching Banke Bihari wants the actual building. Generated art is kept only for scenes no
+camera can show (the midnight birth, Radharani's appearance) and for festival pages.
+
+A photograph of a temple is **copyrighted by the photographer** even though the building is public, and
+Google Images is an index of copyrighted work, not a source. Use only:
+- **Wikimedia Commons** (plenty for Braj: Banke Bihari, Barsana, Vrindavan, Prem Mandir all have 50+
+  images, typically CC BY-SA 3.0/4.0 at 2000px and up). Attribution is mandatory: photographer name,
+  the licence, and a link back to the file page. Store those in the image record, do not drop them.
+- **Unsplash / Pexels** where coverage exists.
+- **Foundation-owned photos**, which are best of all and unique to us.
+
+Place pages should carry a small gallery of several angles, not one hero. Never ship a photo whose
+licence and photographer you cannot name.
+
 **Festival dates.** Never publish a lunar festival date from a single web source. Take dates from **Indian panchang authorities**: Drik Panchang for the general
 (smarta) day and the **ISKCON Vaishnava calendar**, which is the tradition this site follows and what Mathura
 and Vrindavan keep, and record which in the `source` field, then run `npm run check:festivals`. That script recomputes the tithi with the Swiss
@@ -119,6 +134,16 @@ popular questions, the sitemap, the `/images` gallery, Daily Darshan, AND the st
 Leaving it in `docs/02` or `docs/research/*` means a future run rebuilds the page. Record the call in
 `docs/DECISIONS.md` so the reasoning survives. If the page was ever live, add a 301 to the closest
 surviving page rather than leaving a 404.
+
+**Visual QA is a ship condition, mobile first.** Most of our readers are on mobile web, so no page
+goes into a PR until it has been *seen* at a real phone viewport and on desktop, not merely asserted to
+be responsive. Use Playwright (`npx playwright screenshot`, or a script with `devices["iPhone 14"]`):
+the Chrome automation here refuses to size below roughly 1900px, so it cannot do this. Capture full-page
+screenshots at 390x844 and at 1440 wide, look at every one, and check: nothing overflows sideways, the
+hero and headings are readable, tables scroll inside their own container rather than the page, the FAQ
+and related cards stack cleanly, images load and are not stretched or cropped through a face, the app CTA
+does not cover content, and tap targets are not cramped. Fix what you see before opening the PR, and say
+in the PR which viewports you checked.
 
 **Before calling a PR ready to merge, run the whole checklist yourself:**
 
