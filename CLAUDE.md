@@ -34,6 +34,10 @@ wrote it, never as though a pipeline produced it. Sweep for this before any page
 
 ```
 grep -rniE "I could not|I looked for|could not (be )?(verif|confirm)|I would label|so we label|we flag|unverified|for transparency|honest caveat|I am reporting|editor'?s note|as an AI" content/
+
+# Authorial first person. The narrator has no "I": a devotee-scholar states what is true,
+# never what they personally would do. Reader-voice questions ("How do I fast?") are fine.
+grep -rnE "\bI (would|will|have|had|think|checked|found|treat|say|note|could|cannot)\b|\bI'(m|ve|d|ll)\b" content/
 ```
 
 The same applies to the site's own copy (components, metadata, OG text), not just MDX.
@@ -97,6 +101,7 @@ camera can show (the midnight birth, Radharani's appearance) and for festival pa
 
 A photograph of a temple is **copyrighted by the photographer** even though the building is public, and
 Google Images is an index of copyrighted work, not a source. Use only:
+
 - **Wikimedia Commons** (plenty for Braj: Banke Bihari, Barsana, Vrindavan, Prem Mandir all have 50+
   images, typically CC BY-SA 3.0/4.0 at 2000px and up). Attribution is mandatory: photographer name,
   the licence, and a link back to the file page. Store those in the image record, do not drop them.
@@ -128,6 +133,29 @@ the translator. `scripts/build-daily-verses.mjs` generates `lib/daily-verses.ts`
 editorial choice is which references to include. A fabricated verse shipped early in this project (an
 Arjuna line rewritten as Radha); that must never happen again.
 
+**How a verse is set on the page.** A quoted verse is never left inline in a paragraph, and there is
+one house pattern for all of them. Any of the three parts may be absent, but the order never changes:
+
+```
+> _sanskrit transliteration, one italic line per line of the verse_
+> _second line of the verse_
+>
+> "The translation, in quotation marks."
+>
+> <cite>Bhagavata Purana 10.30.28</cite>
+```
+
+Each verse line becomes its own line through CSS, so do not add `<br />` and do not rely on trailing
+double spaces, which are invisible and get eaten by formatters. Inside a quote, italics mean "this is
+a verse line", so a translation never carries emphasis. The citation goes in `<cite>`, never as a bare
+last line. Four different conventions had grown up across the content before this was written down.
+
+**FAQ answers.** Answers over about 50 words are broken into paragraphs with a YAML folded scalar
+(`answer: >` with a blank line at the pivot), never left as one block. Break where the thought turns,
+usually after the direct answer and before the supporting detail or citation. `npm run check:faq`
+compares every answer against a saved snapshot with whitespace collapsed, so a reflow that silently
+reworded a verified claim fails the check. Run `npm run check:faq:save` before starting one.
+
 **Deleting a page.** Grep the whole tree, not just `content/`. A page is referenced from: body links in
 other MDX, `related:` frontmatter (a dangling slug now throws at build), hub tables, `app/page.tsx`
 popular questions, the sitemap, the `/images` gallery, Daily Darshan, AND the strategy docs in `docs/`.
@@ -136,7 +164,7 @@ Leaving it in `docs/02` or `docs/research/*` means a future run rebuilds the pag
 surviving page rather than leaving a 404.
 
 **Visual QA is a ship condition, mobile first.** Most of our readers are on mobile web, so no page
-goes into a PR until it has been *seen* at a real phone viewport and on desktop, not merely asserted to
+goes into a PR until it has been _seen_ at a real phone viewport and on desktop, not merely asserted to
 be responsive. Use Playwright (`npx playwright screenshot`, or a script with `devices["iPhone 14"]`):
 the Chrome automation here refuses to size below roughly 1900px, so it cannot do this. Capture full-page
 screenshots at 390x844 and at 1440 wide, look at every one, and check: nothing overflows sideways, the
@@ -160,6 +188,7 @@ in the PR which viewports you checked.
 ## Getting pages indexed (what actually works)
 
 **Google has no legitimate push channel for our pages.** Verified, not assumed:
+
 - The sitemap ping endpoint was retired in June 2023 and 404s. There is no replacement.
 - The Indexing API is documented for **job posting and livestream pages only**. Using it for articles is
   outside its stated purpose; do not build on it.

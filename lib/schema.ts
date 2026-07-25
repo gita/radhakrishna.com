@@ -109,8 +109,7 @@ export function articleGraph(doc: Doc) {
         "@id": `${pageUrl}#event-${o.year}`,
         name: `${doc.title} ${o.year}`,
         startDate: o.date,
-        eventAttendanceMode:
-          "https://schema.org/MixedEventAttendanceMode",
+        eventAttendanceMode: "https://schema.org/MixedEventAttendanceMode",
         eventStatus: "https://schema.org/EventScheduled",
         description: doc.description ?? doc.answer,
         ...(image ? { image } : {}),
@@ -125,7 +124,9 @@ export function articleGraph(doc: Doc) {
                   ...(doc.place.locality
                     ? { addressLocality: doc.place.locality }
                     : {}),
-                  ...(doc.place.region ? { addressRegion: doc.place.region } : {}),
+                  ...(doc.place.region
+                    ? { addressRegion: doc.place.region }
+                    : {}),
                   addressCountry: doc.place.country,
                 },
               },
@@ -166,7 +167,12 @@ export function articleGraph(doc: Doc) {
       mainEntity: doc.faq.map((f) => ({
         "@type": "Question",
         name: f.question,
-        acceptedAnswer: { "@type": "Answer", text: f.answer },
+        // Answers carry paragraph breaks for the reader; schema.org wants one
+        // flat string, so collapse them rather than emitting raw newlines.
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: f.answer.replace(/\s+/g, " ").trim(),
+        },
       })),
     });
   }

@@ -4,6 +4,55 @@ Newest entries on top. Each entry: date, what was done, what's next. This is the
 
 ---
 
+## 2026-07-25 (latest) — Quotes set as quotes, FAQ answers broken out of the blob
+
+Two founder notes, both about formatting rather than substance, plus what the work turned up.
+
+**Scripture quotes.** Four different conventions had grown up for the same thing: `<br />` tags on
+Janmashtami, bare `_italic_` lines on the mantra page, plain unstyled text on Who is Radha, and on two
+pages the translation was orphaned as a bare paragraph _outside_ the quote it belonged to. There was
+no `blockquote` CSS at all, so every verse fell through to the typography plugin's generic italic bar
+with auto quote marks that doubled up with the marks the translations already carried.
+
+One house pattern now, written into CLAUDE.md: italic transliteration (one line per verse line),
+translation in quotation marks, `<cite>` for chapter and verse. CSS gives it a gold rule, a warm
+panel, the serif for the verse, and small-caps for the citation, matching the Daily Devotion panel
+that already looked right. Verse lines get a **hanging indent**: on a phone a transliterated line
+wraps, and without it a wrap is indistinguishable from the next line of the verse, which matters when
+someone is chanting from it. Caught in a phone screenshot, not in review.
+
+Left deliberately inline: the Bhagavata Purana 10.47.60 clause on the Lakshmi page. It is a
+mid-sentence fragment, and vedabase.io 403s bots, so lifting it into a display quote would have meant
+inventing a lead-in word for a scriptural quotation. Not worth it. Revisit if the full verse turns up
+from a fetchable source.
+
+**FAQ answers.** All 128 rendered as one unbroken `<p>`; 71 ran over 55 words. `FaqBlock` now splits
+on newlines, and answers over ~50 words use a YAML folded scalar with a blank line at the pivot.
+97 of 128 now render as two or three paragraphs; none over 55 words is still a single block.
+
+The risk in a reflow like this is a sentence quietly getting reworded, which would undo the source
+verification behind it. `scripts/check-faq-text.mjs` snapshots every answer with whitespace collapsed,
+so a paragraph break is invisible to it and a changed word is not. `npm run check:faq`. It earned its
+keep immediately: it flagged the three wording changes made on purpose and nothing else.
+
+**What the pass turned up on its own.**
+
+- Four rule-zero violations the previous sweep missed, all authorial first person rather than process
+  narration: "I would keep those two apart", "I would read it as such", "I would enjoy them as
+  stories", "the one I would treat with care". The CLAUDE.md grep now has a second line for `\bI
+(would|will|think|...)\b`. Reader-voice questions ("How do I fast?") are fine and expected.
+- A stale 2025 date still sitting in the Radhashtami takeaways and FAQ, which the festival-dates
+  component fix never reached because it was prose, not structured data. `check-festival-dates.py`
+  now scans takeaways and FAQ for past years and warns. It correctly flags and spares the two
+  legitimate ones: Janmashtami's 2025, which is the worked example explaining the smarta/vaishnava
+  split, and Barsana's 2024 ropeway opening.
+
+Verified: build green, `check:links` 28 routes / 27 links / 29 images / 7 redirects zero broken,
+`check:festivals` 4/4, `check:faq` clean, rule-zero grep clean, no em dashes in `content/`.
+Visual pass at iPhone 14 and 1440px.
+
+---
+
 ## 2026-07-25 (latest) — Phase 3 art shipped: all five pages illustrated
 
 The five Phase 3 pages now have original art. gpt-image-2, 1536x1024, quality high, one distinct

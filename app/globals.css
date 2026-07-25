@@ -337,6 +337,87 @@
   min-width: 34rem;
 }
 
+/* ---------------------------------------------------------------------------
+   Scripture quotes.
+
+   A verse carries the weight on these pages, so it should not read as ordinary
+   prose that happens to sit inside quotation marks. The house pattern is three
+   parts, any of which may be absent:
+
+     > _sanskrit transliteration, italic_
+     >
+     > "The translation, in quotation marks."
+     >
+     > <cite>Bhagavata Purana 10.30.28</cite>
+
+   The typography plugin italicises the whole quote and hangs curly quote marks
+   off the first paragraph, which would double up with the marks the translation
+   already carries. Both are turned off here and rebuilt deliberately.
+   --------------------------------------------------------------------------- */
+.article-prose blockquote {
+  margin: 2rem 0;
+  /* Tighter inline padding on a phone: at 390px every 8px of gutter is a word
+     less per line, and these verses are long. */
+  padding: 1.15rem 1.1rem;
+  border-inline-start: 3px solid hsl(var(--gold) / 0.65);
+  border-radius: 0 0.85rem 0.85rem 0;
+  background: hsl(var(--gold) / 0.05);
+  font-style: normal;
+  font-weight: 400;
+  color: hsl(var(--foreground));
+  quotes: none;
+}
+.article-prose blockquote p:first-of-type::before,
+.article-prose blockquote p:last-of-type::after {
+  content: none;
+}
+.article-prose blockquote p {
+  margin: 0;
+}
+.article-prose blockquote p + p {
+  margin-top: 0.75rem;
+}
+@media (min-width: 640px) {
+  .article-prose blockquote {
+    padding: 1.35rem 1.5rem;
+  }
+}
+
+/* The transliterated verse: the line a reader may actually want to chant, so it
+   gets the serif, a little more air between letters, and the devotional tone.
+
+   Each line of the verse is its own `_italic_` line in the source and becomes
+   its own line here, which is why no <br> is needed and why emphasis is reserved
+   inside a quote for verse lines only. A stressed word in a translation would
+   break to its own line, so translations carry no italics. */
+.article-prose blockquote em {
+  display: block;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.05em;
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+  color: hsl(var(--divine));
+  /* Hanging indent, the way verse has always been set. On a phone a long
+     transliterated line wraps, and without this a wrap is indistinguishable
+     from the next line of the verse, which matters when someone is chanting
+     it. The continuation is indented, the start of each line is not. */
+  padding-inline-start: 1.15em;
+  text-indent: -1.15em;
+}
+
+/* Chapter and verse, set quietly so it never competes with the verse itself. */
+.article-prose blockquote cite {
+  display: block;
+  margin-top: 0.85rem;
+  font-style: normal;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: hsl(var(--muted-foreground));
+}
+
 /* The 1008 names read as a chanted list, so they get tighter, calmer rows and
    a two-column layout on wide screens instead of one very long ribbon. */
 .prayer-prose ol {
