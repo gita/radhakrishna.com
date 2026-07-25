@@ -266,7 +266,7 @@ conversion (subscribers + app installs) and by winnable-citation-first sequencin
 top pillar, strongest internal-link anchor, C2), Radha Krishna love story (hub), Who is Radha (hub), the
 **Radha Krishna Scripture Concordance** synthesis pages (marriage / death / husband tables,
 Radha-vs-Rukmini, sampradaya comparisons — the winnable citations, P1-8), Why Krishna did not marry Radha,
-How did Radha die, Who is Radha's husband, Why Krishna left Vrindavan, Is Radha an incarnation of Lakshmi,
+Who is Radha's husband, Why Krishna left Vrindavan, Is Radha an incarnation of Lakshmi,
 Hare Krishna Maha Mantra, Radhashtakam, Radhashtami, Janmashtami, Banke Bihari temple, **one** "Radha
 Krishna HD images" page that kills the story query and the image query together (the single image page kept
 in P0; other galleries demoted). Radha Krishna quotes stays P0 as a light entry.

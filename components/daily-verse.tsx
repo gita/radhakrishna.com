@@ -50,7 +50,14 @@ function dayOfYear(d: Date) {
 
 /** `showCta` is off on the Daily Darshan page itself, where the button would
  *  otherwise link to the page the reader is already on. */
-export function DailyVerse({ showCta = true }: { showCta?: boolean } = {}) {
+export function DailyVerse({
+  showCta = true,
+  tone = "dark",
+}: { showCta?: boolean; tone?: "dark" | "light" } = {}) {
+  // "dark" is the homepage panel, where the type sits on deep indigo. "light" is
+  // a plain cream page, where that same light type would be unreadable.
+  const quoteTone =
+    tone === "dark" ? "text-indigo-foreground/90" : "text-foreground/90";
   // Render a stable verse on the server, then advance to today's on the client.
   const [i, setI] = useState(0);
   useEffect(() => {
@@ -66,10 +73,10 @@ export function DailyVerse({ showCta = true }: { showCta?: boolean } = {}) {
       <p className="font-dev text-2xl leading-relaxed text-gold sm:text-3xl">
         श्री राधे कृष्ण
       </p>
-      <p className="mt-5 font-serif text-xl italic leading-relaxed text-indigo-foreground/90 sm:text-2xl">
+      <p className={`mt-5 font-serif text-xl italic leading-relaxed sm:text-2xl ${quoteTone}`}>
         &ldquo;{v.quote}&rdquo;
       </p>
-      <p className="mt-4 text-sm uppercase tracking-[0.14em] text-gold/90">
+      <p className={`mt-4 text-sm uppercase tracking-[0.14em] ${tone === "dark" ? "text-gold/90" : "text-gold"}`}>
         {v.source}
       </p>
       {showCta ? (

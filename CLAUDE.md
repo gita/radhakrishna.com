@@ -83,6 +83,58 @@ time. If a blocker (e.g. the parallel.ai key) is missing, say so and stop, do no
 - [ ] Passed the expert council adversarial review after iteration
 - [ ] Verified on mobile + desktop; internal links wired; sitemap updated
 
+## Standing conventions (do these without being asked)
+
+**Imagery.** Every generated image that is good enough to ship gets: a `webp` under
+`public/images/content/` sized ~1600px wide, an `imageAlt` that describes the scene (it renders as the
+visible caption AND feeds `ImageObject`), and a place in the `/images` gallery. The gallery builds itself
+from any doc with an `image`, so wiring the frontmatter is enough, but check it actually appears there and
+that clicking it opens the lightbox. Never ship art that only lives on one page.
+
+**Deleting a page.** Grep the whole tree, not just `content/`. A page is referenced from: body links in
+other MDX, `related:` frontmatter (a dangling slug now throws at build), hub tables, `app/page.tsx`
+popular questions, the sitemap, the `/images` gallery, Daily Darshan, AND the strategy docs in `docs/`.
+Leaving it in `docs/02` or `docs/research/*` means a future run rebuilds the page. Record the call in
+`docs/DECISIONS.md` so the reasoning survives. If the page was ever live, add a 301 to the closest
+surviving page rather than leaving a 404.
+
+**Before calling a PR ready to merge, run the whole checklist yourself:**
+
+1. `node scripts/check-links.mjs --external` (routes, internal links, images, anchors, legacy redirects,
+   outbound citations). 403/429 from Britannica and krishna.com are bot walls, not breaks.
+2. Production build green, and every page hydrates (a client component that silently fails to hydrate
+   looks exactly like a CSS bug, see the lightbox incident).
+3. Canonicals absolute on radhakrishna.com, no `.net`, no stray `noindex`, sitemap entries all 200.
+4. `.env` gitignored and untracked; no secrets in tracked files.
+5. Visual pass on mobile and desktop for the pages the change touches.
+6. After merge and deploy, re-run 1 and 3 against production, then submit to search
+   (see "Getting pages indexed" below). Do not wait to be asked.
+
+## Getting pages indexed (what actually works)
+
+**Google has no legitimate push channel for our pages.** Verified, not assumed:
+- The sitemap ping endpoint was retired in June 2023 and 404s. There is no replacement.
+- The Indexing API is documented for **job posting and livestream pages only**. Using it for articles is
+  outside its stated purpose; do not build on it.
+- A sitemap is officially "merely a hint". Pages sitting in "Discovered, currently not indexed" is
+  usually a site-quality or crawl-capacity signal, not a submission problem. The fix is better pages and
+  internal links, which is the whole point of the content gate above.
+- The Search Console API **can** submit a sitemap: `PUT /webmasters/v3/sites/{siteUrl}/sitemaps/{feedpath}`.
+  Per-URL "Request indexing" has no API and is human-only with a small daily quota. **Do not script the
+  Search Console UI** with Chrome or Playwright to bypass that quota: it is automated access to Google
+  under their terms, and risking the domain is a far worse outcome than slower indexing. Do it by hand,
+  or use the URL Inspection API (read-only) to find which pages are missing and spend the manual
+  requests on those.
+
+**IndexNow is the one real push we have.** Bing, Yandex, Seznam, Naver. Not Google. It matters because
+Bing feeds Copilot, ChatGPT search and Perplexity. `npm run indexnow`, key in `.env` and at `/<key>.txt`,
+GitHub Action fires on content landing on main. Submit on genuine change only; resubmitting the same URLs
+on a timer is what earns a 429.
+
+**Do not drip-feed.** The advice to trickle URLs comes from vendors selling backlink-indexing services.
+Google publishes no such guidance and says sitemap order is irrelevant. Drip-feeding is a hedge against
+mass-produced thin pages; ours are verified and original, so ship them all at once.
+
 ## Read the docs, do not assume
 
 Before using any API, library, or system (Parallel, Reddit, Serper, Ahrefs, Velite, next/og, schema.org,

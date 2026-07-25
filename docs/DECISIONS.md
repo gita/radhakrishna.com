@@ -94,3 +94,13 @@ The brief mentions live darshan of certain temples. Live video streams are usual
 ---
 
 _When these are answered, they move up to "Decisions made" and the roadmap/architecture are updated._
+
+## Q12. Do we publish a "How did Radha die?" page? (2026-07-25)
+
+**No.** Written, then deleted before launch on the founder's call. The framing sits badly for a
+devotional site: the traditions that develop Radharani most fully treat her as eternal, so a
+"death" page misrepresents her even when the body says the scriptures never narrate one. The
+demand is real, and research/07 had it as a target, but we are not chasing it.
+
+Do not recreate it. If the underlying query is ever worth serving, do it as part of who-is-radha
+rather than as a page about her dying.

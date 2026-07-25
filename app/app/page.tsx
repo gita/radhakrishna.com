@@ -10,18 +10,18 @@ export const metadata: Metadata = {
 };
 
 /**
- * Smart link behind the QR code and every app CTA. Sending scans here rather than
- * straight to a store means one printable URL, and the redirect happens by device.
+ * Smart link behind every app CTA: one shareable URL for the app, so links and
+ * printed material do not have to pick a store up front.
  */
 export default function AppPage() {
   return (
     <div className="container max-w-2xl py-16 text-center md:py-24">
       <Image
-        src="/brand/morpankh.png"
-        alt=""
-        width={72}
-        height={72}
-        className="mx-auto size-18 rounded-2xl ring-1 ring-gold/30"
+        src="/brand/gita-app-icon.webp"
+        alt="Bhagavad Gita app icon"
+        width={144}
+        height={144}
+        className="mx-auto size-20 rounded-[1.15rem] shadow-md ring-1 ring-black/5"
       />
       <h1 className="mt-6 text-balance font-serif text-4xl font-semibold tracking-tight sm:text-5xl">
         The Bhagavad Gita, in your pocket

@@ -231,7 +231,7 @@ Priority key: **P0** = build first (pillar or highest volume × lowest competiti
 | 1   | Who is Radha? (complete profile: origin, Lakshmi, Barsana, role) | S    | Info          | Core pillar; anchors Cluster A internal linking; huge volume    |
 | 2   | Radha Krishna love story (full, scripture-sourced)               | S    | Info+visual   | Head term; pillar for Cluster B; pairs with image set           |
 | 3   | Why did Krishna not marry Radha? (scripture-by-scripture)        | Q    | Info          | One of the biggest single queries; incumbents are florist blogs |
-| 4   | How did Radha die? (Mahasamadhi, final flute story, ages)        | Q    | Info          | High emotional pull; top SERP is thin blogs, easy to beat       |
+| 4   | ~~How did Radha die?~~ DROPPED, see DECISIONS Q12                | Q    | Info          | Founder decision: not a framing we want for Radharani           |
 | 5   | Who is Radha's husband? (Ayan/Abhimanyu vs Krishna nuance)       | Q    | Info          | Massive confusion query; nuance = long-tail capture             |
 | 6   | Radha Krishna images / HD gallery (original, downloadable)       | I    | Visual        | Largest-volume bucket; spam-farm incumbents                     |
 | 7   | Radha Krishna quotes (Hindi + English, shareable cards)          | I    | Visual+info   | Pinterest/IG engine; feeds brand                                |

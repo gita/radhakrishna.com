@@ -32,7 +32,7 @@ engines and links them together.** That is the whole opportunity. Our seven stru
    Purana, Gita Govinda, Garga Samhita, Padma Purana with chapter references. This is the single biggest,
    cheapest differentiator, and it directly triggers the strongest AI-citation levers (quote + cite
    source).
-2. **Nuance without dodging.** "Did they marry?" "How did Radha die?" vary by scripture and sampradaya.
+2. **Nuance without dodging.** "Did they marry?" "Is Radha an incarnation of Lakshmi?" vary by scripture and sampradaya.
    We present the scripture-by-scripture view. More truthful, and it owns the long tail of nuance
    queries.
 3. **Answer-first structure** on every page (see §5), so we get extracted by AI Overviews, ChatGPT,

@@ -69,11 +69,11 @@ export function AppCta() {
       >
         <div className="flex items-center gap-3">
           <Image
-            src="/brand/morpankh.png"
+            src="/brand/gita-app-icon.webp"
             alt=""
-            width={40}
-            height={40}
-            className="size-10 shrink-0 rounded-xl ring-1 ring-gold/30"
+            width={88}
+            height={88}
+            className="size-11 shrink-0 rounded-xl shadow-sm ring-1 ring-black/5"
           />
           <div className="min-w-0 flex-1">
             <p className="truncate text-sm font-semibold">
@@ -119,11 +119,11 @@ export function AppCta() {
         </button>
         <div className="flex items-center gap-3">
           <Image
-            src="/brand/morpankh.png"
+            src="/brand/gita-app-icon.webp"
             alt=""
-            width={44}
-            height={44}
-            className="size-11 rounded-xl ring-1 ring-gold/30"
+            width={96}
+            height={96}
+            className="size-12 rounded-xl shadow-sm ring-1 ring-black/5"
           />
           <div>
             <p className="font-serif text-base font-semibold leading-tight">

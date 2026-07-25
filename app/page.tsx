@@ -54,7 +54,6 @@ const popularQuestions: [string, string][] = [
     "/questions/why-does-krishna-wear-a-peacock-feather",
   ],
   ["Who is Radha?", "/radha-krishna/who-is-radha"],
-  ["What happened to Radha?", "/questions/how-did-radha-die"],
   [
     "Is Radha an incarnation of Lakshmi?",
     "/questions/is-radha-an-incarnation-of-lakshmi",
