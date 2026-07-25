@@ -56,7 +56,7 @@ export const network = [
   {
     label: "Hanuman Chalisa",
     note: "Chant along, with meaning",
-    href: "https://vedvyas.com",
+    href: "https://hanumanchalisa.net",
     image: "/shots/hanuman-chalisa.webp",
   },
 ] as const;
@@ -69,7 +69,7 @@ export const appLinks = {
 } as const;
 
 export const social = [
-  { label: "Pinterest", href: "https://www.pinterest.com/" },
-  { label: "Instagram", href: "https://www.instagram.com/" },
-  { label: "YouTube", href: "https://www.youtube.com/" },
+  { label: "Pinterest", href: "https://www.pinterest.com/iiradhakrishnaii/" },
+  { label: "Facebook", href: "https://www.facebook.com/iiRadhaKrishnaii/" },
+  { label: "X", href: "https://twitter.com/ShriKrishna" },
 ] as const;

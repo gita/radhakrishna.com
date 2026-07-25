@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Inter, Crimson_Pro, Noto_Serif_Devanagari } from "next/font/google";
-import { site, network, social } from "@/lib/site";
+import { site, social } from "@/lib/site";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { AppCta } from "@/components/app-cta";
-import { RevealInit } from "@/components/reveal-init";
 import "./globals.css";
 
 // Self-hosted via next/font (no runtime CDN). Subsetted, display:swap. docs/03 §4.
@@ -71,7 +70,16 @@ function OrgJsonLd() {
         "@id": `${site.foundation.href}/#organization`,
         name: site.foundation.label,
         url: site.foundation.href,
-        sameAs: [...network.map((n) => n.href), ...social.map((s) => s.href)],
+        // sameAs must be authoritative profiles OF the foundation, not product
+        // pages. Its own sites plus real social accounts, nothing placeholder.
+        sameAs: [
+          "https://bhagavadgita.com",
+          "https://hanumanchalisa.net",
+          "https://radhakrishna.com",
+          "https://www.linkedin.com/company/vedvyas/",
+          "https://github.com/gita",
+          ...social.map((s) => s.href),
+        ],
       },
       {
         "@type": "WebSite",
@@ -106,7 +114,6 @@ export default function RootLayout({
         <SiteHeader />
         <main id="main">{children}</main>
         <SiteFooter />
-        <RevealInit />
         {/* Privacy-friendly analytics */}
         <Script
           defer

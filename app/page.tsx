@@ -121,7 +121,6 @@ export default function HomePage() {
         />
         <div
           className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
-          data-reveal
         >
           {explore.map((c) => (
             <Link
@@ -155,7 +154,6 @@ export default function HomePage() {
       <section className="container py-8">
         <div
           className="relative overflow-hidden rounded-[1.75rem] bg-indigo px-6 py-16 text-center text-indigo-foreground sm:px-12"
-          data-reveal
         >
           <div
             aria-hidden
@@ -177,7 +175,6 @@ export default function HomePage() {
         />
         <div
           className="mx-auto mt-10 max-w-3xl divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card shadow-sm"
-          data-reveal
         >
           {popularQuestions.map(([q, href]) => (
             <Link
@@ -203,7 +200,6 @@ export default function HomePage() {
           />
           <div
             className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
-            data-reveal
           >
             {network.map((n) => (
               <a
@@ -247,7 +243,7 @@ function SectionHeading({
   sub?: string;
 }) {
   return (
-    <div className="text-center" data-reveal>
+    <div className="text-center">
       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">
         {eyebrow}
       </p>

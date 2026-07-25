@@ -99,6 +99,23 @@ for (const img of images) {
   if (!r.ok) note(`image ${img} -> ${r.status}`);
 }
 
+// A link can return 200 and still be wrong. Bare social/platform roots are
+// placeholders someone forgot to fill in, and they are worse than useless when
+// they also land in Organization sameAs.
+const PLACEHOLDER_HOSTS = new Set([
+  "pinterest.com", "www.pinterest.com", "instagram.com", "www.instagram.com",
+  "youtube.com", "www.youtube.com", "facebook.com", "www.facebook.com",
+  "twitter.com", "x.com", "www.x.com", "linkedin.com", "www.linkedin.com",
+  "threads.net", "www.threads.net", "example.com", "www.example.com",
+]);
+for (const u of external) {
+  let parsed;
+  try { parsed = new URL(u); } catch { note(`external ${u} is not a valid URL`); continue; }
+  const bare = parsed.pathname === "/" || parsed.pathname === "";
+  if (bare && PLACEHOLDER_HOSTS.has(parsed.host))
+    note(`placeholder link: ${u} points at the platform homepage, not a profile`);
+}
+
 const blocked = [];
 if (CHECK_EXTERNAL) {
   const list = [...external];
@@ -119,7 +136,17 @@ if (CHECK_EXTERNAL) {
             },
             signal: AbortSignal.timeout(20000),
           });
-          if (r.status === 403 || r.status === 429) blocked.push(`${u} -> ${r.status}`);
+          // 403/429 are bot walls anywhere. 400 only counts as one on the social
+          // hosts that reject non-browser clients outright (Facebook does this on
+          // a page that loads perfectly in a browser); elsewhere 400 is a real bug.
+          const SOCIAL_BOT_WALL = /(^|\.)(facebook|instagram|linkedin|x|twitter)\.com$/;
+          const host = new URL(u).host;
+          if (
+            r.status === 403 ||
+            r.status === 429 ||
+            (r.status === 400 && SOCIAL_BOT_WALL.test(host))
+          )
+            blocked.push(`${u} -> ${r.status}`);
           else if (!r.ok) note(`external ${u} -> ${r.status}`);
         } catch (e) {
           // A TLS/network hiccup is not proof the page is gone; retry once.
