@@ -364,9 +364,5 @@
   font-size: 0.85em;
   padding-top: 0.15em;
 }
-@media (min-width: 768px) {
-  .prayer-prose ol {
-    column-count: 2;
-    column-gap: 2.5rem;
-  }
-}
+/* Single column on purpose: this is chanted straight down, and two columns
+   make the eye jump back to the top mid-recitation. */
