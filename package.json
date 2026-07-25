@@ -2,7 +2,7 @@
   "name": "radhakrishna",
   "version": "3.0.0",
   "private": true,
-  "description": "Radhakrishna.com \u2014 the digital home of Shri Radha Krishna",
+  "description": "Radhakrishna.com — the digital home of Shri Radha Krishna",
   "engines": {
     "node": ">=20"
   },
@@ -16,7 +16,8 @@
     "indexnow": "node scripts/submit-indexnow.mjs",
     "indexnow:dry": "node scripts/submit-indexnow.mjs --dry-run",
     "build:verses": "node scripts/build-daily-verses.mjs",
-    "check:festivals": "python3 scripts/check-festival-dates.py"
+    "check:festivals": "python3 scripts/check-festival-dates.py",
+    "qa:visual": "node scripts/visual-qa.mjs"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
@@ -35,6 +36,7 @@
     "@types/node": "^22.10.2",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
+    "playwright": "^1.62.0",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-slug": "^6.0.0",
     "remark-gfm": "^4.0.1",

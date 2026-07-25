@@ -120,6 +120,16 @@ Leaving it in `docs/02` or `docs/research/*` means a future run rebuilds the pag
 `docs/DECISIONS.md` so the reasoning survives. If the page was ever live, add a 301 to the closest
 surviving page rather than leaving a 404.
 
+**Visual QA is a ship condition, mobile first.** Most of our readers are on mobile web, so no page
+goes into a PR until it has been *seen* at a real phone viewport and on desktop, not merely asserted to
+be responsive. Use Playwright (`npx playwright screenshot`, or a script with `devices["iPhone 14"]`):
+the Chrome automation here refuses to size below roughly 1900px, so it cannot do this. Capture full-page
+screenshots at 390x844 and at 1440 wide, look at every one, and check: nothing overflows sideways, the
+hero and headings are readable, tables scroll inside their own container rather than the page, the FAQ
+and related cards stack cleanly, images load and are not stretched or cropped through a face, the app CTA
+does not cover content, and tap targets are not cramped. Fix what you see before opening the PR, and say
+in the PR which viewports you checked.
+
 **Before calling a PR ready to merge, run the whole checklist yourself:**
 
 1. `node scripts/check-links.mjs --external` (routes, internal links, images, anchors, legacy redirects,

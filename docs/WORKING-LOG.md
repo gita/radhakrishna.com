@@ -4,6 +4,33 @@ Newest entries on top. Each entry: date, what was done, what's next. This is the
 
 ---
 
+## 2026-07-25 (latest) — Phase 3 art shipped: all five pages illustrated
+
+The five Phase 3 pages now have original art. gpt-image-2, 1536x1024, quality high, one distinct
+scene each, converted with sharp to `public/images/content/<slug>.webp` at 1600w q80. Every image was
+inspected at full size (and the risky corners crop-zoomed) before shipping: faces complete and
+uncropped, no text or lettering anywhere, bright and light-first, correct subject.
+
+| Page                     | Scene                                                                               |
+| ------------------------ | ----------------------------------------------------------------------------------- |
+| `/festivals/janmashtami` | Vasudeva crossing the flooded Yamuna at midnight, Sheshnaga's hoods over the basket |
+| `/festivals/radhashtami` | Barsana courtyard at golden dawn, the infant Radharani, sakhis dancing              |
+| `/temples/banke-bihari`  | The deity in tribhanga in a lamp-lit sanctum, devotees' folded hands in front       |
+| `/temples/vrindavan`     | Place portrait, golden hour across the Yamuna, ghats and spires, no deity           |
+| `/temples/barsana`       | The Shriji temple on Bhanugarh hill at sunrise, the long stone stairway             |
+
+`image` + `imageAlt` sit immediately after `description:` in each frontmatter, matching the rest of
+the content tree. Velite build green, all five carry an image, no image path used twice anywhere on
+the site, so the `/images` gallery picks them up automatically.
+
+Note for anyone repeating this: OpenAI had an "elevated error rates" incident that day and every
+authenticated request 500'd for about half an hour. It was not the key.
+
+**RESUME HERE:** steps 2-4 of the entry below (`check:festivals`, `check:links`, production build,
+visual QA on mobile and desktop including the `/images` lightbox, then commit and IndexNow).
+
+---
+
 ## 2026-07-25 (later) — Phase 3 festival cluster: text done, art pending
 
 Five pages written and validated, NOT yet illustrated:
@@ -12,6 +39,7 @@ Five pages written and validated, NOT yet illustrated:
 Rule-zero sweep clean, no em dashes, no curly quotes.
 
 **RESUME HERE, in order:**
+
 1. Art is missing on all five (`grep -L "^image:" content/festivals/*.mdx content/temples/*.mdx`).
    Generate per CLAUDE.md standing conventions: gpt-image-2, 1536x1024, distinct scene each, faces
    intact, no text, then sharp to public/images/content/<slug>.webp at 1600w q80, add image +
@@ -35,6 +63,7 @@ timeanddate convention. Never framed as householder vs sannyasi; the split is tr
 PR #22 squashed into main; radhakrishna.com now serves the rebuild (23 routes).
 
 **Verified against production, not just locally:**
+
 - check-links against https://radhakrishna.com: 23 routes, 22 internal links, 24 images,
   7 legacy redirects, zero broken.
 - OG images resolve 200 on the live domain (they 404'd before the metadataBase fix, because
@@ -45,6 +74,7 @@ PR #22 squashed into main; radhakrishna.com now serves the rebuild (23 routes).
   and Naver, and through Bing it reaches Copilot, ChatGPT search and Perplexity.
 
 **Still to do by hand (no legitimate automation exists):**
+
 1. Search Console: add the radhakrishna.com property, submit /sitemap.xml once.
 2. Request indexing manually on 5-6 priority pages (no API; scripting the UI is against
    Google's automated-access terms, see CLAUDE.md).

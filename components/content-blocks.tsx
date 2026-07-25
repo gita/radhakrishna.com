@@ -138,11 +138,14 @@ export function FestivalDates({
   if (!occurrences?.length) return null;
   const sorted = [...occurrences].sort((a, b) => a.year - b.year);
   const today = new Date().toISOString().slice(0, 10);
-  const next = sorted.find((o) => (o.vaishnava ?? o.date) >= today);
+  const next = sorted.find((o) => (o.vaishnava ?? o.date).slice(0, 10) >= today);
   // The general (smarta) day leads, since that is what most visitors keep.
 
+  // velite's isodate() yields a full ISO datetime ("2026-09-04T00:00:00.000Z"),
+  // but hand-written frontmatter may be a bare "2026-09-04". Normalise to the
+  // date part and read it as UTC so the day never shifts by timezone.
   const fmt = (iso: string) =>
-    new Date(iso + "T00:00:00Z").toLocaleDateString("en-IN", {
+    new Date(`${iso.slice(0, 10)}T00:00:00Z`).toLocaleDateString("en-IN", {
       weekday: "long",
       day: "numeric",
       month: "long",
@@ -194,7 +197,7 @@ export function FestivalDates({
         {sorted.map((o) => (
           <li
             key={o.year}
-            className={(o.vaishnava ?? o.date) < today ? "text-muted-foreground" : ""}
+            className={(o.vaishnava ?? o.date).slice(0, 10) < today ? "text-muted-foreground" : ""}
           >
             <span className="font-medium tabular-nums">{o.year}</span>
             {" \u00b7 "}
