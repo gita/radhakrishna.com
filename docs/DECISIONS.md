@@ -78,7 +78,7 @@ Pulled from bg-frontend's footer + app page. Confirmed URLs for the footer "Our 
 - **Bhagavad Gita iOS app:** https://apps.apple.com/us/app/bhagavad-gita-hindi-english/id1602895635
 - **Bhagavad Gita Android app:** https://play.google.com/store/apps/details?id=com.gitainitiative.bhagavadgita
 - **Ved Vyas:** https://vedvyas.com (parent brand; confirm exact path)
-- **Social (shared):** Facebook facebook.com/iiRadhaKrishnaii, Twitter/X @ShriKrishna, GitHub github.com/gita
+- **Social (shared):** Facebook facebook.com/vedvyasfoundation, Twitter/X @ShriKrishna, GitHub github.com/gita
 
 **Still to confirm with founder:** the **Hanuman Chalisa** property/app URL, and whether there is an
 existing **Radha Krishna app** to link (the demand research suggests building the Krishna AI, T1).

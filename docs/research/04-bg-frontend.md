@@ -245,7 +245,7 @@ Footer is `src/components/Footers/Footer.tsx` (4-column). Brand = "Bhagavad Gita
 
 **Social profiles** (Organization `sameAs`, reused across bhagavadgita.com + radhakrishna.com brand):
 
-- Facebook: `https://www.facebook.com/iiRadhaKrishnaii/` (also `/radhakrishnablog/` as OG article author)
+- Facebook: `https://www.facebook.com/vedvyasfoundation/` (also `/radhakrishnablog/` as OG article author)
 - Twitter/X: `https://twitter.com/ShriKrishna` (`@ShriKrishna`)
 - LinkedIn: `https://www.linkedin.com/company/bhagavadgita/`
 - Pinterest: `https://www.pinterest.com/iiradhakrishnaii/`
@@ -255,7 +255,7 @@ Footer is `src/components/Footers/Footer.tsx` (4-column). Brand = "Bhagavad Gita
 There is **no dedicated "our other apps" ecosystem switcher / mega-menu** — cross-property
 linking is light: a single "Radha Krishna" resource link + Ved Vyas Foundation copyright +
 the Radha Krishna social handles. The shared identity is expressed mostly through **brand
-assets** (the `iiRadhaKrishnaii` social handles, `radhakrishna.png` logo) and the common
+assets** (the `vedvyasfoundation` social handles, `radhakrishna.png` logo) and the common
 JKYog/Ved Vyas backend (audio CDN, foundation).
 
 ---

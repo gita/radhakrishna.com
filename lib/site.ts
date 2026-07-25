@@ -70,6 +70,6 @@ export const appLinks = {
 
 export const social = [
   { label: "Pinterest", href: "https://www.pinterest.com/iiradhakrishnaii/" },
-  { label: "Facebook", href: "https://www.facebook.com/iiRadhaKrishnaii/" },
+  { label: "Facebook", href: "https://www.facebook.com/vedvyasfoundation/" },
   { label: "X", href: "https://twitter.com/ShriKrishna" },
 ] as const;
