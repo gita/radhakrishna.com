@@ -48,7 +48,9 @@ function dayOfYear(d: Date) {
   return Math.floor(diff / 86400000);
 }
 
-export function DailyVerse() {
+/** `showCta` is off on the Daily Darshan page itself, where the button would
+ *  otherwise link to the page the reader is already on. */
+export function DailyVerse({ showCta = true }: { showCta?: boolean } = {}) {
   // Render a stable verse on the server, then advance to today's on the client.
   const [i, setI] = useState(0);
   useEffect(() => {
@@ -70,14 +72,16 @@ export function DailyVerse() {
       <p className="mt-4 text-sm uppercase tracking-[0.14em] text-gold/90">
         {v.source}
       </p>
-      <div className="mt-8">
-        <Link
-          href="/daily-darshan"
-          className="inline-flex h-12 items-center justify-center rounded-lg bg-background px-7 text-base font-medium text-indigo shadow-sm transition-colors hover:bg-background/90"
-        >
-          Begin Daily Darshan
-        </Link>
-      </div>
+      {showCta ? (
+        <div className="mt-8">
+          <Link
+            href="/daily-darshan"
+            className="inline-flex h-12 items-center justify-center rounded-lg bg-background px-7 text-base font-medium text-indigo shadow-sm transition-colors hover:bg-background/90"
+          >
+            Begin Daily Darshan
+          </Link>
+        </div>
+      ) : null}
     </div>
   );
 }

@@ -50,10 +50,10 @@ const popularQuestions: [string, string][] = [
     "/questions/why-did-krishna-not-marry-radha",
   ],
   [
-    "Why did Krishna leave Vrindavan?",
-    "/questions/why-did-krishna-leave-vrindavan",
+    "Why does Krishna wear a peacock feather?",
+    "/questions/why-does-krishna-wear-a-peacock-feather",
   ],
-  ["Who was Radha?", "/radha"],
+  ["Who is Radha?", "/radha-krishna/who-is-radha"],
   ["What happened to Radha?", "/questions/how-did-radha-die"],
   [
     "Is Radha an incarnation of Lakshmi?",
@@ -61,7 +61,7 @@ const popularQuestions: [string, string][] = [
   ],
   [
     "What does their love symbolize?",
-    "/teachings/what-radha-krishna-love-symbolizes",
+    "/radha-krishna/what-their-love-symbolizes",
   ],
 ];
 

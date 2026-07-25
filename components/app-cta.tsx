@@ -33,8 +33,7 @@ function snooze() {
  * reader is engaged rather than on load, and a dismissal is remembered for a week
  * so it keeps asking without becoming a nuisance.
  *
- * Desktop cannot install from a click, so it offers a QR code. Mobile gets a slim
- * bar that deep links straight to the right store.
+ * Desktop gets a small card, mobile a slim bar that deep links to the right store.
  */
 export function AppCta() {
   const [show, setShow] = useState(false);
@@ -104,9 +103,9 @@ export function AppCta() {
         </div>
       </div>
 
-      {/* Desktop: QR card, since a desktop click cannot install anything */}
+      {/* Desktop: compact card in the corner */}
       <div
-        className={`fixed bottom-6 right-6 z-50 hidden w-[22rem] rounded-2xl border border-gold/25 bg-card p-5 shadow-xl md:block ${
+        className={`fixed bottom-6 right-6 z-50 hidden w-[19rem] rounded-2xl border border-gold/25 bg-card p-5 shadow-xl md:block ${
           closing ? "opacity-0" : "opacity-100"
         } transition-opacity duration-200`}
       >
@@ -135,39 +134,28 @@ export function AppCta() {
             </p>
           </div>
         </div>
-        <div className="mt-4 flex items-center gap-4">
-          <Image
-            src="/brand/app-qr.png"
-            alt="Scan to download the Bhagavad Gita app"
-            width={104}
-            height={104}
-            className="size-26 rounded-lg bg-background p-1 ring-1 ring-border"
-          />
-          <div className="flex-1 space-y-2">
-            <p className="text-xs text-muted-foreground">
-              Scan with your phone, or open a store:
-            </p>
-            <div className="flex flex-col gap-1.5">
-              <a
-                href={appLinks.ios}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-analytics="app-cta-ios"
-                className="rounded-lg border border-border px-3 py-1.5 text-center text-xs font-semibold transition-colors hover:border-gold/50 hover:text-divine"
-              >
-                App Store
-              </a>
-              <a
-                href={appLinks.android}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-analytics="app-cta-android"
-                className="rounded-lg border border-border px-3 py-1.5 text-center text-xs font-semibold transition-colors hover:border-gold/50 hover:text-divine"
-              >
-                Google Play
-              </a>
-            </div>
-          </div>
+        <p className="mt-3 text-sm text-muted-foreground">
+          Every verse in Hindi and English, with meaning and audio. Free.
+        </p>
+        <div className="mt-4 flex gap-2">
+          <a
+            href={appLinks.ios}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-analytics="app-cta-ios"
+            className="flex-1 rounded-full bg-divine px-4 py-2 text-center text-sm font-semibold text-background transition-opacity hover:opacity-90"
+          >
+            iPhone
+          </a>
+          <a
+            href={appLinks.android}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-analytics="app-cta-android"
+            className="flex-1 rounded-full border border-border px-4 py-2 text-center text-sm font-semibold transition-colors hover:border-gold/50 hover:text-divine"
+          >
+            Android
+          </a>
         </div>
       </div>
     </>

@@ -59,7 +59,7 @@ export default function DailyDarshanPage() {
       ) : null}
 
       <div className="mt-12">
-        <DailyVerse />
+        <DailyVerse showCta={false} />
       </div>
 
       <div className="mt-12 rounded-2xl border border-gold/25 bg-gold/5 p-6 text-center">
