@@ -14,7 +14,8 @@
     "check:links": "node scripts/check-links.mjs",
     "check:links:all": "node scripts/check-links.mjs --external",
     "indexnow": "node scripts/submit-indexnow.mjs",
-    "indexnow:dry": "node scripts/submit-indexnow.mjs --dry-run"
+    "indexnow:dry": "node scripts/submit-indexnow.mjs --dry-run",
+    "build:verses": "node scripts/build-daily-verses.mjs"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",

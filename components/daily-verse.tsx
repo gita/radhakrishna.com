@@ -2,45 +2,13 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { DAILY_VERSES, TRANSLATOR } from "@/lib/daily-verses";
 
 /**
- * Today's Devotion — rotates daily through a small pool of real, correctly
- * attributed Bhagavad Gita verses. Client-side so it advances each day the
- * reader visits. The full Daily Darshan (fresh image + reflection + mantra
- * audio via a daily job) is the planned daily engine (docs/05 Phase 5).
+ * Today's Devotion. Rotates by day of year through the curated pool in
+ * lib/daily-verses.ts, which is generated from the foundation's own Gita dataset
+ * so every quote is verbatim from a named translation, never written from memory.
  */
-const VERSES = [
-  {
-    quote:
-      "To those who are ever devoted and worship Me with love, I give the understanding by which they come to Me.",
-    source: "Bhagavad Gita 9.22",
-  },
-  {
-    quote:
-      "Fix your mind on Me alone, rest your intellect in Me, and you will dwell in Me. Of this there is no doubt.",
-    source: "Bhagavad Gita 12.8",
-  },
-  {
-    quote:
-      "Fix your mind on Me, be devoted to Me, worship Me, and offer your reverence to Me. You will surely come to Me.",
-    source: "Bhagavad Gita 9.34",
-  },
-  {
-    quote:
-      "In whatever way people surrender to Me, I receive them. The path they follow, in every way, is Mine.",
-    source: "Bhagavad Gita 4.11",
-  },
-  {
-    quote:
-      "For one who sees Me everywhere and sees all things in Me, I am never lost, nor is that soul ever lost to Me.",
-    source: "Bhagavad Gita 6.30",
-  },
-  {
-    quote:
-      "Give up every other path and take shelter in Me alone. I will free you from all that binds you. Do not grieve.",
-    source: "Bhagavad Gita 18.66",
-  },
-];
 
 function dayOfYear(d: Date) {
   const start = new Date(d.getFullYear(), 0, 0);
@@ -61,9 +29,9 @@ export function DailyVerse({
   // Render a stable verse on the server, then advance to today's on the client.
   const [i, setI] = useState(0);
   useEffect(() => {
-    setI(dayOfYear(new Date()) % VERSES.length);
+    setI(dayOfYear(new Date()) % DAILY_VERSES.length);
   }, []);
-  const v = VERSES[i];
+  const v = DAILY_VERSES[i];
 
   return (
     <div className="relative mx-auto max-w-2xl">
@@ -78,6 +46,11 @@ export function DailyVerse({
       </p>
       <p className={`mt-4 text-sm uppercase tracking-[0.14em] ${tone === "dark" ? "text-gold/90" : "text-gold"}`}>
         {v.source}
+      </p>
+      <p
+        className={`mt-1 text-xs ${tone === "dark" ? "text-indigo-foreground/60" : "text-muted-foreground"}`}
+      >
+        Translation by {TRANSLATOR}
       </p>
       {showCta ? (
         <div className="mt-8">

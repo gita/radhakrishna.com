@@ -91,6 +91,12 @@ visible caption AND feeds `ImageObject`), and a place in the `/images` gallery. 
 from any doc with an `image`, so wiring the frontmatter is enough, but check it actually appears there and
 that clicking it opens the lightbox. Never ship art that only lives on one page.
 
+**Scripture on the site.** Never type a verse from memory. The foundation's own dataset
+(github.com/gita/gita) has all 701 verses with five named English translations; pull from it and credit
+the translator. `scripts/build-daily-verses.mjs` generates `lib/daily-verses.ts` this way, so the only
+editorial choice is which references to include. A fabricated verse shipped early in this project (an
+Arjuna line rewritten as Radha); that must never happen again.
+
 **Deleting a page.** Grep the whole tree, not just `content/`. A page is referenced from: body links in
 other MDX, `related:` frontmatter (a dangling slug now throws at build), hub tables, `app/page.tsx`
 popular questions, the sitemap, the `/images` gallery, Daily Darshan, AND the strategy docs in `docs/`.
