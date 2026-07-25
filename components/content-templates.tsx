@@ -72,6 +72,7 @@ const CLUSTER_LABEL: Record<string, string> = {
   temples: "Temples",
   places: "Places",
   images: "Images",
+  about: "About",
 };
 
 function clusterLabel(c?: string) {

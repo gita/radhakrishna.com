@@ -139,8 +139,14 @@ composition, setting, framing), never a 1:1 copy and never presented as a specif
   (Rasalila, Jhula, gopis, Govardhan) as rate limits allow — use Wikimedia thumbnail URLs to avoid 429s.
 - **BBT / ISKCON art** — modern, copyrighted; vivid, detailed, devotional (the classic Krishna-book look).
   Gather from the web as **style references** per founder direction; generate original scenes.
-- **JKYog art** — the org's Radha-Krishna art (Radha Madhav Dham / Swami Mukundananda). Gather from the web
-  / JKYog sources as references; the founder's org, used for reference to make new originals.
+- **JKYog art** — the org's Radha-Krishna art (Swami Mukundananda). Gather from **jkyog.org, jkyog.in and
+  the Radha Krishna Temple of Dallas** as references; our own lineage, used for reference to make new
+  originals.
+  - **Do not source from, cite, or link Radha Madhav Dham in Austin.** It carries the JKP name today but
+    was founded as Barsana Dham by a man convicted in 2011 on twenty counts of indecency with a child,
+    who then fled; the organisation has removed him from its own materials and neither official site
+    names a founder. It is not Swami Mukundananda's. Nothing on this site should point a reader there or
+    borrow its imagery, and the lineage page deliberately omits it.
 - **Nathdwara Pichwai, Tanjore (gold-leaf), Madhubani** — traditional forms to fold in for variety + festival
   pieces (historical works are public domain).
 

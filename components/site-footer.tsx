@@ -71,6 +71,9 @@ export function SiteFooter() {
             <Link href="/about" className="hover:text-foreground">
               About
             </Link>
+            <Link href="/lineage" className="hover:text-foreground">
+              Our lineage
+            </Link>
             <Link href="/privacy" className="hover:text-foreground">
               Privacy
             </Link>

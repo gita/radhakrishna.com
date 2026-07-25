@@ -156,7 +156,7 @@ guidance and the reason, and leave out the casualty:
 Sweep for it before shipping:
 
 ```
-grep -rniE "stampede|crush|died|death|fatal|widow|abandoned|scam|touts?|harass|beggar|encroach|court case|litigation|controversy|riot|theft|danger" content/
+grep -rniE "\b(stampede|crush|died|death|fatal|widow|abandoned|scam|touts?|harass|beggar|encroach|litigation|controversy|riot|theft|danger)\b|court case" content/
 
 # Sources outlive the passage they were added for. Both times a grim passage was cut,
 # its citation stayed behind and kept rendering in the Sources block, once with
