@@ -4,7 +4,52 @@ Newest entries on top. Each entry: date, what was done, what's next. This is the
 
 ---
 
-## 2026-07-25 (latest) — Every page has a real social card
+## 2026-07-25 (latest) — Real photographs on the place pages, and two mobile bugs
+
+Founder: the temple pages were still leading with AI art after being asked for real photographs.
+Correct, and it had been deferred twice.
+
+**Photographs.** All three place pages now lead with a real photograph and carry a gallery of several
+angles: Vrindavan (Prem Mandir, Ketandelhiwala, CC BY-SA 4.0), Barsana (the Shriji temple courtyard,
+Kridha20, CC BY-SA 4.0), Banke Bihari (the facade from the lane, Guptaele, CC BY-SA 4.0), plus seven
+gallery photographs including Keshi Ghat, Bhaktivedanta Swami Marg, the Barsana arch and Lathmar Holi
+inside the temple.
+
+**Look at every candidate at full size.** It mattered twice: `Chhatris of Barsana 01` is actually
+Lathmar Holi indoors rather than architecture, and a widely used Prem Mandir shot has a NOKIA
+watermark burned into the corner. Neither is detectable from the filename or the metadata.
+
+**A licence breach caught in passing.** The heroes were switched to CC BY-SA photographs and rendered
+at first with no credit at all. For those licences attribution is the condition of use. Every photo
+now shows photographer, licence and source, and the `photos[]` schema makes `credit`, `licence` and
+`source` required, so an uncredited photo cannot get through the build. Hero credit rides on
+`imageCredit` / `imageLicence` / `imageLicenceUrl` / `imageSource`.
+
+Tooling: `scripts/find-commons-photos.mjs` (search, filtered to large, freely licensed, named author)
+and `scripts/fetch-commons-photos.mjs` (download, WebP, emit the exact `photos:` YAML).
+
+**Mobile menu.** It was a native `<details>`, which only ever toggles from its own `<summary>`, so
+tapping away did nothing and it stayed open across a client-side navigation. Now a small client
+component; the rest of the header is still server-rendered. Verified in WebKit: closes on outside tap,
+on Escape, and on navigation.
+
+**Horizontal scroll: not reproduced, and said plainly.** Chromium and WebKit, 320/360/375/390px, all
+28 routes with the app banner showing: the document width never exceeded the viewport. A promising
+lead (the hero's animated `.ambient-glow`) was disproved by toggling the guard off at runtime and
+measuring again, identical either way, so the guard was removed rather than shipped as a fix that
+fixes nothing. Neither `body` nor `html` carries a global `overflow-x: hidden`, so real overflow would
+show.
+
+What was found is a real cause no emulator reproduces: the newsletter input was 14px, and **iOS
+Safari zooms the whole page when a focused input is under 16px**, after which the page sits wider than
+the window and pans sideways. Now 16px on phones. Never `maximum-scale=1`, which takes pinch zoom from
+everyone who needs it. `visual-qa.mjs` now fails any form control under 16px, and only names
+overflow culprits when the page actually scrolls, since an element clipped by an ancestor was
+producing false positives.
+
+---
+
+## 2026-07-25 — Every page has a real social card
 
 Founder asked whether the OG images actually worked across all the pages, and whether they were
 dynamic or hard-coded. Worth asking: sixteen pages were broken.

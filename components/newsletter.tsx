@@ -66,7 +66,12 @@ export function Newsletter({ compact = false }: { compact?: boolean }) {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="you@example.com"
-            className="flex-1 rounded-full border border-border bg-background px-4 py-2.5 text-sm outline-none focus:border-gold focus:ring-2 focus:ring-gold/25"
+            // 16px on phones, not 14. iOS Safari zooms the whole page in when a
+            // focused input is under 16px, and the page then sits wider than the
+            // window and scrolls sideways until you pinch back out. The fix is
+            // the font size; never `maximum-scale=1`, which takes pinch zoom
+            // away from everyone who needs it.
+            className="min-w-0 flex-1 rounded-full border border-border bg-background px-4 py-2.5 text-base outline-none focus:border-gold focus:ring-2 focus:ring-gold/25 sm:text-sm"
           />
           <button
             type="submit"

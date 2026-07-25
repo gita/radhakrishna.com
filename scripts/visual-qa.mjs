@@ -35,7 +35,11 @@ mkdirSync(".qa", { recursive: true });
 
 const VIEWPORTS = [
   { name: "mobile", ...devices["iPhone 14"] },
-  { name: "desktop", viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1 },
+  {
+    name: "desktop",
+    viewport: { width: 1440, height: 900 },
+    deviceScaleFactor: 1,
+  },
 ];
 
 const browser = await chromium.launch();
@@ -46,7 +50,8 @@ for (const vp of VIEWPORTS) {
   const page = await ctx.newPage();
 
   for (const route of routes) {
-    const slug = route === "/" ? "home" : route.replace(/^\//, "").replace(/\//g, "-");
+    const slug =
+      route === "/" ? "home" : route.replace(/^\//, "").replace(/\//g, "-");
     await page.goto(BASE + route, { waitUntil: "networkidle", timeout: 45000 });
     // Let lazy images below the fold actually load before we judge them.
     await page.evaluate(async () => {
@@ -56,7 +61,10 @@ for (const vp of VIEWPORTS) {
           window.scrollTo(0, y);
           y += window.innerHeight;
           if (y < document.body.scrollHeight) setTimeout(step, 120);
-          else { window.scrollTo(0, 0); setTimeout(res, 800); }
+          else {
+            window.scrollTo(0, 0);
+            setTimeout(res, 800);
+          }
         };
         step();
       });
@@ -66,7 +74,8 @@ for (const vp of VIEWPORTS) {
     // images a moment rather than reporting a slow encode as a broken image.
     await page
       .waitForFunction(
-        () => [...document.images].every((i) => i.complete || i.naturalWidth > 0),
+        () =>
+          [...document.images].every((i) => i.complete || i.naturalWidth > 0),
         null,
         { timeout: 45000 },
       )
@@ -76,23 +85,42 @@ for (const vp of VIEWPORTS) {
       const out = [];
       const vw = document.documentElement.clientWidth;
 
-      if (document.documentElement.scrollWidth > vw + 1)
-        out.push(`page scrolls sideways (${document.documentElement.scrollWidth} > ${vw})`);
+      const pageScrolls = document.documentElement.scrollWidth > vw + 1;
+      if (pageScrolls)
+        out.push(
+          `page scrolls sideways (${document.documentElement.scrollWidth} > ${vw})`,
+        );
 
-      document.querySelectorAll("body *").forEach((el) => {
-        const r = el.getBoundingClientRect();
-        if (r.width > vw + 2 && r.height > 8) {
-          const cs = getComputedStyle(el);
-          // A wide element is fine if it or an ancestor scrolls it.
-          let p = el, scrolls = false;
-          while (p && p !== document.body) {
-            if (["auto", "scroll"].includes(getComputedStyle(p).overflowX)) { scrolls = true; break; }
-            p = p.parentElement;
+      // Only hunt for the culprit when the page actually scrolls sideways. An
+      // element can reach past the edge and be clipped by an ancestor, or sit a
+      // pixel over at the peak of an animation, without the reader ever being
+      // able to scroll to it. Reporting those is noise, and noise is what makes
+      // a checker get ignored.
+      if (pageScrolls)
+        document.querySelectorAll("body *").forEach((el) => {
+          const r = el.getBoundingClientRect();
+          // What matters is whether it reaches past the right edge, not whether it
+          // is merely wider than the window. A decorative element that starts at a
+          // negative offset can be wider than the viewport and still sit entirely
+          // inside it; reporting that trains you to ignore the tool.
+          if (r.right > vw + 2 && r.height > 8) {
+            const cs = getComputedStyle(el);
+            // A wide element is fine if it or an ancestor scrolls it.
+            let p = el,
+              scrolls = false;
+            while (p && p !== document.body) {
+              if (["auto", "scroll"].includes(getComputedStyle(p).overflowX)) {
+                scrolls = true;
+                break;
+              }
+              p = p.parentElement;
+            }
+            if (!scrolls && cs.position !== "fixed")
+              out.push(
+                `${el.tagName.toLowerCase()}.${(el.className || "").toString().slice(0, 30)} reaches ${Math.round(r.right)}px, past the ${vw}px edge`,
+              );
           }
-          if (!scrolls && cs.position !== "fixed")
-            out.push(`${el.tagName.toLowerCase()}.${(el.className || "").toString().slice(0, 30)} is ${Math.round(r.width)}px wide`);
-        }
-      });
+        });
 
       // Only eager images are judged. A lazy image far below the fold may
       // legitimately not have fetched by screenshot time, and reporting that as
@@ -101,20 +129,39 @@ for (const vp of VIEWPORTS) {
       document.querySelectorAll("img").forEach((img) => {
         if (img.loading === "lazy") return;
         if (img.naturalWidth === 0)
-          out.push(`image did not load: ${(img.currentSrc || img.src).slice(-60)}`);
+          out.push(
+            `image did not load: ${(img.currentSrc || img.src).slice(-60)}`,
+          );
+      });
+
+      // A form control under 16px makes iOS Safari zoom the whole page in the
+      // moment it is focused, and the page then sits wider than the window and
+      // scrolls sideways. No emulator reproduces it, so it has to be caught by
+      // measuring the font size rather than by looking.
+      document.querySelectorAll("input, select, textarea").forEach((el) => {
+        const size = parseFloat(getComputedStyle(el).fontSize);
+        if (size && size < 16)
+          out.push(
+            `form control at ${size}px (<16px makes iOS zoom the page): ${el.id || el.name || el.tagName.toLowerCase()}`,
+          );
       });
 
       // Body copy under 14px is uncomfortable on a phone.
       document.querySelectorAll("p, li").forEach((el) => {
         const size = parseFloat(getComputedStyle(el).fontSize);
         if (size && size < 13 && (el.textContent || "").trim().length > 60)
-          out.push(`text at ${size}px: "${(el.textContent || "").trim().slice(0, 40)}"`);
+          out.push(
+            `text at ${size}px: "${(el.textContent || "").trim().slice(0, 40)}"`,
+          );
       });
 
       return [...new Set(out)];
     });
 
-    await page.screenshot({ path: `.qa/${slug}--${vp.name}.png`, fullPage: true });
+    await page.screenshot({
+      path: `.qa/${slug}--${vp.name}.png`,
+      fullPage: true,
+    });
     if (findings.length) {
       problems.push({ route, viewport: vp.name, findings });
       console.log(`  ${vp.name.padEnd(7)} ${route}`);
@@ -128,9 +175,13 @@ for (const vp of VIEWPORTS) {
 
 await browser.close();
 
-console.log(`\nScreenshots in .qa/ (${routes.length} routes x ${VIEWPORTS.length} viewports)`);
+console.log(
+  `\nScreenshots in .qa/ (${routes.length} routes x ${VIEWPORTS.length} viewports)`,
+);
 if (problems.length) {
-  console.log(`${problems.length} route/viewport combination(s) with findings.`);
+  console.log(
+    `${problems.length} route/viewport combination(s) with findings.`,
+  );
   process.exit(1);
 }
 console.log("No layout problems detected. Now look at the screenshots.");

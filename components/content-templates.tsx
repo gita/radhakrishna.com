@@ -4,6 +4,51 @@ import { MDXBody } from "@/components/mdx";
 import { inCluster, related, type Doc } from "@/lib/content";
 import { articleGraph } from "@/lib/schema";
 import { LightboxImage } from "@/components/lightbox-image";
+import { PlaceGallery } from "@/components/place-gallery";
+
+/**
+ * Credit for a hero image that is someone else's photograph. Renders nothing for
+ * our own art. CC BY and CC BY-SA allow reuse only with attribution, so this is
+ * a condition of showing the picture at all, not a courtesy.
+ */
+function HeroCredit({ doc }: { doc: Doc }) {
+  if (!doc.imageCredit) return null;
+  return (
+    <span className="mt-1.5 block text-xs text-muted-foreground">
+      Photograph by {doc.imageCredit}
+      {doc.imageLicence ? (
+        <>
+          {", "}
+          {doc.imageLicenceUrl ? (
+            <a
+              href={doc.imageLicenceUrl}
+              target="_blank"
+              rel="noopener noreferrer license"
+              className="underline decoration-dotted underline-offset-2 hover:text-divine"
+            >
+              {doc.imageLicence}
+            </a>
+          ) : (
+            doc.imageLicence
+          )}
+        </>
+      ) : null}
+      {doc.imageSource ? (
+        <>
+          {", via "}
+          <a
+            href={doc.imageSource}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline decoration-dotted underline-offset-2 hover:text-divine"
+          >
+            Wikimedia Commons
+          </a>
+        </>
+      ) : null}
+    </span>
+  );
+}
 import {
   ShortAnswer,
   KeyTakeaways,
@@ -91,7 +136,12 @@ export function ArticlePage({ doc }: { doc: Doc }) {
           className="mt-8"
           src={doc.image}
           alt={doc.imageAlt ?? doc.title}
-          caption={doc.imageAlt}
+          caption={
+            <>
+              {doc.imageAlt}
+              <HeroCredit doc={doc} />
+            </>
+          }
           priority
         />
       ) : null}
@@ -103,6 +153,8 @@ export function ArticlePage({ doc }: { doc: Doc }) {
       <div className="article-prose prose prose-lg mt-8 max-w-none prose-headings:font-serif prose-headings:font-semibold prose-headings:tracking-tight prose-strong:text-foreground prose-img:rounded-xl">
         <MDXBody code={doc.body} />
       </div>
+
+      <PlaceGallery photos={doc.photos ?? []} />
 
       <FaqBlock faq={doc.faq ?? []} />
 
@@ -242,7 +294,12 @@ export function PrayerPage({ doc }: { doc: Doc }) {
           className="mt-8"
           src={doc.image}
           alt={doc.imageAlt ?? doc.title}
-          caption={doc.imageAlt}
+          caption={
+            <>
+              {doc.imageAlt}
+              <HeroCredit doc={doc} />
+            </>
+          }
           priority
         />
       ) : null}

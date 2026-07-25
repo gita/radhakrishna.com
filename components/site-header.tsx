@@ -1,10 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import { nav, site } from "@/lib/site";
+import { MobileNav } from "@/components/mobile-nav";
 
 /**
- * Server-rendered header. Mobile menu is a native <details> disclosure, so the
- * whole header ships zero client JS (docs/03 §4 performance budget).
+ * Server-rendered header. Only the mobile menu is a client component, because a
+ * menu has to close when you tap away from it (docs/03 §4 performance budget).
  */
 export function SiteHeader() {
   return (
@@ -40,38 +41,7 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <details className="relative lg:hidden">
-          <summary
-            className="flex size-10 cursor-pointer list-none items-center justify-center rounded-md border border-border text-foreground/80 [&::-webkit-details-marker]:hidden"
-            aria-label="Open menu"
-          >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              aria-hidden="true"
-            >
-              <path d="M3 6h18M3 12h18M3 18h18" />
-            </svg>
-          </summary>
-          <nav
-            className="absolute right-0 mt-2 w-56 rounded-lg border border-border bg-card p-2 shadow-lg"
-            aria-label="Primary"
-          >
-            {nav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="block rounded-md px-3 py-2 text-sm font-medium text-card-foreground/80 hover:bg-secondary"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-        </details>
+        <MobileNav />
       </div>
     </header>
   );

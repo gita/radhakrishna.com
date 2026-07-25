@@ -63,11 +63,14 @@ export function AppCta() {
     <>
       {/* Mobile: slim sticky bar */}
       <div
-        className={`fixed inset-x-0 bottom-0 z-50 border-t border-gold/25 bg-background/95 p-3 shadow-[0_-6px_24px_rgba(0,0,0,0.08)] backdrop-blur md:hidden ${
+        className={`fixed inset-x-0 bottom-0 z-50 max-w-full overflow-hidden border-t border-gold/25 bg-background/95 p-3 shadow-[0_-6px_24px_rgba(0,0,0,0.08)] backdrop-blur md:hidden ${
           closing ? "translate-y-full" : "translate-y-0"
         } transition-transform duration-200`}
+        // Clear of the home indicator on an iPhone, where the bottom of the
+        // screen is not the bottom of the usable area.
+        style={{ paddingBottom: "calc(0.75rem + env(safe-area-inset-bottom))" }}
       >
-        <div className="flex items-center gap-3">
+        <div className="flex min-w-0 items-center gap-3">
           <Image
             src="/brand/gita-app-icon.webp"
             alt=""

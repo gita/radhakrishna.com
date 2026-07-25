@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import type { ReactNode } from "react";
 import Image from "next/image";
 
 /**
@@ -17,7 +18,9 @@ export function LightboxImage({
 }: {
   src: string;
   alt: string;
-  caption?: string;
+  // ReactNode, not string: a photograph credit carries links to the licence
+  // and to the source file page.
+  caption?: ReactNode;
   priority?: boolean;
   className?: string;
 }) {

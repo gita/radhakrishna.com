@@ -41,6 +41,31 @@ const content = defineCollection({
       updated: s.isodate().optional(),
       tags: s.array(s.string()).default([]),
       related: s.array(s.string()).default([]),
+      // When the hero image is a photograph rather than our own art, it carries
+      // the same credit the gallery does. CC BY and CC BY-SA permit use only
+      // with attribution, so a licensed photo shown without one is a breach,
+      // not an oversight.
+      imageCredit: s.string().optional(),
+      imageLicence: s.string().optional(),
+      imageLicenceUrl: s.string().optional(),
+      imageSource: s.string().optional(),
+      // Real photographs of a real place. A temple photo is the photographer's
+      // copyright even though the building is public, and the CC licences these
+      // come under permit reuse only with credit, so `credit`, `licence` and
+      // `source` are required, not optional. A photo whose photographer cannot
+      // be named does not ship (CLAUDE.md).
+      photos: s
+        .array(
+          s.object({
+            src: s.string(),
+            alt: s.string(),
+            credit: s.string(),
+            licence: s.string(),
+            licenceUrl: s.string().optional(),
+            source: s.string(),
+          }),
+        )
+        .default([]),
       // Genuine Q&A, mirrored in-body; feeds FAQPage schema where present (docs/02 §5).
       faq: s
         .array(s.object({ question: s.string(), answer: s.string() }))

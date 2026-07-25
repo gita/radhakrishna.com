@@ -111,6 +111,17 @@ Google Images is an index of copyrighted work, not a source. Use only:
 Place pages should carry a small gallery of several angles, not one hero. Never ship a photo whose
 licence and photographer you cannot name.
 
+This is wired up now. `node scripts/find-commons-photos.mjs "<query>"` lists only candidates that are
+large enough, freely licensed, and have a named author. **Look at every candidate at full size before
+choosing**: in the first pass a file called `Chhatris of Barsana 01` turned out to be Lathmar Holi
+indoors, and a popular Prem Mandir shot had a NOKIA watermark burned into the corner. Then
+`scripts/fetch-commons-photos.mjs` downloads the chosen ones, writes the WebP, and emits the exact
+`photos:` YAML with photographer, licence, licence URL and source. The `photos[]` schema makes
+`credit`, `licence` and `source` **required**, so an uncredited photo cannot get through the build,
+and `PlaceGallery` renders the credit visibly. A hero photograph carries the same credit through
+`imageCredit` / `imageLicence` / `imageLicenceUrl` / `imageSource`. Attribution is the condition of
+use for CC BY and CC BY-SA, not a courtesy.
+
 **Festival dates.** Never publish a lunar festival date from a single web source. Take dates from **Indian panchang authorities**: Drik Panchang for the general
 (smarta) day and the **ISKCON Vaishnava calendar**, which is the tradition this site follows and what Mathura
 and Vrindavan keep, and record which in the `source` field, then run `npm run check:festivals`. That script recomputes the tithi with the Swiss
