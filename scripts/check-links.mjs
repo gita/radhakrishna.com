@@ -154,8 +154,16 @@ if (CHECK_EXTERNAL) {
             const r2 = await fetch(u, { redirect: "follow", signal: AbortSignal.timeout(20000) });
             if (!r2.ok && r2.status !== 403 && r2.status !== 429)
               note(`external ${u} -> ${r2.status}`);
-          } catch {
-            blocked.push(`${u} -> unreachable from this checker (${e.name})`);
+          } catch (e2) {
+            // A certificate that has expired or whose chain does not resolve is
+            // NOT a bot wall. A 403 only stops crawlers; a bad certificate puts
+            // a full-page security warning in front of every reader who clicks
+            // the citation. utsav.gov.in sat in this list for weeks looking like
+            // a harmless block. Fail on it.
+            const cause = `${e2?.cause?.code ?? ""} ${e2?.cause?.message ?? ""} ${e2?.message ?? ""}`;
+            if (/CERT|SELF_SIGNED|UNABLE_TO_VERIFY|ERR_TLS|certificate/i.test(cause))
+              note(`external ${u} -> TLS failure, readers get a security warning (${e2.cause?.code ?? e2.message})`);
+            else blocked.push(`${u} -> unreachable from this checker (${e.name})`);
           }
         }
       }),
