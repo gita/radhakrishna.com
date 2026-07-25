@@ -1,0 +1,60 @@
+name: Notify IndexNow
+
+# IndexNow reaches Bing, Yandex, Seznam and Naver. Bing's index is what feeds
+# Copilot, ChatGPT search and Perplexity, so this is our fastest route into the
+# AI answer engines (docs/01).
+#
+# Google is deliberately absent. Its sitemap ping endpoint was retired in June
+# 2023, and the Indexing API is documented for job posting and livestream pages
+# only, so there is no legitimate push channel for our content. Google finds
+# these pages through the sitemap and internal links.
+#
+# The official guidance is to notify when content actually changes rather than
+# resubmitting on a timer, so this is event driven: it fires when content or
+# routes land on main. The weekly run is only a safety net in case a deploy
+# happened without a content commit.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "content/**"
+      - "app/**"
+      - "lib/site.ts"
+  schedule:
+    # Sundays 03:15 UTC, catching anything the push trigger missed.
+    - cron: "15 3 * * 0"
+  workflow_dispatch:
+    inputs:
+      all:
+        description: "Submit every URL in the sitemap (use after a big launch)"
+        type: boolean
+        default: false
+
+# Never let two submissions overlap: repeated bursts are what earns a 429.
+concurrency:
+  group: indexnow
+  cancel-in-progress: false
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Wait for the deploy to be live
+        run: sleep 90
+
+      - name: Submit URLs
+        env:
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+          SITE_URL: https://radhakrishna.com
+        run: |
+          if [ "${{ inputs.all }}" = "true" ] || [ "${{ github.event_name }}" = "schedule" ]; then
+            node scripts/submit-indexnow.mjs
+          else
+            node scripts/submit-indexnow.mjs --since "$(date -u -d '2 days ago' +%Y-%m-%dT%H:%M:%SZ)"
+          fi

@@ -1,0 +1,395 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/*
+ * Radhakrishna.com design tokens — Tailwind v4 (CSS-first).
+ * Layer 1 (base brand): Prakash (light) / Nisha (dark), shared with the network.
+ * Layer 2 (devotional extension): peacock blue/green, brass gold, midnight indigo, lotus.
+ * Semantic-first: components reference roles (bg-divine, text-gold), never raw hex.
+ * See docs/03-tech-and-design.md §2.
+ */
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-border: hsl(var(--border));
+  --color-ring: hsl(var(--ring));
+
+  /* Devotional palette */
+  --color-divine: hsl(var(--divine));
+  --color-divine-foreground: hsl(var(--divine-foreground));
+  --color-jade: hsl(var(--jade));
+  --color-jade-foreground: hsl(var(--jade-foreground));
+  --color-gold: hsl(var(--gold));
+  --color-gold-foreground: hsl(var(--gold-foreground));
+  --color-indigo: hsl(var(--indigo));
+  --color-indigo-foreground: hsl(var(--indigo-foreground));
+  --color-lotus: hsl(var(--lotus));
+  --color-lotus-foreground: hsl(var(--lotus-foreground));
+
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-serif: var(--font-crimson), Georgia, serif;
+  --font-dev: var(--font-devanagari), Georgia, serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --animate-fade-up: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-fade-in: fade-in 0.8s ease both;
+}
+
+:root {
+  color-scheme: light;
+  /* Prakash (light) */
+  --background: 48 33.33% 97.06%;
+  --foreground: 48 19.61% 20%;
+  --card: 0 0% 100%;
+  --card-foreground: 60 2.56% 7.65%;
+  --primary: 15.11 55.56% 52.35%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 46.15 22.81% 88.82%;
+  --secondary-foreground: 50.77 8.5% 30%;
+  --muted: 44 29.41% 90%;
+  --muted-foreground: 50 6% 42%;
+  --accent: 46.15 22.81% 88.82%;
+  --accent-foreground: 50.77 19.4% 13.14%;
+  --border: 50 7.5% 84.31%;
+  --ring: 15.11 55.56% 52.35%;
+  --radius: 0.5rem;
+
+  /* Devotional extension (light) */
+  --divine: 196 63% 33%;
+  --divine-foreground: 0 0% 100%;
+  --jade: 171 80% 27%;
+  --jade-foreground: 0 0% 100%;
+  --gold: 46 68% 42%;
+  --gold-foreground: 48 30% 14%;
+  --indigo: 221 47% 20%;
+  --indigo-foreground: 46 24% 92%;
+  --lotus: 347 61% 77%;
+  --lotus-foreground: 347 40% 22%;
+}
+
+/*
+ * Light-first, always. Radha Krishna are light, color, and joy — the site does
+ * NOT auto-switch to dark on OS preference (founder decision, 2026-07-24). The
+ * dark token set below stays only for an optional future manual [data-theme] toggle.
+ */
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --background: 60 2.7% 14.51%;
+  --foreground: 46 24% 92%;
+  --card: 60 2.7% 17.5%;
+  --card-foreground: 46 24% 92%;
+  --primary: 14.77 63.11% 59.61%;
+  --primary-foreground: 60 2.7% 10%;
+  --secondary: 60 2.5% 22%;
+  --secondary-foreground: 46 20% 88%;
+  --muted: 60 2.5% 22%;
+  --muted-foreground: 48 6% 65%;
+  --accent: 60 2.5% 24%;
+  --accent-foreground: 46 24% 92%;
+  --border: 60 2.5% 26%;
+  --ring: 14.77 63.11% 59.61%;
+  --divine: 196 55% 56%;
+  --divine-foreground: 60 2.7% 10%;
+  --jade: 171 45% 50%;
+  --jade-foreground: 60 2.7% 10%;
+  --gold: 46 72% 60%;
+  --gold-foreground: 48 40% 10%;
+  --indigo: 221 40% 16%;
+  --indigo-foreground: 46 24% 92%;
+  --lotus: 347 52% 72%;
+  --lotus-foreground: 347 40% 14%;
+}
+
+@layer base {
+  *,
+  ::before,
+  ::after {
+    border-color: hsl(var(--border));
+  }
+
+  /* Interactive elements always show a pointer */
+  button:not(:disabled),
+  [role="button"],
+  a[href],
+  summary,
+  label[for] {
+    cursor: pointer;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Centered, padded content column */
+  .container {
+    width: 100%;
+    margin-inline: auto;
+    max-width: 75rem;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 640px) {
+    .container {
+      padding-inline: 1.5rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .container {
+      padding-inline: 2rem;
+    }
+  }
+}
+
+/* Signature utilities */
+@utility hero-wash {
+  background:
+    radial-gradient(
+      ellipse 90% 60% at 50% -10%,
+      hsl(var(--divine) / 0.12),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 70% 50% at 85% 8%,
+      hsl(var(--gold) / 0.1),
+      transparent 65%
+    );
+}
+
+@utility gold-rule {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    hsl(var(--gold) / 0.6),
+    transparent
+  );
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/*
+ * Scroll reveal. SEO-safe: content is visible by default. Only once JS marks the
+ * document ready do elements start hidden and reveal as they enter the viewport.
+ */
+.reveal-ready [data-reveal] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-ready [data-reveal].revealed {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal-ready [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* Slow ambient glow drift behind the hero (calm, lamp-like) */
+@keyframes glow-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.75;
+  }
+  50% {
+    transform: translate3d(2%, -3%, 0) scale(1.08);
+    opacity: 1;
+  }
+}
+.ambient-glow {
+  animation: glow-drift 12s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ambient-glow {
+    animation: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Article prose: headings, tables, figures.
+   These sit OUTSIDE @layer so they win over @tailwindcss/typography's own
+   `.prose :where(...)` rules, which are unlayered and would otherwise keep their
+   flush-left table padding and link colours.
+   --------------------------------------------------------------------------- */
+
+/* rehype-autolink-headings wraps each heading in an <a href="#slug"> so sections
+   are deep-linkable. That anchor must not read as a link. */
+.article-prose :is(h2, h3, h4) > a,
+.article-prose :is(h2, h3, h4) > a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.article-prose :is(h2, h3) > a {
+  position: relative;
+}
+.article-prose :is(h2, h3) > a:hover::after {
+  content: "#";
+  position: absolute;
+  margin-left: 0.35em;
+  color: hsl(var(--gold));
+  font-weight: 400;
+  opacity: 0.55;
+}
+
+/* Body links: underline only the link being hovered, never every link at once. */
+.article-prose :is(p, li, td) > a {
+  color: hsl(var(--divine));
+  text-decoration: none;
+}
+.article-prose :is(p, li, td) > a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Tables: a real bordered card with even padding, not four floating underlines
+   with the first column flush against the edge. */
+.article-prose table {
+  display: table;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 2rem 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  border: 1px solid hsl(var(--border));
+  border-radius: 0.85rem;
+  overflow: hidden;
+}
+.article-prose thead {
+  background: hsl(var(--secondary) / 0.65);
+}
+.article-prose :is(th, td) {
+  padding: 0.85rem 1rem;
+  text-align: left;
+  vertical-align: top;
+}
+.article-prose :is(th, td):first-child {
+  padding-inline-start: 1rem;
+}
+.article-prose :is(th, td):last-child {
+  padding-inline-end: 1rem;
+}
+.article-prose th {
+  font-weight: 600;
+  color: hsl(var(--foreground));
+  border-bottom: 1px solid hsl(var(--border));
+}
+.article-prose td {
+  border-bottom: 1px solid hsl(var(--border) / 0.6);
+}
+.article-prose tbody tr:last-child td {
+  border-bottom: 0;
+}
+.article-prose tbody tr:nth-child(even) {
+  background: hsl(var(--secondary) / 0.28);
+}
+
+/* Wide tables scroll inside their own wrapper, never the page body. */
+.article-prose .table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 2rem 0;
+}
+.article-prose .table-wrap > table {
+  margin: 0;
+  min-width: 34rem;
+}
+
+/* The 1008 names read as a chanted list, so they get tighter, calmer rows and
+   a two-column layout on wide screens instead of one very long ribbon. */
+.prayer-prose ol {
+  counter-reset: name;
+  list-style: none;
+  padding-left: 0;
+  margin: 1.5rem 0;
+}
+.prayer-prose ol > li {
+  counter-increment: name;
+  position: relative;
+  padding: 0.3rem 0 0.3rem 3.4rem;
+  margin: 0;
+  border-bottom: 1px solid hsl(var(--border) / 0.45);
+  break-inside: avoid;
+}
+.prayer-prose ol > li::before {
+  content: counter(name);
+  position: absolute;
+  left: 0;
+  width: 2.7rem;
+  text-align: right;
+  color: hsl(var(--muted-foreground));
+  font-variant-numeric: tabular-nums;
+  font-size: 0.85em;
+  padding-top: 0.15em;
+}
+@media (min-width: 768px) {
+  .prayer-prose ol {
+    column-count: 2;
+    column-gap: 2.5rem;
+  }
+}
