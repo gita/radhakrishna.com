@@ -37,29 +37,29 @@ function lastVerified() {
 
 const LABELS = [
   {
-    name: "explicitly in scripture",
+    name: "Scripture",
     meaning:
-      "A Purana or other canonical text says it, with chapter and verse. How old that text is sits beside its name, because a Mahapurana composed late is still a Mahapurana.",
+      "A Purana or other canonical text carries it, with chapter and verse. How old that text is sits beside its name, because a Mahapurana composed late is a Mahapurana still.",
   },
   {
-    name: "later devotional literature",
+    name: "Devotional text",
     meaning:
-      "A named work outside the Puranic canon says it: a poet, a commentator, a sampradaya handbook. Citable, often beautiful, and not scripture.",
+      "A named work outside the Puranic canon: a poet, a commentator, a sampradaya handbook. Jayadeva is here. So is Rupa Goswami. Some of the most beloved things ever written about Radha sit under this label.",
   },
   {
-    name: "taught within a tradition",
+    name: "Tradition",
     meaning:
-      "A sampradaya holds it as doctrine. True within that school, and the school is named so you know whose voice it is.",
+      "A sampradaya holds it and teaches it, and the school is named so you know whose voice is speaking. What a living tradition holds is not a lesser thing than a verse.",
   },
   {
-    name: "folk legend",
+    name: "Braj legend",
     meaning:
-      "Braj tells it, and it may be very old, but no text carries it. Loved, and not scripture.",
+      "Braj has carried it, sometimes for five hundred years, in its lanes and its lila plays rather than in a manuscript. Loved, and worth knowing as what it is.",
   },
   {
-    name: "modern retelling",
+    name: "Modern retelling",
     meaning:
-      "It circulates in television, film and popular writing. Widely believed, and traceable to no source.",
+      "It reached us through television, film and popular writing. Widely believed, and traceable to no older source.",
   },
 ];
 
@@ -122,12 +122,12 @@ export default function ConcordancePage() {
           The short answer
         </p>
         <p className="text-lg leading-relaxed text-foreground">
-          The questions people ask most about Radha have different answers in
-          different texts, and most pages online quietly pick one and present it
-          as the answer. This is the comparison instead: what each named
-          scripture and each sampradaya actually says, with chapter and verse
-          where the text is numbered, and every claim labelled by the kind of
-          source it comes from.
+          Radha is sung in more voices than any other figure in the tradition.
+          The Puranas name her, the poets adore her, and each sampradaya holds
+          her in its own way, so a devotee who reads only one of them meets only
+          part of her. This page gathers what each named scripture and each
+          school actually says, with chapter and verse, so that the whole of her
+          is in view at once.
         </p>
       </div>
 
@@ -141,11 +141,13 @@ export default function ConcordancePage() {
           How to read the labels
         </h2>
         <p className="mt-3 leading-relaxed text-foreground/85">
-          The label is the point of the whole table. A verse in a named text, a
-          school&apos;s teaching, and a story Braj has told for centuries are
-          three different kinds of statement, and treating them as one is the
-          commonest mistake made about Radha. None of these labels means a claim
-          is worth less. They mean you know what you are holding.
+          A verse in a named text, a school&apos;s teaching, and a story Braj
+          has told for centuries are three different kinds of statement, and all
+          three are treasured. The label is here so you always know which one is
+          speaking. None of them means a claim is worth less. A Braj legend
+          carried by the lanes for five hundred years is not a lesser thing than
+          a numbered verse. It is a different thing, and knowing which you hold
+          only makes the holding richer.
         </p>
         <dl className="mt-5 divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card">
           {LABELS.map((l) => (
@@ -175,10 +177,10 @@ export default function ConcordancePage() {
       <section className="mt-14 border-t border-border pt-8">
         <h2 className="font-serif text-xl font-semibold">Citing this</h2>
         <p className="mt-3 leading-relaxed text-foreground/85">
-          Every row has its own anchor, so a single claim can be linked on its
-          own rather than pointing at the whole page. Cite the version, because
-          the dataset is corrected as sources are checked and a row may be
-          relabelled. Released under{" "}
+          This was gathered so it could be used, not only read. Every row has
+          its own anchor, so a single claim can be linked on its own rather than
+          pointing at the whole page, and the version is given because rows are
+          corrected as more sources are checked. Released under{" "}
           <a
             href="https://creativecommons.org/licenses/by-sa/4.0/"
             target="_blank"
@@ -187,7 +189,7 @@ export default function ConcordancePage() {
           >
             CC BY-SA 4.0
           </a>
-          , so anyone may reuse it with credit to the {site.foundation.label}.
+          , so any devotee, teacher or temple may reuse it freely with credit to the {site.foundation.label}.
         </p>
       </section>
     </div>
