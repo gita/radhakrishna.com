@@ -98,9 +98,11 @@ Ephemeris and reports whether the date holds under the sunrise (vaishnava) or mi
 reckoning. It cannot arbitrate between traditions and must not be treated as the authority; a date
 matching neither reckoning is simply wrong. Show BOTH sampradaya dates when they differ, labelled by sampradaya, not by
 householder status: the split is smarta vs vaishnava, and "grihastha" refers to fasting practice, not
-to which day is kept. Drik Panchang lists the smarta day first and the vaishnava day second; Mathura,
-Vrindavan and ISKCON keep the vaishnava day, so lead with that on this site while giving the smarta day
-equal clarity. Two further traps: krishna-paksha festivals carry different
+to which day is kept. Drik Panchang lists the smarta day first and the vaishnava day second.
+**Lead with the smarta day**, which is what most households keep and what most visitors are searching
+for, and give the vaishnava day directly beneath it, noting that ISKCON and the temples of Braj keep it.
+Do not describe the split as householder vs sannyasi: Vaishnava sampradayas are full of householders,
+and the difference is one of tradition, not ashrama. Two further traps: krishna-paksha festivals carry different
 month names in amanta vs purnimanta (Janmashtami is Shravana krishna ashtami in amanta, Bhadrapada in
 purnimanta, same day), and smarta and vaishnava observance can legitimately fall a day apart, as in
 2025 when ashtami spanned midnight. Say so on the page when it happens.

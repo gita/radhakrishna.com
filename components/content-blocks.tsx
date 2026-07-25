@@ -139,6 +139,7 @@ export function FestivalDates({
   const sorted = [...occurrences].sort((a, b) => a.year - b.year);
   const today = new Date().toISOString().slice(0, 10);
   const next = sorted.find((o) => (o.vaishnava ?? o.date) >= today);
+  // The general (smarta) day leads, since that is what most visitors keep.
 
   const fmt = (iso: string) =>
     new Date(iso + "T00:00:00Z").toLocaleDateString("en-IN", {
@@ -164,23 +165,23 @@ export function FestivalDates({
       {next ? (
         <div className="mb-4">
           {split(next) ? (
-            <div className="space-y-1">
+            <div className="space-y-2">
               <p className="text-lg font-medium text-foreground">
-                {fmt(next.smarta!)}{" "}
-                <span className="text-sm font-normal text-muted-foreground">
-                  (Smarta)
+                {fmt(next.smarta!)}
+                <span className="block text-sm font-normal text-muted-foreground">
+                  Most households, the Smarta reckoning
                 </span>
               </p>
-              <p className="text-lg font-medium text-foreground">
-                {fmt(next.vaishnava!)}{" "}
-                <span className="text-sm font-normal text-muted-foreground">
-                  (Vaishnava, kept in Mathura and Vrindavan)
+              <p className="text-base font-medium text-foreground/90">
+                {fmt(next.vaishnava!)}
+                <span className="block text-sm font-normal text-muted-foreground">
+                  Vaishnava sampradayas, and the temples of Mathura and Vrindavan
                 </span>
               </p>
             </div>
           ) : (
             <p className="text-lg font-medium text-foreground">
-              Next: {fmt(next.vaishnava ?? next.date)}
+              Next: {fmt(next.smarta ?? next.date)}
             </p>
           )}
           {next.note ? (
@@ -198,16 +199,17 @@ export function FestivalDates({
             <span className="font-medium tabular-nums">{o.year}</span>
             {" \u00b7 "}
             {split(o)
-              ? `${fmt(o.smarta!)} (Smarta), ${fmt(o.vaishnava!)} (Vaishnava)`
-              : fmt(o.vaishnava ?? o.date)}
+              ? `${fmt(o.smarta!)} (most households), ${fmt(o.vaishnava!)} (Vaishnava)`
+              : fmt(o.smarta ?? o.date)}
           </li>
         ))}
       </ul>
 
       <p className="mt-4 border-t border-gold/20 pt-3 text-sm text-muted-foreground">
-        Where two days are listed, the tithi spans midnight. The smarta reckoning
-        takes the earlier day, the vaishnava reckoning the later one, and both are
-        correct within their own tradition.
+        Where two days are listed, the tithi spans midnight. Most households keep
+        the earlier day; the Vaishnava sampradayas, including ISKCON and the
+        temples of Braj, keep the later one. Both are correct, and the difference
+        is one of tradition rather than of calculation.
       </p>
     </section>
   );
