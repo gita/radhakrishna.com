@@ -194,6 +194,29 @@ def main():
         if days > 400:
             print(f"  !  {slug}: next date is {days} days away. Confirm the current year is listed.")
 
+    # Dates also get written into prose, where the structured check above cannot
+    # see them: a takeaway bullet or an FAQ answer that says "2025 was Sunday 31
+    # August" keeps saying it forever. A past year used to teach something (why
+    # smarta and vaishnava split in 2025, say) is legitimate, so this warns
+    # rather than fails, and only for the takeaways and FAQ, where a date is
+    # nearly always a listing rather than an explanation.
+    this_year = date.today().year
+    for f in sorted(Path("content").rglob("*.mdx")):
+        parts = f.read_text().split("---", 2)
+        if len(parts) < 3:
+            continue
+        fm = parts[1]
+        block = re.search(r"^(tldr|faq):\s*\n((?:[ \t]+.*\n|\n)+)", fm, re.M)
+        if not block:
+            continue
+        for m in re.finditer(r"\b(19|20)\d{2}\b", block.group(2)):
+            if int(m.group(0)) < this_year:
+                print(
+                    f"  !  {f}: takeaways or FAQ mention {m.group(0)}, which has passed. "
+                    f"Drop it unless it is there to explain something."
+                )
+                break
+
     print()
     if problems:
         print(f"{len(problems)} problem(s):")

@@ -100,7 +100,7 @@ export function ArticlePage({ doc }: { doc: Doc }) {
       <FestivalDates title={doc.title} occurrences={doc.occurrences ?? []} />
       <KeyTakeaways items={doc.tldr ?? []} />
 
-      <div className="article-prose prose prose-lg mt-8 max-w-none prose-headings:font-serif prose-headings:font-semibold prose-headings:tracking-tight prose-strong:text-foreground prose-img:rounded-xl prose-blockquote:border-gold">
+      <div className="article-prose prose prose-lg mt-8 max-w-none prose-headings:font-serif prose-headings:font-semibold prose-headings:tracking-tight prose-strong:text-foreground prose-img:rounded-xl">
         <MDXBody code={doc.body} />
       </div>
 

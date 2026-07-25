@@ -17,6 +17,8 @@
     "indexnow:dry": "node scripts/submit-indexnow.mjs --dry-run",
     "build:verses": "node scripts/build-daily-verses.mjs",
     "check:festivals": "python3 scripts/check-festival-dates.py",
+    "check:faq": "velite && node scripts/check-faq-text.mjs",
+    "check:faq:save": "velite && node scripts/check-faq-text.mjs --save",
     "qa:visual": "node scripts/visual-qa.mjs"
   },
   "dependencies": {

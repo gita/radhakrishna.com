@@ -38,6 +38,11 @@ export function KeyTakeaways({ items }: { items: string[] }) {
  * FAQ rendered as its own carded section so it stops blending into the prose.
  * Answers stay in the DOM and visible (not collapsed) so they remain easy to
  * extract for answer engines.
+ *
+ * A blank line in the frontmatter answer becomes a paragraph break here. Written
+ * as one block, a seventy-word answer reads as a wall of text and nobody
+ * finishes it; broken where the thought actually turns, the same words are
+ * scannable. Answers short enough to hold in one breath stay a single paragraph.
  */
 export function FaqBlock({
   faq,
@@ -45,6 +50,11 @@ export function FaqBlock({
   faq: { question: string; answer: string }[];
 }) {
   if (!faq?.length) return null;
+  const paragraphs = (answer: string) =>
+    answer
+      .split(/\n+/)
+      .map((p) => p.trim())
+      .filter(Boolean);
   return (
     <section className="mt-14">
       <div className="mb-5 flex items-center gap-3">
@@ -59,7 +69,11 @@ export function FaqBlock({
             <h3 className="font-serif text-lg font-semibold text-foreground">
               {f.question}
             </h3>
-            <p className="mt-2 leading-relaxed text-foreground/85">{f.answer}</p>
+            <div className="mt-2 space-y-3 leading-relaxed text-foreground/85">
+              {paragraphs(f.answer).map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+            </div>
           </div>
         ))}
       </div>
@@ -145,7 +159,9 @@ export function FestivalDates({
     .filter((o) => (o.vaishnava ?? o.date).slice(0, 10) >= today)
     .sort((a, b) => a.year - b.year);
   if (!sorted.length) return null;
-  const next = sorted.find((o) => (o.vaishnava ?? o.date).slice(0, 10) >= today);
+  const next = sorted.find(
+    (o) => (o.vaishnava ?? o.date).slice(0, 10) >= today,
+  );
   // The general (smarta) day leads, since that is what most visitors keep.
 
   // velite's isodate() yields a full ISO datetime ("2026-09-04T00:00:00.000Z"),
@@ -185,7 +201,8 @@ export function FestivalDates({
               <p className="text-base font-medium text-foreground/90">
                 {fmt(next.vaishnava!)}
                 <span className="block text-sm font-normal text-muted-foreground">
-                  Vaishnava sampradayas, and the temples of Mathura and Vrindavan
+                  Vaishnava sampradayas, and the temples of Mathura and
+                  Vrindavan
                 </span>
               </p>
             </div>
@@ -194,7 +211,6 @@ export function FestivalDates({
               Next: {fmt(next.smarta ?? next.date)}
             </p>
           )}
-
         </div>
       ) : null}
 
