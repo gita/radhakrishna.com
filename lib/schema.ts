@@ -100,6 +100,65 @@ export function articleGraph(doc: Doc) {
       : {}),
   });
 
+  // A recurring festival: one Event per listed year, so a search engine can
+  // surface the right date rather than guessing from prose.
+  if (doc.occurrences?.length) {
+    for (const o of doc.occurrences) {
+      graph.push({
+        "@type": "Event",
+        "@id": `${pageUrl}#event-${o.year}`,
+        name: `${doc.title} ${o.year}`,
+        startDate: o.date,
+        eventAttendanceMode:
+          "https://schema.org/MixedEventAttendanceMode",
+        eventStatus: "https://schema.org/EventScheduled",
+        description: doc.description ?? doc.answer,
+        ...(image ? { image } : {}),
+        organizer: org,
+        ...(doc.place
+          ? {
+              location: {
+                "@type": "Place",
+                name: doc.place.name,
+                address: {
+                  "@type": "PostalAddress",
+                  ...(doc.place.locality
+                    ? { addressLocality: doc.place.locality }
+                    : {}),
+                  ...(doc.place.region ? { addressRegion: doc.place.region } : {}),
+                  addressCountry: doc.place.country,
+                },
+              },
+            }
+          : {}),
+      });
+    }
+  }
+
+  if (doc.place && !doc.occurrences?.length) {
+    graph.push({
+      "@type": "Place",
+      "@id": `${pageUrl}#place`,
+      name: doc.place.name,
+      ...(image ? { image } : {}),
+      address: {
+        "@type": "PostalAddress",
+        ...(doc.place.locality ? { addressLocality: doc.place.locality } : {}),
+        ...(doc.place.region ? { addressRegion: doc.place.region } : {}),
+        addressCountry: doc.place.country,
+      },
+      ...(doc.place.latitude != null && doc.place.longitude != null
+        ? {
+            geo: {
+              "@type": "GeoCoordinates",
+              latitude: doc.place.latitude,
+              longitude: doc.place.longitude,
+            },
+          }
+        : {}),
+    });
+  }
+
   if (doc.faq?.length) {
     graph.push({
       "@type": "FAQPage",

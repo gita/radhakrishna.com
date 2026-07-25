@@ -15,7 +15,8 @@
     "check:links:all": "node scripts/check-links.mjs --external",
     "indexnow": "node scripts/submit-indexnow.mjs",
     "indexnow:dry": "node scripts/submit-indexnow.mjs --dry-run",
-    "build:verses": "node scripts/build-daily-verses.mjs"
+    "build:verses": "node scripts/build-daily-verses.mjs",
+    "check:festivals": "python3 scripts/check-festival-dates.py"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",

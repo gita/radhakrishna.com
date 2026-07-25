@@ -9,6 +9,7 @@ import {
   KeyTakeaways,
   FaqBlock,
   RelatedCards,
+  FestivalDates,
 } from "@/components/content-blocks";
 
 const CLUSTER_LABEL: Record<string, string> = {
@@ -96,6 +97,7 @@ export function ArticlePage({ doc }: { doc: Doc }) {
       ) : null}
 
       {doc.answer ? <ShortAnswer>{doc.answer}</ShortAnswer> : null}
+      <FestivalDates title={doc.title} occurrences={doc.occurrences ?? []} />
       <KeyTakeaways items={doc.tldr ?? []} />
 
       <div className="article-prose prose prose-lg mt-8 max-w-none prose-headings:font-serif prose-headings:font-semibold prose-headings:tracking-tight prose-strong:text-foreground prose-img:rounded-xl prose-blockquote:border-gold">

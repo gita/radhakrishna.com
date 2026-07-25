@@ -91,6 +91,16 @@ visible caption AND feeds `ImageObject`), and a place in the `/images` gallery. 
 from any doc with an `image`, so wiring the frontmatter is enough, but check it actually appears there and
 that clicking it opens the lightbox. Never ship art that only lives on one page.
 
+**Festival dates.** Never publish a lunar festival date from a single web source. Take the date from
+the **Vaishnava (ISKCON/Gaudiya) calendar**, which is the tradition this site follows and what Mathura
+and Vrindavan keep, then run `npm run check:festivals`. That script recomputes the tithi with the Swiss
+Ephemeris and reports whether the date holds under the sunrise (vaishnava) or midnight (smarta)
+reckoning. It cannot arbitrate between traditions and must not be treated as the authority; a date
+matching neither reckoning is simply wrong. Two known traps: krishna-paksha festivals carry different
+month names in amanta vs purnimanta (Janmashtami is Shravana krishna ashtami in amanta, Bhadrapada in
+purnimanta, same day), and smarta and vaishnava observance can legitimately fall a day apart, as in
+2025 when ashtami spanned midnight. Say so on the page when it happens.
+
 **Scripture on the site.** Never type a verse from memory. The foundation's own dataset
 (github.com/gita/gita) has all 701 verses with five named English translations; pull from it and credit
 the translator. `scripts/build-daily-verses.mjs` generates `lib/daily-verses.ts` this way, so the only

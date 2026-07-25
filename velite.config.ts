@@ -48,6 +48,29 @@ const content = defineCollection({
       sources: s
         .array(s.object({ text: s.string(), url: s.string().optional() }))
         .default([]),
+      // Festivals move each year with the lunar calendar. The page stays evergreen
+      // and accrues authority; only this list is updated, so a stale year is
+      // visible rather than silently wrong. Feeds Event schema (docs/03 §5).
+      occurrences: s
+        .array(
+          s.object({
+            year: s.number(),
+            date: s.isodate(),
+            note: s.string().optional(),
+          }),
+        )
+        .default([]),
+      // Place pages (temples, towns) feed Place / LocalBusiness schema.
+      place: s
+        .object({
+          name: s.string(),
+          locality: s.string().optional(),
+          region: s.string().optional(),
+          country: s.string().default("IN"),
+          latitude: s.number().optional(),
+          longitude: s.number().optional(),
+        })
+        .optional(),
       draft: s.boolean().default(false),
       body: s.mdx(),
     })

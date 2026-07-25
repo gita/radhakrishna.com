@@ -116,3 +116,56 @@ export function RelatedCards({
     </section>
   );
 }
+
+/**
+ * When a festival falls. Lunar dates move each year, so the page lists the years
+ * it knows and marks the next one. A year we have not filled in yet shows as
+ * absent rather than as a wrong date.
+ */
+export function FestivalDates({
+  title,
+  occurrences,
+}: {
+  title: string;
+  occurrences: { year: number; date: string; note?: string }[];
+}) {
+  if (!occurrences?.length) return null;
+  const sorted = [...occurrences].sort((a, b) => a.year - b.year);
+  const today = new Date().toISOString().slice(0, 10);
+  const next = sorted.find((o) => o.date >= today);
+
+  const fmt = (iso: string) =>
+    new Date(iso + "T00:00:00Z").toLocaleDateString("en-IN", {
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+      timeZone: "UTC",
+    });
+
+  return (
+    <section className="mt-8 rounded-2xl border border-gold/30 bg-gold/5 p-6">
+      <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-gold">
+        When {title} falls
+      </p>
+      {next ? (
+        <p className="text-lg font-medium text-foreground">
+          Next: {fmt(next.date)}
+          {next.note ? (
+            <span className="text-muted-foreground"> ({next.note})</span>
+          ) : null}
+        </p>
+      ) : null}
+      <ul className="mt-3 space-y-1 text-sm text-foreground/85">
+        {sorted.map((o) => (
+          <li key={o.year} className={o.date < today ? "text-muted-foreground" : ""}>
+            <span className="font-medium tabular-nums">{o.year}</span>
+            {" \u00b7 "}
+            {fmt(o.date)}
+            {o.note ? <span className="text-muted-foreground"> ({o.note})</span> : null}
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
