@@ -55,7 +55,12 @@ const content = defineCollection({
         .array(
           s.object({
             year: s.number(),
+            // `date` is the primary observance. Where smarta and vaishnava fall on
+            // different days (ashtami spanning midnight), give both: the smarta
+            // day is the earlier one, the vaishnava day the later.
             date: s.isodate(),
+            smarta: s.isodate().optional(),
+            vaishnava: s.isodate().optional(),
             note: s.string().optional(),
           }),
         )

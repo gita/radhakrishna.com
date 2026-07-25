@@ -96,7 +96,11 @@ the **Vaishnava (ISKCON/Gaudiya) calendar**, which is the tradition this site fo
 and Vrindavan keep, then run `npm run check:festivals`. That script recomputes the tithi with the Swiss
 Ephemeris and reports whether the date holds under the sunrise (vaishnava) or midnight (smarta)
 reckoning. It cannot arbitrate between traditions and must not be treated as the authority; a date
-matching neither reckoning is simply wrong. Two known traps: krishna-paksha festivals carry different
+matching neither reckoning is simply wrong. Show BOTH sampradaya dates when they differ, labelled by sampradaya, not by
+householder status: the split is smarta vs vaishnava, and "grihastha" refers to fasting practice, not
+to which day is kept. Drik Panchang lists the smarta day first and the vaishnava day second; Mathura,
+Vrindavan and ISKCON keep the vaishnava day, so lead with that on this site while giving the smarta day
+equal clarity. Two further traps: krishna-paksha festivals carry different
 month names in amanta vs purnimanta (Janmashtami is Shravana krishna ashtami in amanta, Bhadrapada in
 purnimanta, same day), and smarta and vaishnava observance can legitimately fall a day apart, as in
 2025 when ashtami spanned midnight. Say so on the page when it happens.

@@ -127,12 +127,18 @@ export function FestivalDates({
   occurrences,
 }: {
   title: string;
-  occurrences: { year: number; date: string; note?: string }[];
+  occurrences: {
+    year: number;
+    date: string;
+    smarta?: string;
+    vaishnava?: string;
+    note?: string;
+  }[];
 }) {
   if (!occurrences?.length) return null;
   const sorted = [...occurrences].sort((a, b) => a.year - b.year);
   const today = new Date().toISOString().slice(0, 10);
-  const next = sorted.find((o) => o.date >= today);
+  const next = sorted.find((o) => (o.vaishnava ?? o.date) >= today);
 
   const fmt = (iso: string) =>
     new Date(iso + "T00:00:00Z").toLocaleDateString("en-IN", {
@@ -143,29 +149,66 @@ export function FestivalDates({
       timeZone: "UTC",
     });
 
+  // Ashtami can span midnight, in which case the smarta and vaishnava
+  // sampradayas keep consecutive days. Both are correct; the page shows both
+  // rather than quietly picking one.
+  const split = (o: (typeof sorted)[number]) =>
+    o.smarta && o.vaishnava && o.smarta !== o.vaishnava;
+
   return (
     <section className="mt-8 rounded-2xl border border-gold/30 bg-gold/5 p-6">
       <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-gold">
         When {title} falls
       </p>
+
       {next ? (
-        <p className="text-lg font-medium text-foreground">
-          Next: {fmt(next.date)}
+        <div className="mb-4">
+          {split(next) ? (
+            <div className="space-y-1">
+              <p className="text-lg font-medium text-foreground">
+                {fmt(next.smarta!)}{" "}
+                <span className="text-sm font-normal text-muted-foreground">
+                  (Smarta)
+                </span>
+              </p>
+              <p className="text-lg font-medium text-foreground">
+                {fmt(next.vaishnava!)}{" "}
+                <span className="text-sm font-normal text-muted-foreground">
+                  (Vaishnava, kept in Mathura and Vrindavan)
+                </span>
+              </p>
+            </div>
+          ) : (
+            <p className="text-lg font-medium text-foreground">
+              Next: {fmt(next.vaishnava ?? next.date)}
+            </p>
+          )}
           {next.note ? (
-            <span className="text-muted-foreground"> ({next.note})</span>
+            <p className="mt-1 text-sm text-muted-foreground">{next.note}</p>
           ) : null}
-        </p>
+        </div>
       ) : null}
-      <ul className="mt-3 space-y-1 text-sm text-foreground/85">
+
+      <ul className="space-y-1 text-sm text-foreground/85">
         {sorted.map((o) => (
-          <li key={o.year} className={o.date < today ? "text-muted-foreground" : ""}>
+          <li
+            key={o.year}
+            className={(o.vaishnava ?? o.date) < today ? "text-muted-foreground" : ""}
+          >
             <span className="font-medium tabular-nums">{o.year}</span>
             {" \u00b7 "}
-            {fmt(o.date)}
-            {o.note ? <span className="text-muted-foreground"> ({o.note})</span> : null}
+            {split(o)
+              ? `${fmt(o.smarta!)} (Smarta), ${fmt(o.vaishnava!)} (Vaishnava)`
+              : fmt(o.vaishnava ?? o.date)}
           </li>
         ))}
       </ul>
+
+      <p className="mt-4 border-t border-gold/20 pt-3 text-sm text-muted-foreground">
+        Where two days are listed, the tithi spans midnight. The smarta reckoning
+        takes the earlier day, the vaishnava reckoning the later one, and both are
+        correct within their own tradition.
+      </p>
     </section>
   );
 }
