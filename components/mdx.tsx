@@ -1,9 +1,14 @@
 import * as runtime from "react/jsx-runtime";
 import Link from "next/link";
 import type { AnchorHTMLAttributes, HTMLAttributes } from "react";
+import { ScriptureTable } from "@/components/scripture-table";
 
 /** Branded in-body components available to every MDX document. */
 const components = {
+  // A page never types out what a text says. It asks the concordance for the
+  // rows on that question, so a correction lands everywhere at once and two
+  // pages cannot drift into disagreeing about the same verse (docs/01 §5).
+  ScriptureTable,
   // Wide comparison tables scroll inside their own container so the page body
   // never scrolls sideways on a phone.
   table: (props: HTMLAttributes<HTMLTableElement>) => (

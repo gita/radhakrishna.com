@@ -17,11 +17,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: d.type === "hub" ? 0.8 : 0.7,
   }));
   // Static routes live outside the content collection, so list them explicitly.
-  const staticRoutes: MetadataRoute.Sitemap = ["/images", "/daily-darshan", "/app", "/about", "/privacy"].map((p) => ({
+  const staticRoutes: MetadataRoute.Sitemap = [
+    "/images",
+    "/daily-darshan",
+    "/app",
+    "/about",
+    "/privacy",
+  ].map((p) => ({
     url: site.url + p,
     lastModified: now,
     changeFrequency: "weekly" as const,
     priority: 0.6,
   }));
-  return [home, ...pages, ...staticRoutes];
+  // The concordance is the site's reference asset, not an ordinary page: it is
+  // what the scripture tables everywhere else are surfaces of (docs/01 §5), so
+  // it ranks with the hubs rather than with the utility pages.
+  const concordance: MetadataRoute.Sitemap[number] = {
+    url: site.url + "/scripture-concordance",
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.9,
+  };
+  return [home, ...pages, concordance, ...staticRoutes];
 }

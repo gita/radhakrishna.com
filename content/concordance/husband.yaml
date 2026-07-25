@@ -1,0 +1,231 @@
+# The Radha Krishna Scripture Concordance: who was Radha's husband.
+#
+# The most confidently mis-answered question about Radha. Rayan, Abhimanyu and
+# Ayan are each asserted online as the answer, flatly and without a citation.
+# They come from three different literatures in three different centuries, and
+# the one Purana that does name a husband cancels the marriage in the same
+# chapter. Setting that out precisely is the whole value of this section.
+#
+# On labels: `explicitly in scripture` means a Purana or canonical text carries
+# it. How late that text is sits in `approxDate` beside its name. Rayana is in a
+# Purana; Abhimanyu is in a sixteenth century Gaudiya handbook. Collapsing those
+# into one label would destroy the finding.
+
+- id: husband-brahma-vaivarta-purana
+  topic: husband
+  source: "Brahma Vaivarta Purana"
+  approxDate: "extant recension 15th to 16th century CE, on older layers"
+  label: "explicitly in scripture"
+  says: >
+    This is the text that actually names a husband, and the name is Rayana. He
+    is described as one of the twelve cowherds, a portion of Krishna, and the
+    brother of Yashoda. The passage says Radha was given to him when she came of
+    age.
+  citation: "Prakriti Khanda, ch. 49"
+  url: "https://archive.org/details/brahma-vaivarta-purana-all-four-kandas-english-translation"
+  verified: "2026-07-25"
+
+- id: husband-brahma-vaivarta-purana-shadow
+  topic: husband
+  source: "Brahma Vaivarta Purana"
+  approxDate: "extant recension 15th to 16th century CE, on older layers"
+  label: "explicitly in scripture"
+  says: >
+    The same chapter takes the marriage back. Only a shadow Radha, a chhaya,
+    went through the wedding with Rayana, and it was the shadow that lived in
+    his house. Radha says so in her own voice later in the text, telling Nanda
+    in the Bhandira grove that she is only by reflection the wife of Rayana.
+  citation: "Prakriti Khanda, ch. 49; Krishna Janma Khanda, chs. 86 and 111"
+  url: "https://archive.org/details/brahma-vaivarta-purana-all-four-kandas-english-translation"
+  verified: "2026-07-25"
+
+- id: husband-brahma-vaivarta-purana-curse
+  topic: husband
+  source: "Brahma Vaivarta Purana"
+  approxDate: "extant recension 15th to 16th century CE, on older layers"
+  label: "explicitly in scripture"
+  says: >
+    Radha is in a human marriage at all because of a curse. After a quarrel in
+    Goloka, Sridama tells her to take birth from a human womb, and she is born
+    on earth to Vrishabhanu and Kalavati. The wedding to Rayana follows from
+    that descent and belongs to it, not to who Radha is.
+  citation: "Krishna Janma Khanda, ch. 3; Prakriti Khanda, ch. 49"
+  url: "https://archive.org/details/brahma-vaivarta-purana-all-four-kandas-english-translation"
+  verified: "2026-07-25"
+
+- id: husband-brahma-vaivarta-purana-vivaha
+  topic: husband
+  source: "Brahma Vaivarta Purana"
+  approxDate: "extant recension 15th to 16th century CE, on older layers"
+  label: "explicitly in scripture"
+  says: >
+    The one wedding this Purana treats as real is to Krishna. In the Bhandira
+    grove Brahma builds the fire altar, gives Radha's hand to Krishna, leads
+    them seven times round the fire and recites the seven Vedic mantras.
+  citation: "Krishna Janma Khanda, ch. 15"
+  url: "https://archive.org/details/brahma-vaivarta-purana-all-four-kandas-english-translation"
+  verified: "2026-07-25"
+
+- id: husband-garga-samhita
+  topic: husband
+  source: "Garga Samhita"
+  approxDate: "late medieval, commonly placed in the 16th to 17th century CE"
+  label: "explicitly in scripture"
+  says: >
+    Garga Samhita gives Radha one wedding and one bridegroom, Krishna. Nanda
+    carries the child Krishna into Bhandiravana, Brahma appears, has the two
+    circle the sacred fire and recites the seven mantras. No second husband
+    appears anywhere in the account.
+  citation: "Goloka Khanda, ch. 16"
+  url: "https://www.wisdomlib.org/hinduism/book/garga-samhita-english/d/doc1123292.html"
+  verified: "2026-07-25"
+
+- id: husband-bhagavata-purana
+  topic: husband
+  source: "Bhagavata Purana"
+  approxDate: "9th to 10th century CE"
+  label: "explicitly in scripture"
+  says: >
+    The Bhagavata never uses the name Radha, so it names no husband for her
+    either. It gives no husband's name for any individual gopi, only the general
+    statement that the gopis of the rasa lila left married homes.
+  citation: "10.30.28"
+  url: "https://jiva.org/why-radha-is-not-mentioned-in-bhagavata-purana/"
+  verified: "2026-07-25"
+
+- id: husband-padma-purana
+  topic: husband
+  source: "Padma Purana"
+  approxDate: "composite; the Radha material in the Patala Khanda is late medieval"
+  label: "explicitly in scripture"
+  says: >
+    The Padma Purana knows Radha and praises her as the one through whom Krishna
+    is reached, and it marries her to no one. Its chapters listing Krishna's
+    marriages name Satya, Kalindi and the rest, and Radha is not among them. The
+    claim that this Purana records a marriage of Radha to Ayan circulates with
+    no chapter and verse attached to it.
+  citation: "Patala Khanda, ch. 71; Uttara Khanda, ch. 249"
+  url: "https://www.wisdomlib.org/hinduism/book/the-padma-purana/d/doc365383.html"
+  verified: "2026-07-25"
+
+- id: husband-gita-govinda
+  topic: husband
+  source: "Gita Govinda of Jayadeva"
+  approxDate: "12th century CE"
+  label: "later devotional literature"
+  says: >
+    The poem that made Radha famous gives her no husband and no in-laws. Its
+    Sanskrit contains no Ayanaghosha, no Abhimanyu and no Rayana. The frequent
+    claim that the Gita Govinda names her as the wife of Ayanaghosha comes from
+    later dictionary entries about Radha, not from the poem.
+  url: "https://gretil.sub.uni-goettingen.de/gretil/corpustei/sa_jayadeva-gItagovinda.xml"
+  verified: "2026-07-25"
+
+- id: husband-radha-krishna-ganoddesa-dipika
+  topic: husband
+  source: "Radha-Krishna-ganoddesa-dipika of Rupa Goswami"
+  approxDate: "about 1550 CE"
+  sampradaya: "Gaudiya Vaishnava"
+  label: "later devotional literature"
+  says: >
+    This is where the name Abhimanyu comes from. Rupa Goswami's directory of
+    Radha and Krishna's associates lists Jatila as her mother-in-law, Kutila as
+    her sister-in-law and Abhimanyu as her husband, understood in the tradition
+    as a husband in name only. It is a sixteenth century Gaudiya handbook, not a
+    Purana. The Brahma Vaivarta Purana uses the name Abhimanyu only for the son
+    of Arjuna.
+  citation: "text 174"
+  url: "https://www.vrindavan.de/KRISHNA-GANODDESA-DIPIKA.htm"
+  verified: "2026-07-25"
+
+- id: husband-shreekrishna-kirtana
+  topic: husband
+  source: "Shreekrishna Kirtana of Boru Chandidas"
+  approxDate: "14th to 15th century CE, Bengali"
+  label: "later devotional literature"
+  says: >
+    The name Ayan belongs to the eastern vernacular stream, not to Sanskrit
+    Purana. In this early Bengali verse drama Radha is married to Ayan Gopa and
+    lives with his aunt Barai. From this literature come the Bengali forms Ayan
+    and Ayan Ghosh. Each literature uses one name only, and none of them uses
+    two.
+  url: "https://en.wikipedia.org/wiki/Shreekrishna_Kirtana"
+  verified: "2026-07-25"
+
+- id: husband-gaudiya-parakiya
+  topic: husband
+  source: "Gaudiya Vaishnava teaching"
+  approxDate: "16th century CE onward"
+  sampradaya: "Gaudiya Vaishnava"
+  label: "taught within a tradition"
+  says: >
+    Gaudiya Vaishnavism holds parakiya bhava, love that stands outside marriage,
+    to be the highest form of Radha's love, because love that must cross every
+    social wall expects nothing in return. The nominal husband exists to make
+    that crossing costly, and is treated as a shadow arranged by Yogamaya who
+    never touches Radha. Jiva Goswami argued the opposite, svakiya, that the two
+    are eternally wedded; the parakiya reading is the standard one today.
+  url: "https://jagadanandadas.blogspot.com/2015/09/the-svakiya-parakiya-controversy.html"
+  verified: "2026-07-25"
+
+- id: husband-nimbarka
+  topic: husband
+  source: "Nimbarka sampradaya teaching"
+  approxDate: "medieval"
+  sampradaya: "Nimbarka"
+  label: "taught within a tradition"
+  says: >
+    The Nimbarka sampradaya holds Radha and Krishna to be eternally wedded,
+    svakiya, and worships them only as a couple. The Dashashloki places the
+    daughter of Vrishabhanu on Krishna's left, the wife's side, never apart from
+    him. On this reading Radha was never given to anyone, and the question of
+    another husband does not arise.
+  citation: "Dashashloki"
+  url: "https://archive.org/details/OkJt_vedanta-dasha-shloki-of-nimbarka-acharya-translated-and-edited-by-vasudeva-shara"
+  verified: "2026-07-25"
+
+- id: husband-radha-vallabh
+  topic: husband
+  source: "Radha Vallabh sampradaya teaching"
+  approxDate: "founded 1535 CE at Vrindavan"
+  sampradaya: "Radha Vallabh"
+  label: "taught within a tradition"
+  says: >
+    Radha is the supreme being and Krishna her most intimate servant. The
+    tradition sings wedding songs for the eternal marriage of Radha and Krishna
+    as a festival of the temple year. There is no other husband to place,
+    because Radha belongs to Krishna and Krishna to Radha.
+  url: "https://en.wikipedia.org/wiki/Radha_Vallabha_Sampradaya"
+  verified: "2026-07-25"
+
+- id: husband-braj-folk-tradition
+  topic: husband
+  source: "Braj folk and raas lila tradition"
+  approxDate: "16th century CE onward"
+  label: "folk legend"
+  says: >
+    In Braj the husband is a place and a stage character rather than a verse.
+    Yavat, a village near Nandgaon, is shown to pilgrims as Radha's married
+    home, with images of Abhimanyu, Jatila and Kutila. In raas lila plays the
+    same figure is usually called Ayan and is played for comedy, forever a step
+    behind what is happening in his own courtyard. Which name a teller uses
+    follows the region and the language, not a text.
+  url: "https://thegaudiyatreasuresofbengal.com/2023/01/04/yavat-javat-radharanis-in-laws-house-jatila-ki-haveli/"
+  verified: "2026-07-25"
+
+# No url on purpose: the finding is that the confident answers rest on nothing
+# single that can be linked, and each strand is already cited in its own row.
+- id: husband-popular-claim
+  topic: husband
+  source: "Popular retellings"
+  approxDate: "modern"
+  label: "modern retelling"
+  says: >
+    The one-word answers given online do not survive contact with the texts.
+    Rayan is real, and comes from one Purana that voids the marriage in the same
+    breath. Abhimanyu is real, and comes from a sixteenth century Gaudiya
+    handbook rather than any Purana. Ayan is real, and comes from Bengali
+    vernacular poetry. Editions of the Brahma Vaivarta Purana read Rayana rather
+    than Rapan. The Padma Purana and the Gita Govinda, the two texts cited most
+    often, name no husband for Radha at all.
+  verified: "2026-07-25"

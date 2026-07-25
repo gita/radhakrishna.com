@@ -1,0 +1,187 @@
+# The Radha Krishna Scripture Concordance: Radha and Rukmini.
+#
+# The popular claim that Radha was reborn as Rukmini is repeated constantly and
+# rests on nothing in the classical texts. Establishing that precisely, rather
+# than asserting the opposite just as confidently, is the point of this section.
+
+- id: rukmini-bhagavata-purana
+  topic: rukmini
+  source: "Bhagavata Purana"
+  approxDate: "9th to 10th century CE"
+  label: "explicitly in scripture"
+  says: >
+    Three chapters narrate Rukmini. She sends Krishna a letter asking him to
+    carry her off before her brother Rukmi can give her to Shishupala, Krishna
+    takes her from the temple of Ambika on her wedding morning, defeats the
+    assembled kings, and marries her in Dvaraka.
+  citation: "10.52 to 10.54"
+  url: "https://www.srimadbhagavatam.org/canto10/chapter53.html"
+  verified: "2026-07-25"
+
+- id: rukmini-bhagavata-chief-queen
+  topic: rukmini
+  source: "Bhagavata Purana"
+  approxDate: "9th to 10th century CE"
+  label: "explicitly in scripture"
+  says: >
+    Rukmini is named first among Krishna's eight principal queens, and the text
+    calls her Sri herself. When she fans him, Krishna smiles at the goddess of
+    fortune who desires only him.
+  citation: "10.54.60, 10.60.9, 10.61.7"
+  url: "https://gitabase.com/eng/SB/10/61/7"
+  verified: "2026-07-25"
+
+- id: rukmini-bhagavata-10-47-60
+  topic: rukmini
+  source: "Bhagavata Purana"
+  approxDate: "9th to 10th century CE"
+  label: "explicitly in scripture"
+  says: >
+    Uddhava, returning from Vraja, says the blessing the cowherd women received
+    in the rasa dance was never given to Sri who rests on Krishna's chest, nor
+    to the women of heaven, nor to anyone else. The verse ranks the gopis above
+    Lakshmi. It names Sri, not the queens of Dvaraka.
+  citation: "10.47.60"
+  url: "https://gitabase.com/eng/SB/10/47/60"
+  verified: "2026-07-25"
+
+- id: rukmini-bhagavata-radha-unnamed
+  topic: rukmini
+  source: "Bhagavata Purana"
+  approxDate: "9th to 10th century CE"
+  label: "explicitly in scripture"
+  says: >
+    The Bhagavata never names Radha. At 10.30.28 the searching gopis say only
+    anaya aradhitah, that Hari was worshipped by this one, since Govinda left
+    the rest of them and took her to a secluded place. The gopi is not named
+    there or anywhere else in the text.
+  citation: "10.30.28"
+  url: "https://www.wisdomlib.org/hinduism/book/bhagavata-purana-sanskrit/d/doc1249380.html"
+  verified: "2026-07-25"
+
+- id: rukmini-vishnu-purana
+  topic: rukmini
+  source: "Vishnu Purana"
+  approxDate: "1st millennium CE"
+  label: "explicitly in scripture"
+  says: >
+    The chapter on the birth of Lakshmi states that she takes a form matching
+    each descent of Vishnu, and that when he was Krishna she became Rukmini.
+    Radha is not named anywhere in the text.
+  citation: "Book 1, Chapter 9"
+  url: "https://www.wisdomlib.org/hinduism/book/vishnu-purana-wilson/d/doc115945.html"
+  verified: "2026-07-25"
+
+- id: rukmini-skanda-purana
+  topic: rukmini
+  source: "Skanda Purana, Reva Khanda"
+  approxDate: "this section later than the 12th century CE"
+  label: "explicitly in scripture"
+  says: >
+    In a list of goddess forms and the places each is present, the Devi says
+    Rukmini is in Dvaravati and Radha in the forest of Vrindavana. The line
+    places the two at different sites and says nothing about a rebirth from one
+    into the other.
+  citation: "5.3.198.76"
+  url: "https://www.wisdomlib.org/hinduism/book/the-skanda-purana/d/doc425927.html"
+  verified: "2026-07-25"
+
+- id: rukmini-brahma-vaivarta
+  topic: rukmini
+  source: "Brahma Vaivarta Purana"
+  approxDate: "core by the 8th to 10th century, extant recension 15th to 16th century CE"
+  label: "explicitly in scripture"
+  says: >
+    Radha and Lakshmi are two of the five Prakritis, counted separately
+    alongside Durga, Sarasvati and Savitri. Krishna keeps Radhika with himself
+    and hands Lakshmi to Narayana, who takes her to Vaikuntha. The two are
+    distinct goddesses throughout.
+  citation: "Prakriti Khanda 1 to 2"
+  url: "https://archive.org/details/brahma-vaivarta-purana-all-four-kandas-english-translation"
+  verified: "2026-07-25"
+
+- id: rukmini-gaudiya-aradhita
+  topic: rukmini
+  source: "Bhagavata commentaries of Sanatana, Jiva and Vishvanatha Chakravarti"
+  approxDate: "16th to 18th century CE"
+  sampradaya: "Gaudiya Vaishnava"
+  label: "taught within a tradition"
+  says: >
+    Gaudiya commentators read the word aradhitah at 10.30.28 as Shukadeva's
+    veiled naming of Radha, and derive her name from it. The reading rests on
+    the verb, not on any occurrence of the name in the Purana itself.
+  citation: "commentaries on 10.30.28"
+  url: "https://jiva.org/why-radha-is-not-mentioned-in-bhagavata-purana/"
+  verified: "2026-07-25"
+
+- id: rukmini-gaudiya-hladini
+  topic: rukmini
+  source: "Chaitanya Charitamrita"
+  approxDate: "late 16th to early 17th century CE"
+  sampradaya: "Gaudiya Vaishnava"
+  label: "taught within a tradition"
+  says: >
+    Radha is Krishna's hladini shakti, the transformation of his own love.
+    Krishna's consorts are ranked in three classes, the goddesses of fortune,
+    the queens and the gopis of Vraja, with the gopis foremost. The goddesses of
+    fortune are portions of Radha and the queens reflections of her, so
+    Rukmini's status derives from Radha rather than rivalling it.
+  citation: "Adi 4.55, 4.59, 4.74 to 4.78; Madhya 8.80"
+  url: "https://www.bvmlu.org/books/CC/adi/04.html"
+  verified: "2026-07-25"
+
+- id: rukmini-nimbarka
+  topic: rukmini
+  source: "Dashashloki of the Nimbarka tradition"
+  approxDate: "12th to 14th century CE"
+  sampradaya: "Nimbarka"
+  label: "taught within a tradition"
+  says: >
+    The verse meditates on the daughter of Vrishabhanu seated at Krishna's left,
+    equal to him and served by thousands of sakhis. Radha is worshipped as his
+    eternally wedded consort in the divine Vrindavana, and the queens of Dvaraka
+    are no part of that worship.
+  url: "https://en.wikipedia.org/wiki/Nimbarka_Sampradaya"
+  verified: "2026-07-25"
+
+- id: rukmini-radhavallabh
+  topic: rukmini
+  source: "Hita Chaurasi and Radha Sudhanidhi of Hita Harivamsa"
+  approxDate: "founded 1535 CE at Vrindavan"
+  sampradaya: "Radha Vallabh"
+  label: "taught within a tradition"
+  says: >
+    Radha is the supreme deity and Krishna her most intimate servant. Liberation
+    is becoming a sakhi who witnesses their play in the groves of Vrindavana.
+    Dvaraka, kingship and the queens fall outside what this tradition worships.
+  url: "https://en.wikipedia.org/wiki/Radha_Vallabha_Sampradaya"
+  verified: "2026-07-25"
+
+- id: rukmini-pushtimarg
+  topic: rukmini
+  source: "Pushtimarg, the Vallabha sampradaya"
+  approxDate: "early 16th century CE"
+  sampradaya: "Pushtimarg"
+  label: "taught within a tradition"
+  says: >
+    Seva is offered to Krishna in his Vraja forms, above all Shrinathji of
+    Govardhan, and the daily service follows a day in the life of the young
+    cowherd. Radha is honoured as Swamini beside him. The Dvaraka pastimes and
+    the queens are not the object of seva.
+  url: "https://en.wikipedia.org/wiki/Pushtimarga_Sampradaya"
+  verified: "2026-07-25"
+
+# No url on purpose. The claim is that nothing carries this, and pointing at a
+# forum thread as though it were a source would undercut the finding.
+- id: rukmini-radha-reborn-as-rukmini
+  topic: rukmini
+  source: "Popular retellings, television serials and devotional blogs"
+  approxDate: "20th to 21st century"
+  label: "modern retelling"
+  says: >
+    The claim that Radha was reborn as Rukmini has no basis in any classical
+    text. No Purana narrates a rebirth linking them. What the older texts carry
+    is a single line placing Rukmini in Dvaraka and Radha in Vrindavana, and
+    later writers quoting it to argue the two are one in essence, which is a
+    claim about identity of nature and not about a second birth.
+  verified: "2026-07-25"

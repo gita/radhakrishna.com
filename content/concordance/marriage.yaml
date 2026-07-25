@@ -1,0 +1,192 @@
+# The Radha Krishna Scripture Concordance: did Radha and Krishna marry?
+#
+# Two Sanskrit texts narrate a wedding, and both marry Radha to Krishna. The
+# schools then split on what that means: Gaudiya Vaishnavism holds their love to
+# be parakiya, standing outside marriage, while Nimbarka and Radha Vallabh hold
+# them eternally wedded. The disagreement is doctrinal and old, and neither side
+# is a misunderstanding of the other.
+
+- id: marriage-bhagavata-purana
+  topic: marriage
+  source: "Bhagavata Purana"
+  approxDate: "9th to 10th century CE"
+  label: "explicitly in scripture"
+  says: >
+    Never uses the name Radha and narrates no marriage between Krishna and any
+    gopi. The gopis of the rasa lila are women with husbands and households who
+    leave them to come. At 10.30.28 the gopis say of one unnamed companion that
+    she must have worshipped Hari perfectly, and commentators read Radha's name
+    inside the word aradhita.
+  citation: "10.29.8, 10.29.20, 10.30.28"
+  url: "https://www.wisdomlib.org/hinduism/book/bhagavata-purana-sanskrit/d/doc1249380.html"
+  verified: "2026-07-25"
+
+- id: marriage-brahma-vaivarta-purana
+  topic: marriage
+  source: "Brahma Vaivarta Purana"
+  approxDate: "extant recension 15th to 16th century CE"
+  label: "explicitly in scripture"
+  says: >
+    Chapter 15 of the Krishna Janma Khanda is the wedding chapter. Brahma
+    arrives while Radha holds the infant Krishna, kindles the sacred fire, joins
+    their hands, has them circle the fire and exchange garlands, and gives Radha
+    away as a father gives a daughter. The ceremony is presented as making
+    visible what was already the case.
+  citation: "Krishna Janma Khanda, ch. 15"
+  url: "https://archive.org/details/brahma-vaivarta-purana-all-four-kandas-english-translation"
+  verified: "2026-07-25"
+
+- id: marriage-garga-samhita
+  topic: marriage
+  source: "Garga Samhita"
+  approxDate: "surviving text placed around the 16th century CE"
+  label: "explicitly in scripture"
+  says: >
+    Canto 1 chapter 16 is titled the description of Shri Radhika's wedding and
+    sets it in Bhandiravana. Brahma tells the couple that they are already a
+    loving husband and wife, greater than the greatest and perfect for each
+    other, and that he will nonetheless perform their wedding following the ways
+    of this world. He then ignites the fire, joins their hands and gives Radha
+    away.
+  citation: "Goloka Khanda 1.16.30 to 1.16.35"
+  url: "https://www.wisdomlib.org/hinduism/book/garga-samhita-english/d/doc1123260.html"
+  verified: "2026-07-25"
+
+- id: marriage-padma-purana
+  topic: marriage
+  source: "Padma Purana"
+  approxDate: "composite, with the Radha material late"
+  label: "explicitly in scripture"
+  says: >
+    Glorifies Radha without giving her a wedding. The Patala Khanda calls her
+    Lakshmi sent to sport with Narayana in Vrindavana, and the Brahma Khanda
+    records her appearance on Vrishabhanu's sacrificial ground, the day kept as
+    Radhashtami. No marriage ceremony is narrated anywhere in it.
+  citation: "Patala Khanda, ch. 71"
+  url: "https://www.wisdomlib.org/hinduism/book/the-padma-purana/d/doc365383.html"
+  verified: "2026-07-25"
+
+- id: marriage-gita-govinda
+  topic: marriage
+  source: "Gita Govinda of Jayadeva"
+  approxDate: "12th century CE"
+  label: "later devotional literature"
+  says: >
+    Contains no wedding. It opens with Nanda telling Radha to lead Krishna home
+    through the gathering dark, and the two turn aside to the riverbank instead.
+    Radha stands to Krishna as consort, and the love is secret, jealous and
+    outside social sanction.
+  citation: "Canto 1"
+  url: "https://www.ocasopress.com/jayadeva-gita-govinda.html"
+  verified: "2026-07-25"
+
+- id: marriage-chaitanya-charitamrita
+  topic: marriage
+  source: "Chaitanya Charitamrita"
+  approxDate: "late 16th to early 17th century CE"
+  sampradaya: "Gaudiya Vaishnava"
+  label: "later devotional literature"
+  says: >
+    Krishnadasa Kaviraja has Krishna say that yogamaya will inspire the gopis
+    with the sentiment that he is their paramour, that neither he nor they will
+    notice the arrangement, and that their pure attachment will unite them even
+    at the expense of dharma. No marriage between Radha and Krishna is described.
+  citation: "Adi 4.29 to 4.31"
+  url: "https://www.bvmlu.org/books/CC/adi/04.html"
+  verified: "2026-07-25"
+
+- id: marriage-ganoddesha-dipika
+  topic: marriage
+  source: "Radha-Krishna-ganoddesa-dipika of Rupa Goswami"
+  approxDate: "about 1550 CE"
+  sampradaya: "Gaudiya Vaishnava"
+  label: "later devotional literature"
+  says: >
+    The handbook of the residents of Vraja is where Radha's marital household is
+    written down: Jatila as mother-in-law, Abhimanyu as her husband in name
+    only, Kutila as her fault-finding sister-in-law. The qualifier is the
+    tradition's own, and the marriage is held to be an arrangement of yogamaya
+    that is never consummated.
+  citation: "text 174"
+  url: "https://www.vrindavan.de/KRISHNA-GANODDESA-DIPIKA.htm"
+  verified: "2026-07-25"
+
+- id: marriage-gaudiya-parakiya
+  topic: marriage
+  source: "Gaudiya Vaishnava doctrine"
+  approxDate: "16th century CE onward"
+  sampradaya: "Gaudiya Vaishnava"
+  label: "taught within a tradition"
+  says: >
+    Radha and Krishna are not married in any worldly sense. Rupa Goswami divides
+    Krishna's beloveds into svakiya, those who have taken his hand, and
+    parakiya, those who give themselves without regard for sanction, and places
+    the gopis of Vraja with Radha in the second class. Parakiya love is held to
+    be the higher because it risks everything and claims nothing. Jiva Goswami
+    argued that in Goloka the relation is svakiya and only appears otherwise on
+    earth; the tradition after Vishvanatha Chakravarti kept parakiya as the
+    final position.
+  citation: "Ujjvala Nilamani 3"
+  url: "https://archive.org/details/ujjvalanilamanibysrirupagoswami"
+  verified: "2026-07-25"
+
+- id: marriage-nimbarka
+  topic: marriage
+  source: "Nimbarka sampradaya teaching"
+  approxDate: "Nimbarka traditionally 12th to 13th century CE"
+  sampradaya: "Nimbarka"
+  label: "taught within a tradition"
+  says: >
+    Worships Radha as Krishna's eternally wedded consort, svakiya, and this is
+    the sharpest doctrinal difference between it and the Gaudiya parakiya
+    reading. The Dashashloki places Vrishabhanu's daughter on Krishna's left, of
+    beauty matching his own and served by thousands of sakhis, and the tradition
+    understands the pair as one eternally married couple.
+  citation: "Dashashloki"
+  url: "https://en.wikipedia.org/wiki/Nimbarka_Sampradaya"
+  verified: "2026-07-25"
+
+- id: marriage-radha-vallabh
+  topic: marriage
+  source: "Radha Vallabh sampradaya teaching"
+  approxDate: "founded 1535 CE at Vrindavan"
+  sampradaya: "Radha Vallabh"
+  label: "taught within a tradition"
+  says: >
+    Holds the couple eternally wedded and rejects the parakiya reading. Its
+    later poets composed the Vyahulau Utsav ke Pad, marriage festival songs
+    celebrating the eternal wedding of Radha and Krishna, and the sect keeps
+    their union as belonging to the nikunja rather than to society.
+  citation: "Vyahulau Utsav ke Pad"
+  url: "https://en.wikipedia.org/wiki/Radha_Vallabha_Sampradaya"
+  verified: "2026-07-25"
+
+- id: marriage-pushtimarg
+  topic: marriage
+  source: "Pushtimarg, the Vallabha sampradaya"
+  approxDate: "Vallabhacharya 1479 to 1531 CE"
+  sampradaya: "Pushtimarg"
+  label: "taught within a tradition"
+  says: >
+    Carries no marriage narrative. Vallabhacharya took his authority from the
+    Vedas, the Brahma Sutras, the Bhagavata and the Gita, none of which name
+    Radha, and his commentary the Subodhini does not name her either. Radha
+    entered the tradition's devotion through his son Vitthalnath, and in the
+    havelis she is honoured as Swaminiji beside Shrinathji rather than as a
+    bride.
+  url: "https://www.pushti-marg.net/bhagwat/Radha.htm"
+  verified: "2026-07-25"
+
+- id: marriage-braj-folk
+  topic: marriage
+  source: "Braj folk tradition"
+  approxDate: "medieval Braj and Bengali devotional culture"
+  label: "folk legend"
+  says: >
+    Braj says Radha was married to Ayan or Rayan and lived with her in-laws at
+    Yavat, a few kilometres from Nandgaon, where the house is still shown to
+    pilgrims. The Bhagavata, the Gita Govinda and the Garga Samhita give her no
+    husband at all, and the two Sanskrit texts that do narrate a wedding marry
+    her to Krishna.
+  url: "https://thegaudiyatreasuresofbengal.com/2023/01/04/yavat-javat-radharanis-in-laws-house-jatila-ki-haveli/"
+  verified: "2026-07-25"

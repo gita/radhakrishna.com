@@ -116,13 +116,60 @@ const content = defineCollection({
     })),
 });
 
+/**
+ * The Radha Krishna Scripture Concordance (docs/01 §5, docs/02 §6, P1-4).
+ *
+ * One named, versioned dataset, not a table restamped on each page. Nobody else
+ * assembles what each named text and each sampradaya actually says about Radha's
+ * marriage, her husband, her identity, side by side with chapter and verse. That
+ * is the information gain, and it is the one thing on this site a thin blog
+ * cannot copy by rewriting.
+ *
+ * Every claim is its own extractable node with a stable `id`, so it can be cited,
+ * linked and anchored. `<ScriptureTable>` renders slices of this; the dataset is
+ * the asset, the tables are only its surface.
+ *
+ * `label` is the transparency layer, and it is required. A reader must always be
+ * able to tell a verse in a named text from a tradition's teaching from a folk
+ * story, because conflating those is the single biggest failure of the pages
+ * this site is competing with.
+ */
+const concordance = defineCollection({
+  name: "ConcordanceClaim",
+  pattern: "concordance/*.yaml",
+  schema: s.object({
+    // Stable and citable. Never renamed once published: it is an anchor target.
+    id: s.string(),
+    topic: s.enum(["marriage", "husband", "identity", "death", "rukmini"]),
+    // The named text, school, or body of material the claim comes from.
+    source: s.string(),
+    approxDate: s.string().optional(),
+    sampradaya: s.string().optional(),
+    label: s.enum([
+      "explicitly in scripture",
+      "later devotional literature",
+      "taught within a tradition",
+      "folk legend",
+      "modern retelling",
+    ]),
+    // What it actually says. Never a paraphrase of another site's paraphrase.
+    says: s.string(),
+    // Chapter and verse wherever the text is numbered. Absent only when the
+    // material genuinely carries no numbered reference, which is itself a fact
+    // worth stating on the page rather than papering over.
+    citation: s.string().optional(),
+    url: s.string().optional(),
+    verified: s.isodate(),
+  }),
+});
+
 export default defineConfig({
   root: "content",
   output: {
     data: ".velite",
     clean: true,
   },
-  collections: { content },
+  collections: { content, concordance },
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, { behavior: "wrap" }]],

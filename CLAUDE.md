@@ -236,8 +236,11 @@ Before using any API, library, or system (Parallel, Reddit, Serper, Ahrefs, Veli
 etc.), read its official documentation for the exact endpoint, params, auth, and request/response shape.
 Verify against the docs (context7 for libraries, WebFetch the official API docs). Never guess an endpoint or
 a field and hope it works. Confirmed so far: Parallel Search = `POST https://api.parallel.ai/v1/search`
-(header `x-api-key`, body `{objective, search_queries, mode}`); Reddit OAuth needs a
-`script:app:vN (by /u/user)` user agent.
+(header `x-api-key`, body `{objective, search_queries, mode}`). **`mode` is one of `turbo`, `basic`,
+`advanced`** and nothing else; `one-shot` was written down here once and is rejected with a 400 that
+names the valid values. Use `advanced` for scripture sourcing, it is the default and the deepest.
+The response is `{search_id, results[], warnings, usage, session_id}` and each result carries
+`title`, `url` and `excerpts[]`. Reddit OAuth needs a `script:app:vN (by /u/user)` user agent.
 
 **Use SerpApi for People Also Ask, not Serper.** Serper returns no `peopleAlsoAsk` block on our plan.
 SerpApi does: `GET https://serpapi.com/search.json?engine=google&q=...&gl=in&hl=en&api_key=$SERP_API_KEY`

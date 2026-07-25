@@ -1,0 +1,20 @@
+# The Radha Krishna Scripture Concordance: what Radha is said to be.
+#
+# One dataset, not a table per page (docs/01 §5). Every entry is an extractable
+# node with a stable id, so a single claim can be linked and cited on its own.
+# `label` is the transparency layer and is never guessed: a verse in a named text,
+# a school's teaching, and a folk story are three different kinds of statement.
+
+- id: identity-bhagavata-purana-aradhita
+  topic: identity
+  source: "Bhagavata Purana"
+  approxDate: "9th to 10th century CE"
+  label: "explicitly in scripture"
+  says: >
+    Never names Radha. During the rasa lila it describes one gopi whom Krishna
+    favoured above the rest, using the word aradhita, she who has worshipped him
+    perfectly. Commentators across traditions read that veiled word as pointing
+    to Radha.
+  citation: "10.30.28"
+  url: "https://vedabase.io/en/library/sb/10/30/28/"
+  verified: "2026-07-25"
