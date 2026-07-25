@@ -35,7 +35,7 @@ Highest informational curiosity. These are the "she is a mystery" queries — hu
 | who is Radha                                                                 | Info              | Head, pillar                                                  |
 | Radha Krishna story                                                          | Info              | Head, pillar (also image intent)                              |
 | who is Radha's husband / Radha husband name / Ayan / Abhimanyu               | Info              | Very high curiosity, confusion query                          |
-| how did Radha die / Radha death story / at what age did Radha die            | Info              | High emotional pull, top-of-SERP is thin blogs                |
+| ~~how did Radha die~~ DROPPED (Q12)                                          | Info              | High emotional pull, and not a framing we want for Radharani   |
 | was Radha married to Krishna                                                 | Info              | Nuance query — scripture split (Brahma Vaivarta vs Bhagavata) |
 | is Radha an incarnation of Lakshmi / Radha vs Lakshmi                        | Info              | Theology                                                      |
 | Radha parents / Vrishabhanu and Kirti / who was Radha's mother               | Info              |                                                               |
@@ -232,7 +232,7 @@ Priority key: **P0** = build first (pillar or highest volume × lowest competiti
 | 2   | Radha Krishna love story (full, scripture-sourced)               | S    | Info+visual   | Head term; pillar for Cluster B; pairs with image set           |
 | 3   | Why did Krishna not marry Radha? (scripture-by-scripture)        | Q    | Info          | One of the biggest single queries; incumbents are florist blogs |
 | 4   | ~~How did Radha die?~~ DROPPED, see DECISIONS Q12                | Q    | Info          | Founder decision: not a framing we want for Radharani           |
-| 5   | Who is Radha's husband? (Ayan/Abhimanyu vs Krishna nuance)       | Q    | Info          | Massive confusion query; nuance = long-tail capture             |
+| 5   | ~~Who is Radha's husband?~~ DROPPED, see DECISIONS Q13           | Q    | Info          | Founder decision: contested and gossip-adjacent, not our ground |
 | 6   | Radha Krishna images / HD gallery (original, downloadable)       | I    | Visual        | Largest-volume bucket; spam-farm incumbents                     |
 | 7   | Radha Krishna quotes (Hindi + English, shareable cards)          | I    | Visual+info   | Pinterest/IG engine; feeds brand                                |
 | 8   | Hare Krishna Maha Mantra (meaning, how to chant, audio)          | M    | Info+audio    | Head devotional term; ISKCON fragmented                         |

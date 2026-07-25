@@ -140,17 +140,17 @@ const concordance = defineCollection({
   schema: s.object({
     // Stable and citable. Never renamed once published: it is an anchor target.
     id: s.string(),
-    topic: s.enum(["marriage", "husband", "identity", "death", "rukmini"]),
+    topic: s.enum(["marriage", "identity", "rukmini"]),
     // The named text, school, or body of material the claim comes from.
     source: s.string(),
     approxDate: s.string().optional(),
     sampradaya: s.string().optional(),
     label: s.enum([
-      "explicitly in scripture",
-      "later devotional literature",
-      "taught within a tradition",
-      "folk legend",
-      "modern retelling",
+      "Scripture",
+      "Devotional text",
+      "Tradition",
+      "Braj legend",
+      "Modern retelling",
     ]),
     // What it actually says. Never a paraphrase of another site's paraphrase.
     says: s.string(),

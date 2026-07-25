@@ -18,11 +18,11 @@ export const CONCORDANCE_VERSION = "1.0";
 
 /** Sort order for the "How to read it" column: nearest to scripture first. */
 const LABEL_RANK: Record<ConcordanceClaim["label"], number> = {
-  "explicitly in scripture": 0,
-  "later devotional literature": 1,
-  "taught within a tradition": 2,
-  "folk legend": 3,
-  "modern retelling": 4,
+  Scripture: 0,
+  "Devotional text": 1,
+  Tradition: 2,
+  "Braj legend": 3,
+  "Modern retelling": 4,
 };
 
 export const CLAIMS: ConcordanceClaim[] = [...concordance]
@@ -40,11 +40,9 @@ export function concordanceBy(topic: ConcordanceTopic): ConcordanceClaim[] {
 }
 
 export const TOPICS: { id: ConcordanceTopic; question: string }[] = [
+  { id: "identity", question: "How do the scriptures speak of Radha?" },
   { id: "marriage", question: "Did Radha and Krishna marry?" },
-  { id: "husband", question: "Who was Radha's husband?" },
-  { id: "identity", question: "Who is Radha, and what is she said to be?" },
-  { id: "rukmini", question: "How do Radha and Rukmini relate?" },
-  { id: "death", question: "What do the texts say about Radha's passing?" },
+  { id: "rukmini", question: "Radha, Rukmini and the grace of the rasa lila" },
 ];
 
 /** Topics that actually have claims, so an empty section is never rendered. */

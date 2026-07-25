@@ -37,10 +37,105 @@ grep -rniE "I could not|I looked for|could not (be )?(verif|confirm)|I would lab
 
 # Authorial first person. The narrator has no "I": a devotee-scholar states what is true,
 # never what they personally would do. Reader-voice questions ("How do I fast?") are fine.
-grep -rnE "\bI (would|will|have|had|think|checked|found|treat|say|note|could|cannot)\b|\bI'(m|ve|d|ll)\b" content/
+grep -rnE "\bI (would|will|have|had|think|checked|found|treat|say|note|could|cannot|see|go|look|want|keep)\b|\bI'(m|ve|d|ll)\b" content/
 ```
 
 The same applies to the site's own copy (components, metadata, OG text), not just MDX.
+
+## Who we are: a devotional site, and whose lineage it belongs to
+
+**This is a pro Radha Krishna site, not a neutral encyclopedia.** It exists to serve devotion. Write as
+a devotee-scholar who loves them, not as a referee holding the traditions at arm's length. Detached
+academic register is a defect here, the same as thin content is.
+
+**The lineage is Jagadguru Shri Kripalu Ji Maharaj and Swami Mukundananda.** Verified facts:
+
+- **Jagadguru Shri Kripalu Ji Maharaj** (5 October 1922 to 15 November 2013). Titled Jagadguru by the
+  Kashi Vidvat Parishat on 14 January 1957 and declared **Jagadguruttam**, the fifth original Jagadguru.
+  Founded **Jagadguru Kripalu Parishat** (JKP) in 1972. Built **Prem Mandir** in Vrindavan, **Kirti
+  Mandir** in Barsana, and **Bhakti Mandir** at Mangarh. Works include _Prem Ras Madira_, _Radha Govind
+  Geet_ and _Bhakti Shatak_.
+- **Swami Mukundananda**, his disciple, founder of **JKYog**.
+
+### The split that makes this work
+
+Neutral does not mean voiceless. Two different things, and they must not be confused:
+
+- **The data is even-handed.** The concordance tables show every sampradaya fairly, each labelled by
+  what kind of source it is. That evenness is exactly what makes them trustworthy and worth citing.
+  Making the tables partisan would destroy the one asset a thin blog cannot copy.
+- **Our own voice is not even-handed.** Framing, emphasis, what we choose to cover and how we answer
+  come from this lineage rather than hedging into generic mush.
+
+### Everyone is honoured; we simply have a home
+
+Three rings, and **nothing in any ring is ever disparaged, dismissed or written down**:
+
+1. **Our lineage.** Kripalu Ji Maharaj and Swami Mukundananda, JKP and JKYog. This is where our own
+   voice stands.
+2. **The Vaishnava family, our close kin.** Gaudiya Vaishnava, Nimbarka, Radha Vallabh, Pushtimarg,
+   ISKCON. Quoted warmly and often. When one of these teaches on a question, that is a natural
+   reference for us, not an outside opinion.
+3. **The wider Sanatan tradition, honoured in full.** Adi Shankaracharya and the Advaita line, the
+   Ramakrishna Mission, and every other genuine school. Cited with respect wherever they illuminate the
+   subject. A reader from any of them must feel welcome here.
+
+The difference is emphasis and voice, never dismissal. We do not say a school is wrong. Where the
+schools genuinely differ, the table shows all of them plainly and our prose says where we stand.
+
+**Named where relevant** (founder decision 2026-07-25). The lineage is named openly where it is
+genuinely the subject: Prem Mandir, Kirti Mandir, Barsana, and doctrinal pages where Maharaj Ji or
+Swami Ji taught on the question. A lineage page explains who we follow. Everywhere else it shapes the
+tone without being announced. A first-time visitor should never feel they have wandered into a closed
+school's site.
+
+### Never write about Radha in a debunking register
+
+The commonest failure, and it reads as an attack on the reader's faith. **Never lead with an absence.**
+"The Bhagavata never names Radha" as the first thing said about a text is a verdict; the same fact
+written as the tradition understands it is devotion:
+
+| Never                                         | Always                                                                                                   |
+| --------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| "Never uses the name Radha"                   | "Speaks of Radha without naming her, at 10.30.28"                                                        |
+| "Radha is not in scripture"                   | "The Bhagavata conceals her; the acharyas read her name inside the word aradhita"                        |
+| "Everything about her comes from later texts" | "The account of her appearance, with a father, a mother and a day, comes from the Puranas that name her" |
+
+Being accurate about which text says what is still required. Leading with what a text lacks, instead of
+what it holds, is what is forbidden. Absence is context, never the headline.
+
+### What we write about, and what we leave alone
+
+**Choose the question by what it gives the reader.** A page earns its place if it deepens bhakti, opens
+a lila, teaches something usable in a real life, or answers what a devotee genuinely wants to
+understand. Ask before building: does someone finish this page with more love, or only with more
+argument?
+
+**We do not build pages on the contested, gossip-adjacent questions**, however much they are searched.
+Founder direction, 2026-07-25. Named examples, and anything of that shape:
+
+- who Radha's husband was
+- how Radha died
+- Radha versus Rukmini as a rivalry
+- anything whose natural form is a controversy, a scandal, or one school being shown up
+
+These questions attract traffic and leave nobody better off. Answering them well still means spending
+the site's voice on a quarrel. Search volume is never the reason to build a page here.
+
+**What we do build:** the stories and lilas, the meaning of a festival and how to keep it, what a mantra
+says word by word and how to chant it, the temples and the towns of Braj, what Radha and Krishna's love
+teaches about love, and the questions a devotee asks because they want to understand rather than to
+win. Where a genuine question has a contested answer, the concordance table can still show the schools
+side by side, calmly, inside a page whose purpose is understanding.
+
+**A question already on the site that fails this test gets retired**, with a 301 to the nearest page
+that serves the reader. A page was already removed on these grounds once.
+
+### Attributing a teaching to Maharaj Ji or Swami Ji
+
+Exactly the same rule as scripture: **never from memory.** A teaching attributed to either of them must
+come from their actual works or a recorded talk, quoted or closely paraphrased with the source named. A
+fabricated guru quote is a worse failure than a fabricated verse.
 
 ## The content-quality gate (mandatory, no exceptions)
 

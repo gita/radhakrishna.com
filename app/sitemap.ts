@@ -33,7 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // what the scripture tables everywhere else are surfaces of (docs/01 §5), so
   // it ranks with the hubs rather than with the utility pages.
   const concordance: MetadataRoute.Sitemap[number] = {
-    url: site.url + "/scripture-concordance",
+    url: site.url + "/radha-in-scripture",
     lastModified: now,
     changeFrequency: "monthly",
     priority: 0.9,

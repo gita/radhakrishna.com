@@ -103,5 +103,22 @@ devotional site: the traditions that develop Radharani most fully treat her as e
 "death" page misrepresents her even when the body says the scriptures never narrate one. The
 demand is real, and research/07 had it as a target, but we are not chasing it.
 
+## Q13. Do we build "Who is Radha's husband?" and questions of that shape? (2026-07-25)
+
+**No, and this generalises.** Founder direction: the site does not build pages on contested,
+gossip-adjacent questions, however much they are searched. Named at the time: who Radha's husband was,
+how Radha died, Radha versus Rukmini as a rivalry, and anything whose natural form is a controversy or
+a scandal.
+
+The husband research was done and was good: fifteen sourced claims establishing that Rayana,
+Abhimanyu and Ayan come from three different literatures centuries apart, and that the one Purana
+naming a husband voids the marriage in the same chapter. It is archived at
+`docs/research/retired/husband-claims-retired.yaml`, published nowhere, and the concordance `topic`
+enum no longer accepts it, so a claim of that shape fails the build.
+
+The test that replaces search volume: **does a reader finish this page with more love, or only with
+more argument?** Where a genuine question has a contested answer, the scripture table can still show
+the schools side by side inside a page whose purpose is understanding.
+
 Do not recreate it. If the underlying query is ever worth serving, do it as part of who-is-radha
 rather than as a page about her dying.

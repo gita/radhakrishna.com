@@ -13,13 +13,13 @@ const description =
   "What each named scripture and each sampradaya actually says about Radha: her marriage, her husband, her identity, with chapter and verse, and every claim labelled by the kind of source it comes from.";
 
 export const metadata: Metadata = {
-  title: "The Radha Krishna Scripture Concordance",
+  title: "Radha in the Scriptures",
   description,
-  alternates: { canonical: "/scripture-concordance" },
+  alternates: { canonical: "/radha-in-scripture" },
   ...ogMeta({
-    title: "The Radha Krishna Scripture Concordance",
+    title: "Radha in the Scriptures",
     description,
-    url: "/scripture-concordance",
+    url: "/radha-in-scripture",
     eyebrow: "reference",
   }),
 };
@@ -71,10 +71,10 @@ export default function ConcordancePage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Dataset",
-    "@id": `${site.url}/scripture-concordance#dataset`,
+    "@id": `${site.url}/radha-in-scripture#dataset`,
     name: "The Radha Krishna Scripture Concordance",
     description,
-    url: `${site.url}/scripture-concordance`,
+    url: `${site.url}/radha-in-scripture`,
     version: CONCORDANCE_VERSION,
     inLanguage: "en",
     license: "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -107,14 +107,14 @@ export default function ConcordancePage() {
           Home
         </Link>
         <span className="px-1.5">/</span>
-        <span>Scripture Concordance</span>
+        <span>Radha in the Scriptures</span>
       </nav>
 
       <p className="mt-6 text-xs font-semibold uppercase tracking-[0.16em] text-gold">
         Reference
       </p>
       <h1 className="mt-2 text-balance font-serif text-4xl font-semibold tracking-tight sm:text-5xl">
-        The Radha Krishna Scripture Concordance
+        Radha in the Scriptures
       </h1>
 
       <div className="mt-6 rounded-2xl border border-gold/30 bg-gold/5 p-6">

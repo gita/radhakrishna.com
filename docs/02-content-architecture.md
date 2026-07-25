@@ -57,7 +57,10 @@ with its own cluster of combined-couple spokes, distinct from the two separate d
 - **A. Radha** and **B. Krishna** are the two deity entity hubs. Radha-first is our brand tilt (nobody owns
   the Radha entity well; Krishna is more contested).
 - **D. Questions** is where the highest-curiosity, weakest-incumbent traffic lives ("why didn't they
-  marry", "how did Radha die", "who is Radha's husband"). Each is answer-first with a scripture table.
+  marry", "is Radha an incarnation of Lakshmi", "why is Krishna blue"). Each is answer-first with a
+  scripture table. **Contested, gossip-adjacent questions are not built here** however high the demand:
+  "how did Radha die" and "who is Radha's husband" are both dropped, see DECISIONS Q12 and Q13 and the
+  CLAUDE.md rule on what we write about.
 - **E. Devotion** splits by prayer type but shares one template (lyrics + transliteration + word-by-word
   meaning + audio + significance).
 - **F. Festivals** are seasonal; each has an evergreen hub + a re-dated annual page. **Ekadashi / vrata

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { concordanceBy, CONCORDANCE_VERSION } from "@/lib/concordance";
 
 /**
- * A slice of the Radha Krishna Scripture Concordance (docs/01 §5, docs/02 §6).
+ * A slice of Radha in the Scriptures (docs/01 §5, docs/02 §6).
  *
  * The rows are not written into the page. They are read from the one dataset, so
  * a correction lands everywhere at once and no two pages can drift into
@@ -17,18 +17,18 @@ import { concordanceBy, CONCORDANCE_VERSION } from "@/lib/concordance";
  * with get wrong, and it is why this table exists at all.
  */
 const LABEL_STYLE: Record<string, string> = {
-  "explicitly in scripture": "bg-divine/10 text-divine",
-  "later devotional literature": "bg-gold/15 text-gold-foreground",
-  "taught within a tradition": "bg-lotus/15 text-foreground/80",
-  "folk legend": "bg-secondary text-muted-foreground",
-  "modern retelling": "bg-secondary text-muted-foreground",
+  Scripture: "bg-divine/10 text-divine",
+  "Devotional text": "bg-gold/20 text-foreground/75",
+  Tradition: "bg-lotus/20 text-foreground/75",
+  "Braj legend": "bg-secondary text-muted-foreground",
+  "Modern retelling": "bg-secondary text-muted-foreground",
 };
 
 export function ScriptureTable({
   topic,
   caption,
 }: {
-  topic: "marriage" | "husband" | "identity" | "death" | "rukmini";
+  topic: "marriage" | "identity" | "rukmini";
   caption?: string;
 }) {
   const rows = concordanceBy(topic);
@@ -45,9 +45,6 @@ export function ScriptureTable({
               </th>
               <th className="border-b border-border p-3 text-left font-semibold">
                 What it says
-              </th>
-              <th className="border-b border-border p-3 text-left font-semibold">
-                How to read it
               </th>
             </tr>
           </thead>
@@ -70,6 +67,17 @@ export function ScriptureTable({
                       {r.sampradaya}
                     </span>
                   ) : null}
+                  {/* The label sits with the text it describes rather than in a
+                      column of its own, which left most of the row empty and
+                      broke the phrase across two lines on every line. */}
+                  <span
+                    className={`mt-2 inline-block whitespace-nowrap rounded-full px-2.5 py-0.5 text-[0.7rem] font-medium ${
+                      LABEL_STYLE[r.label] ??
+                      "bg-secondary text-muted-foreground"
+                    }`}
+                  >
+                    {r.label}
+                  </span>
                 </td>
                 <td className="border-b border-border/60 p-3 align-top">
                   {r.says}
@@ -90,16 +98,6 @@ export function ScriptureTable({
                     </span>
                   ) : null}
                 </td>
-                <td className="border-b border-border/60 p-3 align-top">
-                  <span
-                    className={`inline-block rounded-full px-2.5 py-1 text-xs font-medium ${
-                      LABEL_STYLE[r.label] ??
-                      "bg-secondary text-muted-foreground"
-                    }`}
-                  >
-                    {r.label}
-                  </span>
-                </td>
               </tr>
             ))}
           </tbody>
@@ -109,10 +107,10 @@ export function ScriptureTable({
         {caption ? `${caption} ` : null}
         From{" "}
         <Link
-          href="/scripture-concordance"
+          href="/radha-in-scripture"
           className="underline decoration-dotted underline-offset-2 hover:text-divine"
         >
-          the Radha Krishna Scripture Concordance
+          Radha in the Scriptures
         </Link>
         , version {CONCORDANCE_VERSION}. Every row links to the text it comes
         from.
