@@ -4,7 +4,44 @@ Newest entries on top. Each entry: date, what was done, what's next. This is the
 
 ---
 
-## 2026-07-25 (latest) — Quotes set as quotes, FAQ answers broken out of the blob
+## 2026-07-25 (latest) — Every page has a real social card
+
+Founder asked whether the OG images actually worked across all the pages, and whether they were
+dynamic or hard-coded. Worth asking: sixteen pages were broken.
+
+`generateMetadata` read `doc.image ?? "/og?..."`, so any page **with** art used its raw content image
+as `og:image`, and only the hub pages, which have none, got the drawn card. Exactly backwards. Three
+things wrong with it: the image was **WebP**, which X does not render and WhatsApp usually shows
+nothing at all for; it was 3:2 art in a 1.91:1 slot, so every network cropped it as it pleased; and
+the metadata declared 1200x630 while serving 1536x1024. Separately, `/about`, `/privacy`, `/app`,
+`/images` and `/daily-darshan` were all sharing one identical site-wide card.
+
+The card's logo was a plain teal circle standing in for the real mark. It is now the morpankh, the
+same feather the header and footer carry. Founder spotted that one.
+
+Cards fail silently, which is why this survived so long: nothing on the page looks wrong when its
+card is broken. `npm run check:og` walks the sitemap, reads the true format and pixel size out of the
+image header, and fails on WebP, a 404, an HTML response, or anything under 600x315. It caught a bug
+in itself during the build: without decoding `&amp;` it requested a parameter literally named
+`amp;eyebrow` and reported a card with no eyebrow as fine.
+
+**Text or art?** The card can draw the page's art in its own column, contained rather than covering
+so a crop never cuts through faces. Built and working, but **off by default**: founder's call was
+text only. To turn it on, pass `image: doc.image` to `ogCard` in `app/[...slug]/page.tsx`. The JPEG
+copies it needs come from `scripts/build-og-art.mjs`, which runs as part of `npm run build` and is
+gitignored. They exist because Satori cannot decode WebP and the Next image optimizer cannot help:
+`next.config` sets `formats` to avif and webp, so it never returns a JPEG whatever Accept header it
+is given.
+
+Also fixed here: a citation whose **TLS certificate had expired** (utsav.gov.in, cited on
+`/festivals` and `/festivals/janmashtami`). `check-links` had been filing it with the Britannica
+403s as a harmless bot wall. It was not: a 403 stops crawlers, an expired certificate puts a
+full-page security warning in front of every reader who clicks. Both pages now cite the Nandotsava
+article, and the checker treats a TLS failure as a failure.
+
+---
+
+## 2026-07-25 — Quotes set as quotes, FAQ answers broken out of the blob
 
 Two founder notes, both about formatting rather than substance, plus what the work turned up.
 
