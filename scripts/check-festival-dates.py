@@ -73,6 +73,27 @@ FESTIVALS = {
         "purnimanta_month": "Bhadrapada",
         "reckon": "sunrise",
     },
+    # Jhulan runs several days and closes on Shravana Purnima. Only the closing
+    # day is date-checkable, so `occurrences` on that page carries Jhulan
+    # Purnima and the page states the span around it in prose.
+    "jhulan-yatra": {
+        "label": "Jhulan Purnima",
+        "tithi": 15,  # shukla paksha purnima
+        "amanta_month": "Shravana",
+        "purnimanta_month": "Shravana",
+        "reckon": "sunrise",
+    },
+    # Sharad Purnima turns on the moon rather than on sunrise: the night is kept
+    # when the full moon is actually up, so the observance can fall the evening
+    # before the tithi-day a panchang prints. Checked at moonrise for that
+    # reason, and the page says so where the two differ.
+    "sharad-purnima": {
+        "label": "Sharad Purnima",
+        "tithi": 15,
+        "amanta_month": "Ashwina",
+        "purnimanta_month": "Ashwina",
+        "reckon": "moonrise",
+    },
 }
 
 MONTH_NAMES = [
@@ -94,6 +115,21 @@ def sunrise_jd(d: date) -> float:
         return res[1][0]
     except Exception:
         return jd_of(d, 0.25)
+
+
+def moonrise_jd(d: date) -> float:
+    """Moonrise at Braj. Sharad Purnima is kept when the full moon is actually
+    up, so the tithi has to be read at moonrise rather than at sunrise."""
+    try:
+        res = swe.rise_trans(
+            jd_of(d, 0.0), swe.MOON,
+            swe.CALC_RISE | swe.BIT_DISC_CENTER, (LON, LAT, 0),
+        )
+        return res[1][0]
+    except Exception:
+        # Fall back to mid-evening IST rather than to noon, which would read the
+        # wrong tithi entirely for a festival kept after dark.
+        return jd_of(d, 13.5)
 
 
 def tithi_at(jd: float) -> int:
@@ -153,8 +189,15 @@ def main():
             matched.append("sunrise (vaishnava)")
         if t_midnight == rule["tithi"]:
             matched.append("midnight (smarta)")
-        jd = sunrise_jd(d) if rule["reckon"] == "sunrise" else jd_of(d, 18.5)
-        t = t_sunrise if rule["reckon"] == "sunrise" else t_midnight
+        if rule["reckon"] == "sunrise":
+            jd, t = sunrise_jd(d), t_sunrise
+        elif rule["reckon"] == "moonrise":
+            jd = moonrise_jd(d)
+            t = tithi_at(jd)
+            if t == rule["tithi"]:
+                matched.append("moonrise")
+        else:
+            jd, t = jd_of(d, 18.5), t_midnight
         month = lunar_month_at(jd)
 
         ok_t = bool(matched)
@@ -206,6 +249,11 @@ def main():
         if len(parts) < 3:
             continue
         fm = parts[1]
+        # Only festival pages. Elsewhere a past year is usually a fact rather
+        # than a stale date: the lineage page was flagged for 1922, which is
+        # Kripalu Ji Maharaj's birth year.
+        if "occurrences:" not in fm:
+            continue
         block = re.search(r"^(tldr|faq):\s*\n((?:[ \t]+.*\n|\n)+)", fm, re.M)
         if not block:
             continue
