@@ -83,6 +83,24 @@ FESTIVALS = {
         "purnimanta_month": "Bhadrapada",
         "reckon": "sunrise",
     },
+    # Kartik shukla pratipada, the day after Diwali. Pratipada can span two
+    # sunrises, and a classical rule about moonrise then decides which day the
+    # puja is kept on, so a date one sunrise either way is not automatically an
+    # error; the published date comes from the panchang, not from here.
+    "govardhan-puja": {
+        "label": "Govardhan Puja",
+        "tithi": 1,
+        "amanta_month": "Kartika",
+        "purnimanta_month": "Kartika",
+        "reckon": "sunrise",
+    },
+    "gopashtami": {
+        "label": "Gopashtami",
+        "tithi": 8,  # kartik shukla ashtami
+        "amanta_month": "Kartika",
+        "purnimanta_month": "Kartika",
+        "reckon": "sunrise",
+    },
     # Jhulan runs several days and closes on Shravana Purnima. Only the closing
     # day is date-checkable, so `occurrences` on that page carries Jhulan
     # Purnima and the page states the span around it in prose.
