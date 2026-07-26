@@ -73,6 +73,16 @@ FESTIVALS = {
         "purnimanta_month": "Bhadrapada",
         "reckon": "sunrise",
     },
+    # The day after Janmashtami: krishna paksha navami, so tithi 24, and the
+    # same amanta month as Janmashtami itself. Purnimanta calendars call it
+    # Bhadrapada navami, which is the same day under the other month name.
+    "nandotsav": {
+        "label": "Nandotsav",
+        "tithi": 24,
+        "amanta_month": "Shravana",
+        "purnimanta_month": "Bhadrapada",
+        "reckon": "sunrise",
+    },
     # Jhulan runs several days and closes on Shravana Purnima. Only the closing
     # day is date-checkable, so `occurrences` on that page carries Jhulan
     # Purnima and the page states the span around it in prose.
@@ -83,16 +93,17 @@ FESTIVALS = {
         "purnimanta_month": "Shravana",
         "reckon": "sunrise",
     },
-    # Sharad Purnima turns on the moon rather than on sunrise: the night is kept
-    # when the full moon is actually up, so the observance can fall the evening
-    # before the tithi-day a panchang prints. Checked at moonrise for that
-    # reason, and the page says so where the two differ.
+    # Sharad Purnima is kept through a night, not at an instant. The moon can
+    # rise before the tithi begins (2027) or after it has begun (2026), so
+    # testing moonrise alone would fail a date the panchang gives correctly.
+    # The honest question is whether Purnima prevails at any point between
+    # moonrise and the following dawn, which is the night that is actually kept.
     "sharad-purnima": {
         "label": "Sharad Purnima",
         "tithi": 15,
         "amanta_month": "Ashwina",
         "purnimanta_month": "Ashwina",
-        "reckon": "moonrise",
+        "reckon": "night",
     },
 }
 
@@ -191,11 +202,17 @@ def main():
             matched.append("midnight (smarta)")
         if rule["reckon"] == "sunrise":
             jd, t = sunrise_jd(d), t_sunrise
-        elif rule["reckon"] == "moonrise":
-            jd = moonrise_jd(d)
-            t = tithi_at(jd)
-            if t == rule["tithi"]:
-                matched.append("moonrise")
+        elif rule["reckon"] == "night":
+            # Sample from moonrise to the next dawn. A festival kept through a
+            # night qualifies if its tithi holds at any point in that night.
+            rise = moonrise_jd(d)
+            samples = [rise + (i / 24.0) for i in range(0, 15)]
+            hits = [tithi_at(x) for x in samples]
+            jd = rise
+            t = hits[0]
+            if rule["tithi"] in hits:
+                t = rule["tithi"]
+                matched.append("through the night")
         else:
             jd, t = jd_of(d, 18.5), t_midnight
         month = lunar_month_at(jd)
