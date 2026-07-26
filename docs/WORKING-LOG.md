@@ -4,7 +4,57 @@ Newest entries on top. Each entry: date, what was done, what's next. This is the
 
 ---
 
-## 2026-07-26 (latest) — The lineage page
+## 2026-07-26 (latest) — Three festival pages, and the hub stops being a dead end
+
+Founder asked for the next set of topics. The plan I proposed first was wrong and checking saved it:
+the existing Janmashtami and Radhashtami pages **already cover** fasting, puja at home, Dahi Handi,
+Nandotsav and how Barsana keeps the day, so satellite pages would have cannibalised them.
+
+**The real gap.** The festivals hub lists ten festivals in a table and only two had pages. The other
+eight were dead ends, named with nowhere to click. Three of the nearest are now built and the hub
+table links them.
+
+| Page | Falls | Note |
+| ---- | ----- | ---- |
+| **Jhulan Yatra** | 23 to 28 Aug 2026 | Four weeks out, the urgent one |
+| **Nandotsav** | 5 Sep 2026 | |
+| **Sharad Purnima** | 25 Oct 2026 | The maha raas night |
+
+**Jhulan** sets all three authentic lengths side by side rather than picking one: five days from
+Pavitropana Ekadashi for most temples, thirteen from Hariyali Teej in Vrindavan town, seven at Puri.
+Its differentiator is **Swami Mukundananda's jhulan meditation**, pulling the swing in the mind, which
+no competing page carries.
+
+**Sharad Purnima** quotes the Rasa Panchadhyayi at 10.29.1, 10.29.3, 10.33.3 and 10.33.38, with
+Vishvanatha Chakravarti on how the name Radha slips out of Shukadeva's mouth at 10.30.28. It is also
+**the night Kripalu Ji Maharaj appeared in 1922**, which the page says and links to the lineage.
+
+**Nandotsav corrects an error Google is serving.** Several sources, and Google's own snippet, give 5
+September 2026 as an ISKCON Janmashtami date. That is Nandotsav; ISKCON keeps Janmashtami on the 4th,
+the same day as everyone this year. The research also confirmed the existing Janmashtami page is
+**correct and must not be "fixed"** to match the error.
+
+**A third reckoning was needed.** Sharad Purnima is kept through a night rather than at an instant,
+and the moon can rise before the tithi begins (2027) or after it (2026), so testing moonrise alone
+would have failed a date Drik Panchang gives correctly. The checker now asks whether Purnima prevails
+at any point between moonrise and dawn. Rules also added for nandotsav (krishna navami) and jhulan
+(Shravana purnima). **All nine published dates verify.**
+
+**Banked, not built:** Govardhan Puja (10 Nov 2026) and Gopashtami (17 Nov 2026) are fully researched
+and dated in `docs/research/festivals-next-batch.md`. One correction recorded there that would
+otherwise have been got wrong: the once-a-year darshan of Radharani's feet at **Barsana belongs to
+Radha Ashtami, not Gopashtami**, whose feet darshan is a Vrindavan and Gaudiya practice with her
+dressed as a gwala.
+
+Verified on production: three pages 200, 33 routes, zero broken links, 33/33 social cards, mobile and
+desktop QA clean.
+
+**Still dead ends in the hub:** Lathmar Holi, Holika Dahan and Rangwali Holi, Vasant Panchami. All
+February to March, so there is runway.
+
+---
+
+## 2026-07-26 — The lineage page
 
 Built `/lineage`, quote-led rather than a biography, and only from material that came back sourced. A
 fabricated guru quote would be a worse failure here than a fabricated verse, so the research brief said
