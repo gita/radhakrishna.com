@@ -4,7 +4,65 @@ Newest entries on top. Each entry: date, what was done, what's next. This is the
 
 ---
 
-## 2026-07-26 (latest) — Three festival pages, and the hub stops being a dead end
+## 2026-07-26 (latest) — The Holi cluster, and a date that only holds in some years
+
+Built the last three festivals the hub was pointing at with no page behind them: **Lathmar Holi**,
+**Holi** (Holika Dahan and Rangwali Holi) and **Vasant Panchami**. All ten hub festivals now have
+pages, so the festivals table has no dead rows left.
+
+Research turned up four things worth keeping:
+
+- **The Bhagavata Purana does not name Holika.** 7.5.43 to 45 lists fire among the things Prahlada
+  came through, in a single unbroken list with elephants, serpents and poison, and no woman is named.
+  The **Narada Purana**, Purva-bhaga chapter 124, names her, ties her to Prahlada, sets the day on
+  Phalguna Purnima, and offers three readings of the fire. The **Vishnu Purana** 1.18 has an unnamed
+  fire-woman who turns back on the ones who sent her. The Holi page says exactly this.
+- **Garga Samhita 4.12** is the earliest text placing Radha and Krishna at a Holi, and 4.12.7 ("has
+  come to Your forest") is the seed of the Nandgaon to Barsana journey. The **lathi is Braj, not
+  scripture**, and both Holi pages say so rather than dressing a village custom in a verse.
+- **Phoolon wali Holi is at Banke Bihari, Vrindavan**, on Rangbhari Ekadashi, not at Barsana. My
+  brief had assumed Barsana; the page carries the corrected version.
+- **A live error on a published page.** `content/temples/barsana.mdx` carried "Lathmar Holi lands
+  roughly a week to nine days before the Holi the rest of India keeps." True in 2024 to 2026 and in
+  2028 (six days), **false in 2027**, where it is five, because Phalguna shukla **dashami is a kshaya
+  tithi** that year: it begins and ends between two sunrises and never appears in the calendar. Fixed
+  on Barsana, and the Lathmar page now explains the skipped tithi instead of repeating the
+  generalisation.
+
+**Dates verified for 2027 and 2028** against Drik Panchang and the ISKCON Vaishnava calendar, then
+cross-checked with the Swiss Ephemeris. `npm run check:festivals` now reports **19 of 19 matching**.
+
+**Vasant Panchami 2028 genuinely splits**, and by about two minutes: panchami begins 07:14 AM on 31
+January, just after Delhi sunrise, so it fails the udaya tithi test while still prevailing at
+madhyahna. Smarta keeps Monday 31 January, vaishnava Tuesday 1 February. The page leads with the
+smarta day per house rule and gives the vaishnava day directly beneath it.
+
+That split forced a real fix to the checker. It only knew `sunrise`, `midnight` and `night`, and
+Vasant Panchami is a **madhyahna-vyapini** observance, so a correct smarta date would have been
+reported as wrong. Added a `midday` reckoning that samples the tithi at local noon.
+
+**Lineage voice, and where it actually is.** The strongest material on Holi in this lineage is
+Kripalu Ji Maharaj's, not Swami Ji's: **Prem Ras Madira gives its whole eighteenth chapter, Hori
+Madhuri, to Holi padas**, and JKP publishes a Holi discourse by him whose line is that the festival
+exists to carry God's omnipresence. Both are on the Holi page, with two padas set in the house verse
+pattern. Roughly a third of that discourse is unusable under the keep-the-negative-out rule and was
+left alone. **Kirti Mandir keeps Vasant Panchami**, which is on that page. **JKP's Holi is at
+Mangarh, not Barsana** (Holi Sadhana Shivir, colour played at Bhakti Mandir); Rangeeli Mahal appears
+in JKP's own records for Mahashivratri and Basant Panchami and never for Holi, so the page does not
+claim it.
+
+**A grep that reported clean while the page was not.** The Holi draft carried "the widows' Holi" in
+a table and an FAQ. The keep-the-negative-out sweep in CLAUDE.md uses `\bwidow\b`, and the plural
+possessive does not match it, so the sweep passed on a site that had already cut the widows of
+Vrindavan once on founder direction. Both mentions removed, and the grep in CLAUDE.md now drops its
+word boundaries. A few false positives beat one silent miss.
+
+**Next:** the newsletter component is still built and rendered nowhere (zero `<input>` site-wide);
+place it or delete it. Sitemap submission in Search Console stays manual.
+
+---
+
+## 2026-07-26 — Three festival pages, and the hub stops being a dead end
 
 Founder asked for the next set of topics. The plan I proposed first was wrong and checking saved it:
 the existing Janmashtami and Radhashtami pages **already cover** fasting, puja at home, Dahi Handi,

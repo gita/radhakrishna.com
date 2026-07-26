@@ -123,6 +123,32 @@ FESTIVALS = {
         "purnimanta_month": "Ashwina",
         "reckon": "night",
     },
+    "vasant-panchami": {
+        "label": "Vasant Panchami",
+        "tithi": 5,  # magha shukla panchami
+        "amanta_month": "Magha",
+        "purnimanta_month": "Magha",
+        "reckon": "midday",
+    },
+    # Barsana plays on Phalguna shukla navami and Nandgaon the day after, so
+    # only Barsana's day sits in `occurrences`; the page gives Nandgaon in prose.
+    "lathmar-holi": {
+        "label": "Lathmar Holi (Barsana)",
+        "tithi": 9,
+        "amanta_month": "Phalguna",
+        "purnimanta_month": "Phalguna",
+        "reckon": "sunrise",
+    },
+    # The `occurrences` date on the Holi page is Holika Dahan, lit at pradosh on
+    # Phalguna Purnima, so what matters is whether Purnima prevails that evening
+    # rather than at dawn. Rangwali Holi is always the following morning.
+    "holi": {
+        "label": "Holika Dahan",
+        "tithi": 15,
+        "amanta_month": "Phalguna",
+        "purnimanta_month": "Phalguna",
+        "reckon": "night",
+    },
 }
 
 MONTH_NAMES = [
@@ -218,8 +244,17 @@ def main():
             matched.append("sunrise (vaishnava)")
         if t_midnight == rule["tithi"]:
             matched.append("midnight (smarta)")
+        t_midday = tithi_at(jd_of(d, 6.5))  # ~12:00 IST
+        if t_midday == rule["tithi"] and "midday (madhyahna)" not in matched:
+            matched.append("midday (madhyahna)")
         if rule["reckon"] == "sunrise":
             jd, t = sunrise_jd(d), t_sunrise
+        elif rule["reckon"] == "midday":
+            # Vasant Panchami is a madhyahna-vyapini observance: the classical
+            # test is whether panchami prevails at midday, not at sunrise. In
+            # 2028 panchami begins two minutes after sunrise, which is exactly
+            # why the smarta and vaishnava days part company that year.
+            jd, t = jd_of(d, 6.5), t_midday
         elif rule["reckon"] == "night":
             # Sample from moonrise to the next dawn. A festival kept through a
             # night qualifies if its tithi holds at any point in that night.

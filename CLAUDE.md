@@ -156,7 +156,11 @@ guidance and the reason, and leave out the casualty:
 Sweep for it before shipping:
 
 ```
-grep -rniE "\b(stampede|crush|died|death|fatal|widow|abandoned|scam|touts?|harass|beggar|encroach|litigation|controversy|riot|theft|danger)\b|court case" content/
+grep -rniE "(stampede|crush|died|death|fatal|widow|abandon|scam|tout|harass|beggar|encroach|litigation|controvers|riot|theft|danger)|court case" content/
+
+# Drop the word boundaries. The plural possessive "widows' Holi" slipped past a
+# \bwidow\b sweep that reported clean, on a site that had already cut the widows
+# of Vrindavan once. A few false positives beat one silent miss.
 
 # Sources outlive the passage they were added for. Both times a grim passage was cut,
 # its citation stayed behind and kept rendering in the Sources block, once with

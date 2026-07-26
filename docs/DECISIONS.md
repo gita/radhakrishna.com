@@ -122,3 +122,37 @@ the schools side by side inside a page whose purpose is understanding.
 
 Do not recreate it. If the underlying query is ever worth serving, do it as part of who-is-radha
 rather than as a page about her dying.
+
+## D17. How we publish festival dates that only hold in some years (2026-07-26)
+
+`content/temples/barsana.mdx` carried "Lathmar Holi lands roughly a week to nine days before the Holi
+the rest of India keeps." It is true in 2024, 2025, 2026 and 2028. It is **false in 2027**, where the
+gap is five days, because Phalguna shukla dashami is a **kshaya tithi** that year: it starts and ends
+between two sunrises and is skipped from the calendar entirely.
+
+**The rule, from here on: never publish a gap between two lunar festivals as a constant.** State the
+gap for the named years, and where it moves, say what moves it. A reader who checks a panchang for
+the year they are travelling must find the page still correct.
+
+The second half of this is the checker. `scripts/check-festival-dates.py` knew three reckonings:
+`sunrise` (vaishnava), `midnight` (smarta) and `night` (kept across a night, as Sharad Purnima is).
+Vasant Panchami is neither: it is **madhyahna-vyapini**, kept on the day panchami prevails at midday.
+Without a `midday` reckoning the checker would have called the correct smarta date for 2028 wrong, so
+it now has one. Where a festival's classical rule is not one the script models, add the rule rather
+than bending the date to the rules the script already has.
+
+## D18. Holika Dahan is published from the Narada Purana, not the Bhagavata (2026-07-26)
+
+The Bhagavata Purana **does not name Holika**. At 7.5.43 to 45 it lists fire among the things
+Prahlada came through, in one unbroken run with elephants, serpents, spells, poison and a fall from a
+hilltop, and no woman appears in it. Almost every popular retelling attributes the story to the
+Bhagavata anyway.
+
+The text that actually carries the day is the **Narada Purana**, Purva-bhaga Part 4, chapter 124,
+verses 76b to 81 in the Tagare translation: it names Holika, ties her to Prahlada, sets the
+observance on **Phalguna Purnima**, and offers three readings of the fire (Holika, the burning of the
+year at its end, the burning of Kama). The **Vishnu Purana** 1.18 tells it a third way, with an
+unnamed fire-woman whose fire turns back on the ones who sent her.
+
+`/festivals/holi` cites all three and says which is which. The page is framed around **the boy who
+was not burned**, not around the burning, which is also what the Narada Purana's own readings do.
