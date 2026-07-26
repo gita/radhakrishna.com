@@ -227,6 +227,25 @@ visible caption AND feeds `ImageObject`), and a place in the `/images` gallery. 
 from any doc with an `image`, so wiring the frontmatter is enough, but check it actually appears there and
 that clicking it opens the lightbox. Never ship art that only lives on one page.
 
+**Generating art. Use `scripts/generate-art.mjs`, and never freestyle the prompt.** The engine is
+**gpt-image-2** (not gpt-image-1). The script holds one locked BRAND block that is prepended to every
+scene, which is what `docs/research/08-image-playbook.md` §6 asks for and what keeps the site looking
+like one hand.
+
+The rule that matters: **never name a palette in a scene line.** Nine images across the festival
+batches were generated with lines like "festive rose gold and saffron palette" and "yellow gold and
+soft green palette". The model reads a named palette as an instruction to tint the entire canvas that
+colour, so every one of them came out a flat single-hue wash: Lathmar all pink, Vasant Panchami all
+yellow, Nandotsav all gold, chalky and shallow, against twelve earlier images that are rich and
+deeply saturated. The founder spotted it immediately. Describe **what is in the picture** and let the
+brand block carry the look.
+
+The reference is `public/images/content/who-is-radha.webp`: Raja Ravi Varma academic realism, the
+full colour range in one frame, ornate textiles and jewellery in fine detail, luminous depth.
+
+Check every generation against that reference before shipping it. A single-hue image is a defect, not
+a style choice.
+
 **Photos of real places.** Temple and place pages lead with **real photographs**, not generated art.
 A reader researching Banke Bihari wants the actual building. Generated art is kept only for scenes no
 camera can show (the midnight birth, Radharani's appearance) and for festival pages.

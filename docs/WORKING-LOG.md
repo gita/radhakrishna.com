@@ -57,6 +57,24 @@ possessive does not match it, so the sweep passed on a site that had already cut
 Vrindavan once on founder direction. Both mentions removed, and the grep in CLAUDE.md now drops its
 word boundaries. A few false positives beat one silent miss.
 
+**The art had drifted, and the founder caught it.** Nine images across the recent festival batches
+came out as flat single-hue washes: Lathmar all pink, Vasant Panchami all yellow, Nandotsav all gold,
+chalky and shallow. The twelve earlier images are all correct, so the drift was entirely mine and
+entirely recent.
+
+The cause was in the prompts, not the engine. Every scene line named a palette ("festive rose gold
+and saffron palette", "yellow gold and soft green palette"). The model reads a named palette as an
+instruction to tint the whole canvas, so each scene collapsed to one hue. Two further errors: the
+engine should be **gpt-image-2**, not gpt-image-1, and the playbook's instruction to lock a BRAND
+block and prepend it to every prompt (`research/08` §6) was never actually implemented.
+
+Fixed with `scripts/generate-art.mjs`: one locked BRAND block, scene lines that describe only what is
+in the picture, and all nine regenerated against `who-is-radha.webp` as the reference. The rule is
+now in CLAUDE.md, with a single-hue image called a defect rather than a style choice.
+
+Three alt texts were rewritten to match their new scenes. Sharad Purnima's is the biggest change: it
+was an empty moonlit river and is now the maha raas itself, which is what the page is about.
+
 **Next:** the newsletter component is still built and rendered nowhere (zero `<input>` site-wide);
 place it or delete it. Sitemap submission in Search Console stays manual.
 
